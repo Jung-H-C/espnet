@@ -509,7 +509,8 @@ class Trainer:
 
                 for e in range(1, iepoch):
                     p = output_dir / f"{e}epoch.pth"
-                    if p.exists() and e not in nbests:
+                    # Keep 10epoch.pth and 25epoch.pth even if not in nbests
+                    if p.exists() and e not in nbests and e != 10 and e != 25:
                         p.unlink()
                         _removed.append(str(p))
                 if len(_removed) != 0:

@@ -1,0 +1,87 @@
+nohup: 입력 무시
+2025-12-12T19:05:45 (parallel_inference.sh:26:main) Finding experiment directories in exp...
+2025-12-12T19:05:45 (parallel_inference.sh:37:main) Found 20 experiment directory(ies)
+2025-12-12T19:05:45 (parallel_inference.sh:45:main) Found checkpoint: exp/rank1_asr_train_asr_raw_en_bpe1000_sp/valid.cer_ctc.ave_5best.pth
+2025-12-12T19:05:45 (parallel_inference.sh:45:main) Found checkpoint: exp/rank2_asr_train_asr_raw_en_bpe1000_sp/valid.cer_ctc.ave_5best.pth
+2025-12-12T19:05:45 (parallel_inference.sh:45:main) Found checkpoint: exp/rank3_asr_train_asr_raw_en_bpe1000_sp/valid.cer_ctc.ave_5best.pth
+2025-12-12T19:05:45 (parallel_inference.sh:45:main) Found checkpoint: exp/rank4_asr_train_asr_raw_en_bpe1000_sp/valid.cer_ctc.ave_5best.pth
+2025-12-12T19:05:45 (parallel_inference.sh:45:main) Found checkpoint: exp/rank5_asr_train_asr_raw_en_bpe1000_sp/valid.cer_ctc.ave_5best.pth
+2025-12-12T19:05:45 (parallel_inference.sh:45:main) Found checkpoint: exp/rank6_asr_train_asr_raw_en_bpe1000_sp/valid.cer_ctc.ave_5best.pth
+2025-12-12T19:05:45 (parallel_inference.sh:45:main) Found checkpoint: exp/rank7_asr_train_asr_raw_en_bpe1000_sp/valid.cer_ctc.ave_5best.pth
+2025-12-12T19:05:45 (parallel_inference.sh:45:main) Found checkpoint: exp/rank8_asr_train_asr_raw_en_bpe1000_sp/valid.cer_ctc.ave_5best.pth
+2025-12-12T19:05:45 (parallel_inference.sh:45:main) Found checkpoint: exp/rank9_asr_train_asr_raw_en_bpe1000_sp/valid.cer_ctc.ave_5best.pth
+2025-12-12T19:05:45 (parallel_inference.sh:45:main) Found checkpoint: exp/rank10_asr_train_asr_raw_en_bpe1000_sp/valid.cer_ctc.ave_5best.pth
+2025-12-12T19:05:45 (parallel_inference.sh:45:main) Found checkpoint: exp/rank11_asr_train_asr_raw_en_bpe1000_sp/valid.cer_ctc.ave_5best.pth
+2025-12-12T19:05:45 (parallel_inference.sh:45:main) Found checkpoint: exp/rank12_asr_train_asr_raw_en_bpe1000_sp/valid.cer_ctc.ave_5best.pth
+2025-12-12T19:05:45 (parallel_inference.sh:45:main) Found checkpoint: exp/rank13_asr_train_asr_raw_en_bpe1000_sp/valid.cer_ctc.ave_5best.pth
+2025-12-12T19:05:45 (parallel_inference.sh:45:main) Found checkpoint: exp/rank14_asr_train_asr_raw_en_bpe1000_sp/valid.cer_ctc.ave_5best.pth
+2025-12-12T19:05:45 (parallel_inference.sh:45:main) Found checkpoint: exp/rank15_asr_train_asr_raw_en_bpe1000_sp/valid.cer_ctc.ave_5best.pth
+2025-12-12T19:05:45 (parallel_inference.sh:45:main) Found checkpoint: exp/rank16_asr_train_asr_raw_en_bpe1000_sp/valid.cer_ctc.ave_5best.pth
+2025-12-12T19:05:45 (parallel_inference.sh:45:main) Found checkpoint: exp/rank17_asr_train_asr_raw_en_bpe1000_sp/valid.cer_ctc.ave_5best.pth
+2025-12-12T19:05:45 (parallel_inference.sh:45:main) Found checkpoint: exp/rank18_asr_train_asr_raw_en_bpe1000_sp/valid.cer_ctc.ave_5best.pth
+2025-12-12T19:05:45 (parallel_inference.sh:45:main) Found checkpoint: exp/rank19_asr_train_asr_raw_en_bpe1000_sp/valid.cer_ctc.ave_5best.pth
+2025-12-12T19:05:45 (parallel_inference.sh:45:main) Found checkpoint: exp/rank20_asr_train_asr_raw_en_bpe1000_sp/valid.cer_ctc.ave_5best.pth
+2025-12-12T19:05:45 (parallel_inference.sh:56:main) Selected 20 checkpoint(s) from 20 experiment directory(ies):
+  - rank1_asr_train_asr_raw_en_bpe1000_sp: valid.cer_ctc.ave_5best.pth
+  - rank2_asr_train_asr_raw_en_bpe1000_sp: valid.cer_ctc.ave_5best.pth
+  - rank3_asr_train_asr_raw_en_bpe1000_sp: valid.cer_ctc.ave_5best.pth
+  - rank4_asr_train_asr_raw_en_bpe1000_sp: valid.cer_ctc.ave_5best.pth
+  - rank5_asr_train_asr_raw_en_bpe1000_sp: valid.cer_ctc.ave_5best.pth
+  - rank6_asr_train_asr_raw_en_bpe1000_sp: valid.cer_ctc.ave_5best.pth
+  - rank7_asr_train_asr_raw_en_bpe1000_sp: valid.cer_ctc.ave_5best.pth
+  - rank8_asr_train_asr_raw_en_bpe1000_sp: valid.cer_ctc.ave_5best.pth
+  - rank9_asr_train_asr_raw_en_bpe1000_sp: valid.cer_ctc.ave_5best.pth
+  - rank10_asr_train_asr_raw_en_bpe1000_sp: valid.cer_ctc.ave_5best.pth
+  - rank11_asr_train_asr_raw_en_bpe1000_sp: valid.cer_ctc.ave_5best.pth
+  - rank12_asr_train_asr_raw_en_bpe1000_sp: valid.cer_ctc.ave_5best.pth
+  - rank13_asr_train_asr_raw_en_bpe1000_sp: valid.cer_ctc.ave_5best.pth
+  - rank14_asr_train_asr_raw_en_bpe1000_sp: valid.cer_ctc.ave_5best.pth
+  - rank15_asr_train_asr_raw_en_bpe1000_sp: valid.cer_ctc.ave_5best.pth
+  - rank16_asr_train_asr_raw_en_bpe1000_sp: valid.cer_ctc.ave_5best.pth
+  - rank17_asr_train_asr_raw_en_bpe1000_sp: valid.cer_ctc.ave_5best.pth
+  - rank18_asr_train_asr_raw_en_bpe1000_sp: valid.cer_ctc.ave_5best.pth
+  - rank19_asr_train_asr_raw_en_bpe1000_sp: valid.cer_ctc.ave_5best.pth
+  - rank20_asr_train_asr_raw_en_bpe1000_sp: valid.cer_ctc.ave_5best.pth
+2025-12-12T19:05:45 (parallel_inference.sh:115:main) Starting parallel inference with max 8 concurrent jobs...
+xargs: 경고: --max-args 및 --replace/-I/-i 옵션을 함께 사용할 수 없어, 앞의 --max-args 값을 무시합니다
+2025-12-12T19:05:45 (environment:4:run_inference) Starting inference for rank1_asr_train_asr_raw_en_bpe1000_sp/valid.cer_ctc.ave_5best.pth...
+2025-12-12T19:05:45 (environment:4:run_inference) Starting inference for rank2_asr_train_asr_raw_en_bpe1000_sp/valid.cer_ctc.ave_5best.pth...
+2025-12-12T19:05:45 (environment:4:run_inference) Starting inference for rank3_asr_train_asr_raw_en_bpe1000_sp/valid.cer_ctc.ave_5best.pth...
+2025-12-12T19:05:45 (environment:4:run_inference) Starting inference for rank4_asr_train_asr_raw_en_bpe1000_sp/valid.cer_ctc.ave_5best.pth...
+2025-12-12T19:05:45 (environment:4:run_inference) Starting inference for rank5_asr_train_asr_raw_en_bpe1000_sp/valid.cer_ctc.ave_5best.pth...
+2025-12-12T19:05:45 (environment:4:run_inference) Starting inference for rank6_asr_train_asr_raw_en_bpe1000_sp/valid.cer_ctc.ave_5best.pth...
+2025-12-12T19:05:45 (environment:4:run_inference) Starting inference for rank7_asr_train_asr_raw_en_bpe1000_sp/valid.cer_ctc.ave_5best.pth...
+2025-12-12T19:05:45 (environment:4:run_inference) Starting inference for rank8_asr_train_asr_raw_en_bpe1000_sp/valid.cer_ctc.ave_5best.pth...
+2025-12-13T00:20:36 (environment:9:run_inference) ✓ Completed inference for rank4_asr_train_asr_raw_en_bpe1000_sp/valid.cer_ctc.ave_5best.pth
+2025-12-13T00:20:36 (environment:4:run_inference) Starting inference for rank9_asr_train_asr_raw_en_bpe1000_sp/valid.cer_ctc.ave_5best.pth...
+2025-12-13T00:20:58 (environment:9:run_inference) ✓ Completed inference for rank1_asr_train_asr_raw_en_bpe1000_sp/valid.cer_ctc.ave_5best.pth
+2025-12-13T00:20:58 (environment:4:run_inference) Starting inference for rank10_asr_train_asr_raw_en_bpe1000_sp/valid.cer_ctc.ave_5best.pth...
+2025-12-13T00:21:18 (environment:9:run_inference) ✓ Completed inference for rank5_asr_train_asr_raw_en_bpe1000_sp/valid.cer_ctc.ave_5best.pth
+2025-12-13T00:21:18 (environment:4:run_inference) Starting inference for rank11_asr_train_asr_raw_en_bpe1000_sp/valid.cer_ctc.ave_5best.pth...
+2025-12-13T00:21:20 (environment:9:run_inference) ✓ Completed inference for rank8_asr_train_asr_raw_en_bpe1000_sp/valid.cer_ctc.ave_5best.pth
+2025-12-13T00:21:20 (environment:4:run_inference) Starting inference for rank12_asr_train_asr_raw_en_bpe1000_sp/valid.cer_ctc.ave_5best.pth...
+2025-12-13T00:22:08 (environment:9:run_inference) ✓ Completed inference for rank2_asr_train_asr_raw_en_bpe1000_sp/valid.cer_ctc.ave_5best.pth
+2025-12-13T00:22:08 (environment:4:run_inference) Starting inference for rank13_asr_train_asr_raw_en_bpe1000_sp/valid.cer_ctc.ave_5best.pth...
+2025-12-13T00:22:11 (environment:9:run_inference) ✓ Completed inference for rank7_asr_train_asr_raw_en_bpe1000_sp/valid.cer_ctc.ave_5best.pth
+2025-12-13T00:22:11 (environment:4:run_inference) Starting inference for rank14_asr_train_asr_raw_en_bpe1000_sp/valid.cer_ctc.ave_5best.pth...
+2025-12-13T00:22:48 (environment:9:run_inference) ✓ Completed inference for rank3_asr_train_asr_raw_en_bpe1000_sp/valid.cer_ctc.ave_5best.pth
+2025-12-13T00:22:48 (environment:4:run_inference) Starting inference for rank15_asr_train_asr_raw_en_bpe1000_sp/valid.cer_ctc.ave_5best.pth...
+2025-12-13T00:27:00 (environment:9:run_inference) ✓ Completed inference for rank6_asr_train_asr_raw_en_bpe1000_sp/valid.cer_ctc.ave_5best.pth
+2025-12-13T00:27:00 (environment:4:run_inference) Starting inference for rank16_asr_train_asr_raw_en_bpe1000_sp/valid.cer_ctc.ave_5best.pth...
+2025-12-13T05:35:42 (environment:9:run_inference) ✓ Completed inference for rank9_asr_train_asr_raw_en_bpe1000_sp/valid.cer_ctc.ave_5best.pth
+2025-12-13T05:35:42 (environment:4:run_inference) Starting inference for rank17_asr_train_asr_raw_en_bpe1000_sp/valid.cer_ctc.ave_5best.pth...
+2025-12-13T05:36:54 (environment:9:run_inference) ✓ Completed inference for rank10_asr_train_asr_raw_en_bpe1000_sp/valid.cer_ctc.ave_5best.pth
+2025-12-13T05:36:54 (environment:4:run_inference) Starting inference for rank18_asr_train_asr_raw_en_bpe1000_sp/valid.cer_ctc.ave_5best.pth...
+2025-12-13T05:37:30 (environment:9:run_inference) ✓ Completed inference for rank13_asr_train_asr_raw_en_bpe1000_sp/valid.cer_ctc.ave_5best.pth
+2025-12-13T05:37:30 (environment:4:run_inference) Starting inference for rank19_asr_train_asr_raw_en_bpe1000_sp/valid.cer_ctc.ave_5best.pth...
+2025-12-13T05:37:46 (environment:9:run_inference) ✓ Completed inference for rank11_asr_train_asr_raw_en_bpe1000_sp/valid.cer_ctc.ave_5best.pth
+2025-12-13T05:37:46 (environment:4:run_inference) Starting inference for rank20_asr_train_asr_raw_en_bpe1000_sp/valid.cer_ctc.ave_5best.pth...
+2025-12-13T05:39:35 (environment:9:run_inference) ✓ Completed inference for rank12_asr_train_asr_raw_en_bpe1000_sp/valid.cer_ctc.ave_5best.pth
+2025-12-13T05:39:46 (environment:9:run_inference) ✓ Completed inference for rank14_asr_train_asr_raw_en_bpe1000_sp/valid.cer_ctc.ave_5best.pth
+2025-12-13T05:40:43 (environment:9:run_inference) ✓ Completed inference for rank15_asr_train_asr_raw_en_bpe1000_sp/valid.cer_ctc.ave_5best.pth
+2025-12-13T05:42:41 (environment:9:run_inference) ✓ Completed inference for rank16_asr_train_asr_raw_en_bpe1000_sp/valid.cer_ctc.ave_5best.pth
+2025-12-13T08:42:49 (environment:9:run_inference) ✓ Completed inference for rank18_asr_train_asr_raw_en_bpe1000_sp/valid.cer_ctc.ave_5best.pth
+2025-12-13T08:43:43 (environment:9:run_inference) ✓ Completed inference for rank17_asr_train_asr_raw_en_bpe1000_sp/valid.cer_ctc.ave_5best.pth
+2025-12-13T08:43:54 (environment:9:run_inference) ✓ Completed inference for rank19_asr_train_asr_raw_en_bpe1000_sp/valid.cer_ctc.ave_5best.pth
+2025-12-13T08:46:12 (environment:9:run_inference) ✓ Completed inference for rank20_asr_train_asr_raw_en_bpe1000_sp/valid.cer_ctc.ave_5best.pth
+2025-12-13T08:46:12 (parallel_inference.sh:118:main) All inference jobs completed!

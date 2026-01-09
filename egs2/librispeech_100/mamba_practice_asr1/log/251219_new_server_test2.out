@@ -1,0 +1,29 @@
+nohup: ignoring input
+Using GPU: 0 (CUDA_VISIBLE_DEVICES=0)
+Updating module_config in conf/train_asr.yaml...
+Updated conf/train_asr.yaml with module_config:
+  Configuration: ['I', 'I', 'I', 'C', 'M']
+  Applied to 29 blocks
+YAML file updated successfully.
+2025-12-19T05:04:54 (asr.sh:285:main) ./asr.sh --lang en --ngpu 1 --nj 16 --gpu_inference true --inference_nj 6 --nbpe 1000 --max_wav_duration 30 --audio_format flac.ark --speed_perturb_factors 0.9 1.0 1.1 --feats_type raw --use_lm false --asr_config conf/train_asr.yaml --inference_config conf/decode_asr.yaml --train_set train_clean_100 --valid_set dev --test_sets test_clean test_other --inference_asr_model valid.cer_ctc.ave_5best.pth --lm_train_text data/train_clean_100/text --bpe_train_text data/train_clean_100/text --stage 11 --stop_stage 13
+2025-12-19T05:04:54 (asr.sh:566:main) Skipped stages:  6 7 8 9 14 15 
+2025-12-19T05:04:54 (asr.sh:1310:main) Stage 11: ASR Training: train_set=dump/raw/train_clean_100_sp, valid_set=dump/raw/dev
+2025-12-19T05:04:54 (asr.sh:1409:main) Generate 'exp/asr_train_asr_raw_en_bpe1000_sp/run.sh'. You can resume the process from stage 11 using this script
+2025-12-19T05:04:54 (asr.sh:1413:main) ASR training started... log: 'exp/asr_train_asr_raw_en_bpe1000_sp/train.log'
+2025-12-19T05:04:54 (asr.sh:1451:main) Use ESPnet trainer
+2025-12-19 05:04:54,512 (launch:94) INFO: /home/gpuadmin/anaconda3/envs/junghc/bin/python3 /home/gpuadmin/espnet/espnet2/bin/launch.py --cmd 'run.pl --name exp/asr_train_asr_raw_en_bpe1000_sp/train.log' --log exp/asr_train_asr_raw_en_bpe1000_sp/train.log --ngpu 1 --num_nodes 1 --init_file_prefix exp/asr_train_asr_raw_en_bpe1000_sp/.dist_init_ --multiprocessing_distributed true -- python3 -m espnet2.bin.asr_train --use_preprocessor true --bpemodel data/en_token_list/bpe_bpe1000/bpe.model --token_type bpe --token_list data/en_token_list/bpe_bpe1000/tokens.txt --non_linguistic_symbols none --cleaner none --g2p none --valid_data_path_and_name_and_type dump/raw/dev/wav.scp,speech,kaldi_ark --valid_shape_file exp/asr_stats_raw_en_bpe1000_sp/valid/speech_shape --resume true --ignore_init_mismatch false --fold_length 80000 --output_dir exp/asr_train_asr_raw_en_bpe1000_sp --config conf/train_asr.yaml --frontend_conf fs=16k --normalize=global_mvn --normalize_conf stats_file=exp/asr_stats_raw_en_bpe1000_sp/train/feats_stats.npz --train_data_path_and_name_and_type dump/raw/train_clean_100_sp/wav.scp,speech,kaldi_ark --train_shape_file exp/asr_stats_raw_en_bpe1000_sp/train/speech_shape --fold_length 150 --train_data_path_and_name_and_type dump/raw/train_clean_100_sp/text,text,text --train_shape_file exp/asr_stats_raw_en_bpe1000_sp/train/text_shape.bpe --valid_data_path_and_name_and_type dump/raw/dev/text,text,text --valid_shape_file exp/asr_stats_raw_en_bpe1000_sp/valid/text_shape.bpe
+2025-12-19 05:04:54,528 (launch:348) INFO: log file: exp/asr_train_asr_raw_en_bpe1000_sp/train.log
+Traceback (most recent call last):
+  File "/home/gpuadmin/anaconda3/envs/junghc/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/home/gpuadmin/anaconda3/envs/junghc/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/home/gpuadmin/espnet/espnet2/bin/launch.py", line 384, in <module>
+    main()
+  File "/home/gpuadmin/espnet/espnet2/bin/launch.py", line 358, in main
+    process.wait(0.5)
+  File "/home/gpuadmin/anaconda3/envs/junghc/lib/python3.10/subprocess.py", line 1209, in wait
+    return self._wait(timeout=timeout)
+  File "/home/gpuadmin/anaconda3/envs/junghc/lib/python3.10/subprocess.py", line 1953, in _wait
+    time.sleep(delay)
+KeyboardInterrupt

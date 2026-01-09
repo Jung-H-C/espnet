@@ -1,0 +1,553 @@
+nohup: 입력 무시
+==================================================================================
+Training Top 20 Models Sequentially
+==================================================================================
+
+==================================================================================
+Rank 1/20: Training model
+==================================================================================
+Module Config: ['SFF', 'M', 'C', 'C', 'C']
+Jacob Cov Score: -16.229841
+Synflow Score: 0.002394
+Number of Blocks: 12
+Total Params: 21382656
+
+Starting training...
+Experiment directory: /home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank1_asr_train_asr_raw_en_bpe1000_sp
+
+Updating module_config in conf/train_asr.yaml...
+Updated conf/train_asr.yaml with module_config:
+  Configuration: ['SFF', 'M', 'C', 'C', 'C']
+  Applied to 12 blocks
+YAML file updated successfully.
+2025-11-29T00:48:07 (asr.sh:285:main) ./asr.sh --lang en --ngpu 1 --nj 16 --gpu_inference true --inference_nj 6 --nbpe 1000 --max_wav_duration 30 --audio_format flac.ark --speed_perturb_factors 0.9 1.0 1.1 --feats_type raw --use_lm false --asr_config conf/train_asr.yaml --inference_config conf/decode_asr.yaml --train_set train_clean_100 --valid_set dev --test_sets test_clean test_other --inference_asr_model valid.cer_ctc.ave_5best.pth --lm_train_text data/train_clean_100/text --bpe_train_text data/train_clean_100/text --asr_exp /home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank1_asr_train_asr_raw_en_bpe1000_sp --stage 10 --stop_stage 11
+2025-11-29T00:48:08 (asr.sh:566:main) Skipped stages:  6 7 8 9 14 15 
+2025-11-29T00:48:08 (asr.sh:1191:main) Stage 10: ASR collect stats: train_set=dump/raw/train_clean_100_sp, valid_set=dump/raw/dev
+2025-11-29T00:48:08 (asr.sh:1242:main) Generate 'exp/asr_stats_raw_en_bpe1000_sp/run.sh'. You can resume the process from stage 10 using this script
+2025-11-29T00:48:08 (asr.sh:1246:main) ASR collect-stats started... log: 'exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.*.log'
+/home/bossjung/anaconda3/envs/espnet/bin/python3 /home/bossjung/espnet/espnet/espnet2/bin/aggregate_stats_dirs.py --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.1 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.2 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.3 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.4 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.5 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.6 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.7 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.8 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.9 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.10 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.11 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.12 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.13 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.14 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.15 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.16 --output_dir exp/asr_stats_raw_en_bpe1000_sp
+2025-11-29T00:51:59 (asr.sh:1310:main) Stage 11: ASR Training: train_set=dump/raw/train_clean_100_sp, valid_set=dump/raw/dev
+2025-11-29T00:51:59 (asr.sh:1409:main) Generate '/home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank1_asr_train_asr_raw_en_bpe1000_sp/run.sh'. You can resume the process from stage 11 using this script
+2025-11-29T00:51:59 (asr.sh:1413:main) ASR training started... log: '/home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank1_asr_train_asr_raw_en_bpe1000_sp/train.log'
+2025-11-29T00:51:59 (asr.sh:1451:main) Use ESPnet trainer
+2025-11-29 00:51:59,638 (launch:94) INFO: /home/bossjung/anaconda3/envs/espnet/bin/python3 /home/bossjung/espnet/espnet/espnet2/bin/launch.py --cmd 'run.pl --name /home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank1_asr_train_asr_raw_en_bpe1000_sp/train.log' --log /home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank1_asr_train_asr_raw_en_bpe1000_sp/train.log --ngpu 1 --num_nodes 1 --init_file_prefix /home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank1_asr_train_asr_raw_en_bpe1000_sp/.dist_init_ --multiprocessing_distributed true -- python3 -m espnet2.bin.asr_train --use_preprocessor true --bpemodel data/en_token_list/bpe_bpe1000/bpe.model --token_type bpe --token_list data/en_token_list/bpe_bpe1000/tokens.txt --non_linguistic_symbols none --cleaner none --g2p none --valid_data_path_and_name_and_type dump/raw/dev/wav.scp,speech,kaldi_ark --valid_shape_file exp/asr_stats_raw_en_bpe1000_sp/valid/speech_shape --resume true --ignore_init_mismatch false --fold_length 80000 --output_dir /home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank1_asr_train_asr_raw_en_bpe1000_sp --config conf/train_asr.yaml --frontend_conf fs=16k --normalize=global_mvn --normalize_conf stats_file=exp/asr_stats_raw_en_bpe1000_sp/train/feats_stats.npz --train_data_path_and_name_and_type dump/raw/train_clean_100_sp/wav.scp,speech,kaldi_ark --train_shape_file exp/asr_stats_raw_en_bpe1000_sp/train/speech_shape --fold_length 150 --train_data_path_and_name_and_type dump/raw/train_clean_100_sp/text,text,text --train_shape_file exp/asr_stats_raw_en_bpe1000_sp/train/text_shape.bpe --valid_data_path_and_name_and_type dump/raw/dev/text,text,text --valid_shape_file exp/asr_stats_raw_en_bpe1000_sp/valid/text_shape.bpe
+2025-11-29 00:51:59,657 (launch:348) INFO: log file: /home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank1_asr_train_asr_raw_en_bpe1000_sp/train.log
+2025-11-29T05:41:43 (asr.sh:1842:main) Successfully finished. [elapsed=17616s]
+
+✓ Rank 1 training completed successfully
+✓ Checkpoint saved: /home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank1_asr_train_asr_raw_en_bpe1000_sp/valid.cer_ctc.ave_5best.pth
+
+==================================================================================
+
+==================================================================================
+Rank 2/20: Training model
+==================================================================================
+Module Config: ['C', 'M', 'SFF', 'C', 'C']
+Jacob Cov Score: -16.273157
+Synflow Score: 0.002387
+Number of Blocks: 12
+Total Params: 21382656
+
+Starting training...
+Experiment directory: /home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank2_asr_train_asr_raw_en_bpe1000_sp
+
+Updating module_config in conf/train_asr.yaml...
+Updated conf/train_asr.yaml with module_config:
+  Configuration: ['C', 'M', 'SFF', 'C', 'C']
+  Applied to 12 blocks
+YAML file updated successfully.
+2025-11-29T05:41:43 (asr.sh:285:main) ./asr.sh --lang en --ngpu 1 --nj 16 --gpu_inference true --inference_nj 6 --nbpe 1000 --max_wav_duration 30 --audio_format flac.ark --speed_perturb_factors 0.9 1.0 1.1 --feats_type raw --use_lm false --asr_config conf/train_asr.yaml --inference_config conf/decode_asr.yaml --train_set train_clean_100 --valid_set dev --test_sets test_clean test_other --inference_asr_model valid.cer_ctc.ave_5best.pth --lm_train_text data/train_clean_100/text --bpe_train_text data/train_clean_100/text --asr_exp /home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank2_asr_train_asr_raw_en_bpe1000_sp --stage 10 --stop_stage 11
+2025-11-29T05:41:44 (asr.sh:566:main) Skipped stages:  6 7 8 9 14 15 
+2025-11-29T05:41:44 (asr.sh:1191:main) Stage 10: ASR collect stats: train_set=dump/raw/train_clean_100_sp, valid_set=dump/raw/dev
+2025-11-29T05:41:44 (asr.sh:1242:main) Generate 'exp/asr_stats_raw_en_bpe1000_sp/run.sh'. You can resume the process from stage 10 using this script
+2025-11-29T05:41:44 (asr.sh:1246:main) ASR collect-stats started... log: 'exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.*.log'
+/home/bossjung/anaconda3/envs/espnet/bin/python3 /home/bossjung/espnet/espnet/espnet2/bin/aggregate_stats_dirs.py --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.1 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.2 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.3 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.4 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.5 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.6 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.7 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.8 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.9 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.10 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.11 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.12 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.13 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.14 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.15 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.16 --output_dir exp/asr_stats_raw_en_bpe1000_sp
+2025-11-29T05:45:33 (asr.sh:1310:main) Stage 11: ASR Training: train_set=dump/raw/train_clean_100_sp, valid_set=dump/raw/dev
+2025-11-29T05:45:33 (asr.sh:1409:main) Generate '/home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank2_asr_train_asr_raw_en_bpe1000_sp/run.sh'. You can resume the process from stage 11 using this script
+2025-11-29T05:45:33 (asr.sh:1413:main) ASR training started... log: '/home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank2_asr_train_asr_raw_en_bpe1000_sp/train.log'
+2025-11-29T05:45:33 (asr.sh:1451:main) Use ESPnet trainer
+2025-11-29 05:45:33,615 (launch:94) INFO: /home/bossjung/anaconda3/envs/espnet/bin/python3 /home/bossjung/espnet/espnet/espnet2/bin/launch.py --cmd 'run.pl --name /home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank2_asr_train_asr_raw_en_bpe1000_sp/train.log' --log /home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank2_asr_train_asr_raw_en_bpe1000_sp/train.log --ngpu 1 --num_nodes 1 --init_file_prefix /home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank2_asr_train_asr_raw_en_bpe1000_sp/.dist_init_ --multiprocessing_distributed true -- python3 -m espnet2.bin.asr_train --use_preprocessor true --bpemodel data/en_token_list/bpe_bpe1000/bpe.model --token_type bpe --token_list data/en_token_list/bpe_bpe1000/tokens.txt --non_linguistic_symbols none --cleaner none --g2p none --valid_data_path_and_name_and_type dump/raw/dev/wav.scp,speech,kaldi_ark --valid_shape_file exp/asr_stats_raw_en_bpe1000_sp/valid/speech_shape --resume true --ignore_init_mismatch false --fold_length 80000 --output_dir /home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank2_asr_train_asr_raw_en_bpe1000_sp --config conf/train_asr.yaml --frontend_conf fs=16k --normalize=global_mvn --normalize_conf stats_file=exp/asr_stats_raw_en_bpe1000_sp/train/feats_stats.npz --train_data_path_and_name_and_type dump/raw/train_clean_100_sp/wav.scp,speech,kaldi_ark --train_shape_file exp/asr_stats_raw_en_bpe1000_sp/train/speech_shape --fold_length 150 --train_data_path_and_name_and_type dump/raw/train_clean_100_sp/text,text,text --train_shape_file exp/asr_stats_raw_en_bpe1000_sp/train/text_shape.bpe --valid_data_path_and_name_and_type dump/raw/dev/text,text,text --valid_shape_file exp/asr_stats_raw_en_bpe1000_sp/valid/text_shape.bpe
+2025-11-29 05:45:33,635 (launch:348) INFO: log file: /home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank2_asr_train_asr_raw_en_bpe1000_sp/train.log
+2025-11-29T10:08:45 (asr.sh:1842:main) Successfully finished. [elapsed=16022s]
+
+✓ Rank 2 training completed successfully
+✓ Checkpoint saved: /home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank2_asr_train_asr_raw_en_bpe1000_sp/valid.cer_ctc.ave_5best.pth
+
+==================================================================================
+
+==================================================================================
+Rank 3/20: Training model
+==================================================================================
+Module Config: ['I', 'I', 'M', 'C', 'C']
+Jacob Cov Score: -16.245429
+Synflow Score: 0.002372
+Number of Blocks: 22
+Total Params: 21550592
+
+Starting training...
+Experiment directory: /home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank3_asr_train_asr_raw_en_bpe1000_sp
+
+Updating module_config in conf/train_asr.yaml...
+Updated conf/train_asr.yaml with module_config:
+  Configuration: ['I', 'I', 'M', 'C', 'C']
+  Applied to 22 blocks
+YAML file updated successfully.
+2025-11-29T10:08:45 (asr.sh:285:main) ./asr.sh --lang en --ngpu 1 --nj 16 --gpu_inference true --inference_nj 6 --nbpe 1000 --max_wav_duration 30 --audio_format flac.ark --speed_perturb_factors 0.9 1.0 1.1 --feats_type raw --use_lm false --asr_config conf/train_asr.yaml --inference_config conf/decode_asr.yaml --train_set train_clean_100 --valid_set dev --test_sets test_clean test_other --inference_asr_model valid.cer_ctc.ave_5best.pth --lm_train_text data/train_clean_100/text --bpe_train_text data/train_clean_100/text --asr_exp /home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank3_asr_train_asr_raw_en_bpe1000_sp --stage 10 --stop_stage 11
+2025-11-29T10:08:46 (asr.sh:566:main) Skipped stages:  6 7 8 9 14 15 
+2025-11-29T10:08:46 (asr.sh:1191:main) Stage 10: ASR collect stats: train_set=dump/raw/train_clean_100_sp, valid_set=dump/raw/dev
+2025-11-29T10:08:46 (asr.sh:1242:main) Generate 'exp/asr_stats_raw_en_bpe1000_sp/run.sh'. You can resume the process from stage 10 using this script
+2025-11-29T10:08:46 (asr.sh:1246:main) ASR collect-stats started... log: 'exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.*.log'
+/home/bossjung/anaconda3/envs/espnet/bin/python3 /home/bossjung/espnet/espnet/espnet2/bin/aggregate_stats_dirs.py --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.1 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.2 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.3 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.4 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.5 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.6 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.7 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.8 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.9 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.10 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.11 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.12 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.13 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.14 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.15 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.16 --output_dir exp/asr_stats_raw_en_bpe1000_sp
+2025-11-29T10:12:33 (asr.sh:1310:main) Stage 11: ASR Training: train_set=dump/raw/train_clean_100_sp, valid_set=dump/raw/dev
+2025-11-29T10:12:33 (asr.sh:1409:main) Generate '/home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank3_asr_train_asr_raw_en_bpe1000_sp/run.sh'. You can resume the process from stage 11 using this script
+2025-11-29T10:12:33 (asr.sh:1413:main) ASR training started... log: '/home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank3_asr_train_asr_raw_en_bpe1000_sp/train.log'
+2025-11-29T10:12:33 (asr.sh:1451:main) Use ESPnet trainer
+2025-11-29 10:12:33,930 (launch:94) INFO: /home/bossjung/anaconda3/envs/espnet/bin/python3 /home/bossjung/espnet/espnet/espnet2/bin/launch.py --cmd 'run.pl --name /home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank3_asr_train_asr_raw_en_bpe1000_sp/train.log' --log /home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank3_asr_train_asr_raw_en_bpe1000_sp/train.log --ngpu 1 --num_nodes 1 --init_file_prefix /home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank3_asr_train_asr_raw_en_bpe1000_sp/.dist_init_ --multiprocessing_distributed true -- python3 -m espnet2.bin.asr_train --use_preprocessor true --bpemodel data/en_token_list/bpe_bpe1000/bpe.model --token_type bpe --token_list data/en_token_list/bpe_bpe1000/tokens.txt --non_linguistic_symbols none --cleaner none --g2p none --valid_data_path_and_name_and_type dump/raw/dev/wav.scp,speech,kaldi_ark --valid_shape_file exp/asr_stats_raw_en_bpe1000_sp/valid/speech_shape --resume true --ignore_init_mismatch false --fold_length 80000 --output_dir /home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank3_asr_train_asr_raw_en_bpe1000_sp --config conf/train_asr.yaml --frontend_conf fs=16k --normalize=global_mvn --normalize_conf stats_file=exp/asr_stats_raw_en_bpe1000_sp/train/feats_stats.npz --train_data_path_and_name_and_type dump/raw/train_clean_100_sp/wav.scp,speech,kaldi_ark --train_shape_file exp/asr_stats_raw_en_bpe1000_sp/train/speech_shape --fold_length 150 --train_data_path_and_name_and_type dump/raw/train_clean_100_sp/text,text,text --train_shape_file exp/asr_stats_raw_en_bpe1000_sp/train/text_shape.bpe --valid_data_path_and_name_and_type dump/raw/dev/text,text,text --valid_shape_file exp/asr_stats_raw_en_bpe1000_sp/valid/text_shape.bpe
+2025-11-29 10:12:33,949 (launch:348) INFO: log file: /home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank3_asr_train_asr_raw_en_bpe1000_sp/train.log
+2025-11-29T13:09:59 (asr.sh:1842:main) Successfully finished. [elapsed=10874s]
+
+✓ Rank 3 training completed successfully
+✓ Checkpoint saved: /home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank3_asr_train_asr_raw_en_bpe1000_sp/valid.cer_ctc.ave_5best.pth
+
+==================================================================================
+
+==================================================================================
+Rank 4/20: Training model
+==================================================================================
+Module Config: ['C', 'SFF', 'C', 'C', 'M']
+Jacob Cov Score: -16.261136
+Synflow Score: 0.002369
+Number of Blocks: 12
+Total Params: 21382656
+
+Starting training...
+Experiment directory: /home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank4_asr_train_asr_raw_en_bpe1000_sp
+
+Updating module_config in conf/train_asr.yaml...
+Updated conf/train_asr.yaml with module_config:
+  Configuration: ['C', 'SFF', 'C', 'C', 'M']
+  Applied to 12 blocks
+YAML file updated successfully.
+2025-11-29T13:09:59 (asr.sh:285:main) ./asr.sh --lang en --ngpu 1 --nj 16 --gpu_inference true --inference_nj 6 --nbpe 1000 --max_wav_duration 30 --audio_format flac.ark --speed_perturb_factors 0.9 1.0 1.1 --feats_type raw --use_lm false --asr_config conf/train_asr.yaml --inference_config conf/decode_asr.yaml --train_set train_clean_100 --valid_set dev --test_sets test_clean test_other --inference_asr_model valid.cer_ctc.ave_5best.pth --lm_train_text data/train_clean_100/text --bpe_train_text data/train_clean_100/text --asr_exp /home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank4_asr_train_asr_raw_en_bpe1000_sp --stage 10 --stop_stage 11
+2025-11-29T13:10:00 (asr.sh:566:main) Skipped stages:  6 7 8 9 14 15 
+2025-11-29T13:10:00 (asr.sh:1191:main) Stage 10: ASR collect stats: train_set=dump/raw/train_clean_100_sp, valid_set=dump/raw/dev
+2025-11-29T13:10:00 (asr.sh:1242:main) Generate 'exp/asr_stats_raw_en_bpe1000_sp/run.sh'. You can resume the process from stage 10 using this script
+2025-11-29T13:10:00 (asr.sh:1246:main) ASR collect-stats started... log: 'exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.*.log'
+/home/bossjung/anaconda3/envs/espnet/bin/python3 /home/bossjung/espnet/espnet/espnet2/bin/aggregate_stats_dirs.py --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.1 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.2 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.3 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.4 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.5 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.6 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.7 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.8 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.9 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.10 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.11 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.12 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.13 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.14 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.15 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.16 --output_dir exp/asr_stats_raw_en_bpe1000_sp
+2025-11-29T13:13:50 (asr.sh:1310:main) Stage 11: ASR Training: train_set=dump/raw/train_clean_100_sp, valid_set=dump/raw/dev
+2025-11-29T13:13:50 (asr.sh:1409:main) Generate '/home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank4_asr_train_asr_raw_en_bpe1000_sp/run.sh'. You can resume the process from stage 11 using this script
+2025-11-29T13:13:50 (asr.sh:1413:main) ASR training started... log: '/home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank4_asr_train_asr_raw_en_bpe1000_sp/train.log'
+2025-11-29T13:13:50 (asr.sh:1451:main) Use ESPnet trainer
+2025-11-29 13:13:50,317 (launch:94) INFO: /home/bossjung/anaconda3/envs/espnet/bin/python3 /home/bossjung/espnet/espnet/espnet2/bin/launch.py --cmd 'run.pl --name /home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank4_asr_train_asr_raw_en_bpe1000_sp/train.log' --log /home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank4_asr_train_asr_raw_en_bpe1000_sp/train.log --ngpu 1 --num_nodes 1 --init_file_prefix /home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank4_asr_train_asr_raw_en_bpe1000_sp/.dist_init_ --multiprocessing_distributed true -- python3 -m espnet2.bin.asr_train --use_preprocessor true --bpemodel data/en_token_list/bpe_bpe1000/bpe.model --token_type bpe --token_list data/en_token_list/bpe_bpe1000/tokens.txt --non_linguistic_symbols none --cleaner none --g2p none --valid_data_path_and_name_and_type dump/raw/dev/wav.scp,speech,kaldi_ark --valid_shape_file exp/asr_stats_raw_en_bpe1000_sp/valid/speech_shape --resume true --ignore_init_mismatch false --fold_length 80000 --output_dir /home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank4_asr_train_asr_raw_en_bpe1000_sp --config conf/train_asr.yaml --frontend_conf fs=16k --normalize=global_mvn --normalize_conf stats_file=exp/asr_stats_raw_en_bpe1000_sp/train/feats_stats.npz --train_data_path_and_name_and_type dump/raw/train_clean_100_sp/wav.scp,speech,kaldi_ark --train_shape_file exp/asr_stats_raw_en_bpe1000_sp/train/speech_shape --fold_length 150 --train_data_path_and_name_and_type dump/raw/train_clean_100_sp/text,text,text --train_shape_file exp/asr_stats_raw_en_bpe1000_sp/train/text_shape.bpe --valid_data_path_and_name_and_type dump/raw/dev/text,text,text --valid_shape_file exp/asr_stats_raw_en_bpe1000_sp/valid/text_shape.bpe
+2025-11-29 13:13:50,336 (launch:348) INFO: log file: /home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank4_asr_train_asr_raw_en_bpe1000_sp/train.log
+2025-11-29T18:29:40 (asr.sh:1842:main) Successfully finished. [elapsed=19181s]
+
+✓ Rank 4 training completed successfully
+✓ Checkpoint saved: /home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank4_asr_train_asr_raw_en_bpe1000_sp/valid.cer_ctc.ave_5best.pth
+
+==================================================================================
+
+==================================================================================
+Rank 5/20: Training model
+==================================================================================
+Module Config: ['I', 'I', 'C', 'M', 'C']
+Jacob Cov Score: -16.232269
+Synflow Score: 0.002357
+Number of Blocks: 22
+Total Params: 21550592
+
+Starting training...
+Experiment directory: /home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank5_asr_train_asr_raw_en_bpe1000_sp
+
+Updating module_config in conf/train_asr.yaml...
+Updated conf/train_asr.yaml with module_config:
+  Configuration: ['I', 'I', 'C', 'M', 'C']
+  Applied to 22 blocks
+YAML file updated successfully.
+2025-11-29T18:29:40 (asr.sh:285:main) ./asr.sh --lang en --ngpu 1 --nj 16 --gpu_inference true --inference_nj 6 --nbpe 1000 --max_wav_duration 30 --audio_format flac.ark --speed_perturb_factors 0.9 1.0 1.1 --feats_type raw --use_lm false --asr_config conf/train_asr.yaml --inference_config conf/decode_asr.yaml --train_set train_clean_100 --valid_set dev --test_sets test_clean test_other --inference_asr_model valid.cer_ctc.ave_5best.pth --lm_train_text data/train_clean_100/text --bpe_train_text data/train_clean_100/text --asr_exp /home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank5_asr_train_asr_raw_en_bpe1000_sp --stage 10 --stop_stage 11
+2025-11-29T18:29:41 (asr.sh:566:main) Skipped stages:  6 7 8 9 14 15 
+2025-11-29T18:29:41 (asr.sh:1191:main) Stage 10: ASR collect stats: train_set=dump/raw/train_clean_100_sp, valid_set=dump/raw/dev
+2025-11-29T18:29:41 (asr.sh:1242:main) Generate 'exp/asr_stats_raw_en_bpe1000_sp/run.sh'. You can resume the process from stage 10 using this script
+2025-11-29T18:29:41 (asr.sh:1246:main) ASR collect-stats started... log: 'exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.*.log'
+/home/bossjung/anaconda3/envs/espnet/bin/python3 /home/bossjung/espnet/espnet/espnet2/bin/aggregate_stats_dirs.py --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.1 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.2 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.3 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.4 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.5 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.6 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.7 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.8 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.9 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.10 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.11 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.12 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.13 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.14 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.15 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.16 --output_dir exp/asr_stats_raw_en_bpe1000_sp
+2025-11-29T18:33:30 (asr.sh:1310:main) Stage 11: ASR Training: train_set=dump/raw/train_clean_100_sp, valid_set=dump/raw/dev
+2025-11-29T18:33:30 (asr.sh:1409:main) Generate '/home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank5_asr_train_asr_raw_en_bpe1000_sp/run.sh'. You can resume the process from stage 11 using this script
+2025-11-29T18:33:30 (asr.sh:1413:main) ASR training started... log: '/home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank5_asr_train_asr_raw_en_bpe1000_sp/train.log'
+2025-11-29T18:33:30 (asr.sh:1451:main) Use ESPnet trainer
+2025-11-29 18:33:30,414 (launch:94) INFO: /home/bossjung/anaconda3/envs/espnet/bin/python3 /home/bossjung/espnet/espnet/espnet2/bin/launch.py --cmd 'run.pl --name /home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank5_asr_train_asr_raw_en_bpe1000_sp/train.log' --log /home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank5_asr_train_asr_raw_en_bpe1000_sp/train.log --ngpu 1 --num_nodes 1 --init_file_prefix /home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank5_asr_train_asr_raw_en_bpe1000_sp/.dist_init_ --multiprocessing_distributed true -- python3 -m espnet2.bin.asr_train --use_preprocessor true --bpemodel data/en_token_list/bpe_bpe1000/bpe.model --token_type bpe --token_list data/en_token_list/bpe_bpe1000/tokens.txt --non_linguistic_symbols none --cleaner none --g2p none --valid_data_path_and_name_and_type dump/raw/dev/wav.scp,speech,kaldi_ark --valid_shape_file exp/asr_stats_raw_en_bpe1000_sp/valid/speech_shape --resume true --ignore_init_mismatch false --fold_length 80000 --output_dir /home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank5_asr_train_asr_raw_en_bpe1000_sp --config conf/train_asr.yaml --frontend_conf fs=16k --normalize=global_mvn --normalize_conf stats_file=exp/asr_stats_raw_en_bpe1000_sp/train/feats_stats.npz --train_data_path_and_name_and_type dump/raw/train_clean_100_sp/wav.scp,speech,kaldi_ark --train_shape_file exp/asr_stats_raw_en_bpe1000_sp/train/speech_shape --fold_length 150 --train_data_path_and_name_and_type dump/raw/train_clean_100_sp/text,text,text --train_shape_file exp/asr_stats_raw_en_bpe1000_sp/train/text_shape.bpe --valid_data_path_and_name_and_type dump/raw/dev/text,text,text --valid_shape_file exp/asr_stats_raw_en_bpe1000_sp/valid/text_shape.bpe
+2025-11-29 18:33:30,433 (launch:348) INFO: log file: /home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank5_asr_train_asr_raw_en_bpe1000_sp/train.log
+2025-11-29T22:59:57 (asr.sh:1842:main) Successfully finished. [elapsed=16217s]
+
+✓ Rank 5 training completed successfully
+✓ Checkpoint saved: /home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank5_asr_train_asr_raw_en_bpe1000_sp/valid.cer_ctc.ave_5best.pth
+
+==================================================================================
+
+==================================================================================
+Rank 6/20: Training model
+==================================================================================
+Module Config: ['M', 'C', 'C', 'C', 'RFF']
+Jacob Cov Score: -16.277050
+Synflow Score: 0.002357
+Number of Blocks: 12
+Total Params: 21382656
+
+Starting training...
+Experiment directory: /home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank6_asr_train_asr_raw_en_bpe1000_sp
+
+Updating module_config in conf/train_asr.yaml...
+Updated conf/train_asr.yaml with module_config:
+  Configuration: ['M', 'C', 'C', 'C', 'RFF']
+  Applied to 12 blocks
+YAML file updated successfully.
+2025-11-29T22:59:57 (asr.sh:285:main) ./asr.sh --lang en --ngpu 1 --nj 16 --gpu_inference true --inference_nj 6 --nbpe 1000 --max_wav_duration 30 --audio_format flac.ark --speed_perturb_factors 0.9 1.0 1.1 --feats_type raw --use_lm false --asr_config conf/train_asr.yaml --inference_config conf/decode_asr.yaml --train_set train_clean_100 --valid_set dev --test_sets test_clean test_other --inference_asr_model valid.cer_ctc.ave_5best.pth --lm_train_text data/train_clean_100/text --bpe_train_text data/train_clean_100/text --asr_exp /home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank6_asr_train_asr_raw_en_bpe1000_sp --stage 10 --stop_stage 11
+2025-11-29T22:59:58 (asr.sh:566:main) Skipped stages:  6 7 8 9 14 15 
+2025-11-29T22:59:58 (asr.sh:1191:main) Stage 10: ASR collect stats: train_set=dump/raw/train_clean_100_sp, valid_set=dump/raw/dev
+2025-11-29T22:59:58 (asr.sh:1242:main) Generate 'exp/asr_stats_raw_en_bpe1000_sp/run.sh'. You can resume the process from stage 10 using this script
+2025-11-29T22:59:58 (asr.sh:1246:main) ASR collect-stats started... log: 'exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.*.log'
+/home/bossjung/anaconda3/envs/espnet/bin/python3 /home/bossjung/espnet/espnet/espnet2/bin/aggregate_stats_dirs.py --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.1 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.2 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.3 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.4 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.5 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.6 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.7 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.8 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.9 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.10 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.11 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.12 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.13 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.14 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.15 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.16 --output_dir exp/asr_stats_raw_en_bpe1000_sp
+2025-11-29T23:03:48 (asr.sh:1310:main) Stage 11: ASR Training: train_set=dump/raw/train_clean_100_sp, valid_set=dump/raw/dev
+2025-11-29T23:03:48 (asr.sh:1409:main) Generate '/home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank6_asr_train_asr_raw_en_bpe1000_sp/run.sh'. You can resume the process from stage 11 using this script
+2025-11-29T23:03:48 (asr.sh:1413:main) ASR training started... log: '/home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank6_asr_train_asr_raw_en_bpe1000_sp/train.log'
+2025-11-29T23:03:48 (asr.sh:1451:main) Use ESPnet trainer
+2025-11-29 23:03:48,182 (launch:94) INFO: /home/bossjung/anaconda3/envs/espnet/bin/python3 /home/bossjung/espnet/espnet/espnet2/bin/launch.py --cmd 'run.pl --name /home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank6_asr_train_asr_raw_en_bpe1000_sp/train.log' --log /home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank6_asr_train_asr_raw_en_bpe1000_sp/train.log --ngpu 1 --num_nodes 1 --init_file_prefix /home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank6_asr_train_asr_raw_en_bpe1000_sp/.dist_init_ --multiprocessing_distributed true -- python3 -m espnet2.bin.asr_train --use_preprocessor true --bpemodel data/en_token_list/bpe_bpe1000/bpe.model --token_type bpe --token_list data/en_token_list/bpe_bpe1000/tokens.txt --non_linguistic_symbols none --cleaner none --g2p none --valid_data_path_and_name_and_type dump/raw/dev/wav.scp,speech,kaldi_ark --valid_shape_file exp/asr_stats_raw_en_bpe1000_sp/valid/speech_shape --resume true --ignore_init_mismatch false --fold_length 80000 --output_dir /home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank6_asr_train_asr_raw_en_bpe1000_sp --config conf/train_asr.yaml --frontend_conf fs=16k --normalize=global_mvn --normalize_conf stats_file=exp/asr_stats_raw_en_bpe1000_sp/train/feats_stats.npz --train_data_path_and_name_and_type dump/raw/train_clean_100_sp/wav.scp,speech,kaldi_ark --train_shape_file exp/asr_stats_raw_en_bpe1000_sp/train/speech_shape --fold_length 150 --train_data_path_and_name_and_type dump/raw/train_clean_100_sp/text,text,text --train_shape_file exp/asr_stats_raw_en_bpe1000_sp/train/text_shape.bpe --valid_data_path_and_name_and_type dump/raw/dev/text,text,text --valid_shape_file exp/asr_stats_raw_en_bpe1000_sp/valid/text_shape.bpe
+2025-11-29 23:03:48,202 (launch:348) INFO: log file: /home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank6_asr_train_asr_raw_en_bpe1000_sp/train.log
+2025-11-30T04:04:47 (asr.sh:1842:main) Successfully finished. [elapsed=18290s]
+
+✓ Rank 6 training completed successfully
+✓ Checkpoint saved: /home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank6_asr_train_asr_raw_en_bpe1000_sp/valid.cer_ctc.ave_5best.pth
+
+==================================================================================
+
+==================================================================================
+Rank 7/20: Training model
+==================================================================================
+Module Config: ['C', 'C', 'RFF', 'C', 'M']
+Jacob Cov Score: -16.271808
+Synflow Score: 0.002356
+Number of Blocks: 12
+Total Params: 21382656
+
+Starting training...
+Experiment directory: /home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank7_asr_train_asr_raw_en_bpe1000_sp
+
+Updating module_config in conf/train_asr.yaml...
+Updated conf/train_asr.yaml with module_config:
+  Configuration: ['C', 'C', 'RFF', 'C', 'M']
+  Applied to 12 blocks
+YAML file updated successfully.
+2025-11-30T04:04:47 (asr.sh:285:main) ./asr.sh --lang en --ngpu 1 --nj 16 --gpu_inference true --inference_nj 6 --nbpe 1000 --max_wav_duration 30 --audio_format flac.ark --speed_perturb_factors 0.9 1.0 1.1 --feats_type raw --use_lm false --asr_config conf/train_asr.yaml --inference_config conf/decode_asr.yaml --train_set train_clean_100 --valid_set dev --test_sets test_clean test_other --inference_asr_model valid.cer_ctc.ave_5best.pth --lm_train_text data/train_clean_100/text --bpe_train_text data/train_clean_100/text --asr_exp /home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank7_asr_train_asr_raw_en_bpe1000_sp --stage 10 --stop_stage 11
+2025-11-30T04:04:48 (asr.sh:566:main) Skipped stages:  6 7 8 9 14 15 
+2025-11-30T04:04:48 (asr.sh:1191:main) Stage 10: ASR collect stats: train_set=dump/raw/train_clean_100_sp, valid_set=dump/raw/dev
+2025-11-30T04:04:48 (asr.sh:1242:main) Generate 'exp/asr_stats_raw_en_bpe1000_sp/run.sh'. You can resume the process from stage 10 using this script
+2025-11-30T04:04:48 (asr.sh:1246:main) ASR collect-stats started... log: 'exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.*.log'
+/home/bossjung/anaconda3/envs/espnet/bin/python3 /home/bossjung/espnet/espnet/espnet2/bin/aggregate_stats_dirs.py --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.1 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.2 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.3 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.4 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.5 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.6 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.7 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.8 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.9 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.10 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.11 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.12 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.13 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.14 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.15 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.16 --output_dir exp/asr_stats_raw_en_bpe1000_sp
+2025-11-30T04:08:36 (asr.sh:1310:main) Stage 11: ASR Training: train_set=dump/raw/train_clean_100_sp, valid_set=dump/raw/dev
+2025-11-30T04:08:36 (asr.sh:1409:main) Generate '/home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank7_asr_train_asr_raw_en_bpe1000_sp/run.sh'. You can resume the process from stage 11 using this script
+2025-11-30T04:08:36 (asr.sh:1413:main) ASR training started... log: '/home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank7_asr_train_asr_raw_en_bpe1000_sp/train.log'
+2025-11-30T04:08:36 (asr.sh:1451:main) Use ESPnet trainer
+2025-11-30 04:08:36,657 (launch:94) INFO: /home/bossjung/anaconda3/envs/espnet/bin/python3 /home/bossjung/espnet/espnet/espnet2/bin/launch.py --cmd 'run.pl --name /home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank7_asr_train_asr_raw_en_bpe1000_sp/train.log' --log /home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank7_asr_train_asr_raw_en_bpe1000_sp/train.log --ngpu 1 --num_nodes 1 --init_file_prefix /home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank7_asr_train_asr_raw_en_bpe1000_sp/.dist_init_ --multiprocessing_distributed true -- python3 -m espnet2.bin.asr_train --use_preprocessor true --bpemodel data/en_token_list/bpe_bpe1000/bpe.model --token_type bpe --token_list data/en_token_list/bpe_bpe1000/tokens.txt --non_linguistic_symbols none --cleaner none --g2p none --valid_data_path_and_name_and_type dump/raw/dev/wav.scp,speech,kaldi_ark --valid_shape_file exp/asr_stats_raw_en_bpe1000_sp/valid/speech_shape --resume true --ignore_init_mismatch false --fold_length 80000 --output_dir /home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank7_asr_train_asr_raw_en_bpe1000_sp --config conf/train_asr.yaml --frontend_conf fs=16k --normalize=global_mvn --normalize_conf stats_file=exp/asr_stats_raw_en_bpe1000_sp/train/feats_stats.npz --train_data_path_and_name_and_type dump/raw/train_clean_100_sp/wav.scp,speech,kaldi_ark --train_shape_file exp/asr_stats_raw_en_bpe1000_sp/train/speech_shape --fold_length 150 --train_data_path_and_name_and_type dump/raw/train_clean_100_sp/text,text,text --train_shape_file exp/asr_stats_raw_en_bpe1000_sp/train/text_shape.bpe --valid_data_path_and_name_and_type dump/raw/dev/text,text,text --valid_shape_file exp/asr_stats_raw_en_bpe1000_sp/valid/text_shape.bpe
+2025-11-30 04:08:36,676 (launch:348) INFO: log file: /home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank7_asr_train_asr_raw_en_bpe1000_sp/train.log
+2025-11-30T08:35:37 (asr.sh:1842:main) Successfully finished. [elapsed=16250s]
+
+✓ Rank 7 training completed successfully
+✓ Checkpoint saved: /home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank7_asr_train_asr_raw_en_bpe1000_sp/valid.cer_ctc.ave_5best.pth
+
+==================================================================================
+
+==================================================================================
+Rank 8/20: Training model
+==================================================================================
+Module Config: ['C', 'M', 'RFF', 'C', 'C']
+Jacob Cov Score: -16.310825
+Synflow Score: 0.002356
+Number of Blocks: 12
+Total Params: 21382656
+
+Starting training...
+Experiment directory: /home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank8_asr_train_asr_raw_en_bpe1000_sp
+
+Updating module_config in conf/train_asr.yaml...
+Updated conf/train_asr.yaml with module_config:
+  Configuration: ['C', 'M', 'RFF', 'C', 'C']
+  Applied to 12 blocks
+YAML file updated successfully.
+2025-11-30T08:35:37 (asr.sh:285:main) ./asr.sh --lang en --ngpu 1 --nj 16 --gpu_inference true --inference_nj 6 --nbpe 1000 --max_wav_duration 30 --audio_format flac.ark --speed_perturb_factors 0.9 1.0 1.1 --feats_type raw --use_lm false --asr_config conf/train_asr.yaml --inference_config conf/decode_asr.yaml --train_set train_clean_100 --valid_set dev --test_sets test_clean test_other --inference_asr_model valid.cer_ctc.ave_5best.pth --lm_train_text data/train_clean_100/text --bpe_train_text data/train_clean_100/text --asr_exp /home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank8_asr_train_asr_raw_en_bpe1000_sp --stage 10 --stop_stage 11
+2025-11-30T08:35:38 (asr.sh:566:main) Skipped stages:  6 7 8 9 14 15 
+2025-11-30T08:35:38 (asr.sh:1191:main) Stage 10: ASR collect stats: train_set=dump/raw/train_clean_100_sp, valid_set=dump/raw/dev
+2025-11-30T08:35:38 (asr.sh:1242:main) Generate 'exp/asr_stats_raw_en_bpe1000_sp/run.sh'. You can resume the process from stage 10 using this script
+2025-11-30T08:35:38 (asr.sh:1246:main) ASR collect-stats started... log: 'exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.*.log'
+/home/bossjung/anaconda3/envs/espnet/bin/python3 /home/bossjung/espnet/espnet/espnet2/bin/aggregate_stats_dirs.py --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.1 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.2 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.3 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.4 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.5 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.6 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.7 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.8 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.9 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.10 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.11 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.12 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.13 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.14 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.15 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.16 --output_dir exp/asr_stats_raw_en_bpe1000_sp
+2025-11-30T08:39:29 (asr.sh:1310:main) Stage 11: ASR Training: train_set=dump/raw/train_clean_100_sp, valid_set=dump/raw/dev
+2025-11-30T08:39:29 (asr.sh:1409:main) Generate '/home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank8_asr_train_asr_raw_en_bpe1000_sp/run.sh'. You can resume the process from stage 11 using this script
+2025-11-30T08:39:29 (asr.sh:1413:main) ASR training started... log: '/home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank8_asr_train_asr_raw_en_bpe1000_sp/train.log'
+2025-11-30T08:39:29 (asr.sh:1451:main) Use ESPnet trainer
+2025-11-30 08:39:29,324 (launch:94) INFO: /home/bossjung/anaconda3/envs/espnet/bin/python3 /home/bossjung/espnet/espnet/espnet2/bin/launch.py --cmd 'run.pl --name /home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank8_asr_train_asr_raw_en_bpe1000_sp/train.log' --log /home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank8_asr_train_asr_raw_en_bpe1000_sp/train.log --ngpu 1 --num_nodes 1 --init_file_prefix /home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank8_asr_train_asr_raw_en_bpe1000_sp/.dist_init_ --multiprocessing_distributed true -- python3 -m espnet2.bin.asr_train --use_preprocessor true --bpemodel data/en_token_list/bpe_bpe1000/bpe.model --token_type bpe --token_list data/en_token_list/bpe_bpe1000/tokens.txt --non_linguistic_symbols none --cleaner none --g2p none --valid_data_path_and_name_and_type dump/raw/dev/wav.scp,speech,kaldi_ark --valid_shape_file exp/asr_stats_raw_en_bpe1000_sp/valid/speech_shape --resume true --ignore_init_mismatch false --fold_length 80000 --output_dir /home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank8_asr_train_asr_raw_en_bpe1000_sp --config conf/train_asr.yaml --frontend_conf fs=16k --normalize=global_mvn --normalize_conf stats_file=exp/asr_stats_raw_en_bpe1000_sp/train/feats_stats.npz --train_data_path_and_name_and_type dump/raw/train_clean_100_sp/wav.scp,speech,kaldi_ark --train_shape_file exp/asr_stats_raw_en_bpe1000_sp/train/speech_shape --fold_length 150 --train_data_path_and_name_and_type dump/raw/train_clean_100_sp/text,text,text --train_shape_file exp/asr_stats_raw_en_bpe1000_sp/train/text_shape.bpe --valid_data_path_and_name_and_type dump/raw/dev/text,text,text --valid_shape_file exp/asr_stats_raw_en_bpe1000_sp/valid/text_shape.bpe
+2025-11-30 08:39:29,343 (launch:348) INFO: log file: /home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank8_asr_train_asr_raw_en_bpe1000_sp/train.log
+2025-11-30T12:23:37 (asr.sh:1842:main) Successfully finished. [elapsed=13680s]
+
+✓ Rank 8 training completed successfully
+✓ Checkpoint saved: /home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank8_asr_train_asr_raw_en_bpe1000_sp/valid.cer_ctc.ave_5best.pth
+
+==================================================================================
+
+==================================================================================
+Rank 9/20: Training model
+==================================================================================
+Module Config: ['C', 'C', 'M', 'C', 'C']
+Jacob Cov Score: -16.250199
+Synflow Score: 0.002355
+Number of Blocks: 15
+Total Params: 21476352
+
+Starting training...
+Experiment directory: /home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank9_asr_train_asr_raw_en_bpe1000_sp
+
+Updating module_config in conf/train_asr.yaml...
+Updated conf/train_asr.yaml with module_config:
+  Configuration: ['C', 'C', 'M', 'C', 'C']
+  Applied to 15 blocks
+YAML file updated successfully.
+2025-11-30T12:23:37 (asr.sh:285:main) ./asr.sh --lang en --ngpu 1 --nj 16 --gpu_inference true --inference_nj 6 --nbpe 1000 --max_wav_duration 30 --audio_format flac.ark --speed_perturb_factors 0.9 1.0 1.1 --feats_type raw --use_lm false --asr_config conf/train_asr.yaml --inference_config conf/decode_asr.yaml --train_set train_clean_100 --valid_set dev --test_sets test_clean test_other --inference_asr_model valid.cer_ctc.ave_5best.pth --lm_train_text data/train_clean_100/text --bpe_train_text data/train_clean_100/text --asr_exp /home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank9_asr_train_asr_raw_en_bpe1000_sp --stage 10 --stop_stage 11
+2025-11-30T12:23:38 (asr.sh:566:main) Skipped stages:  6 7 8 9 14 15 
+2025-11-30T12:23:38 (asr.sh:1191:main) Stage 10: ASR collect stats: train_set=dump/raw/train_clean_100_sp, valid_set=dump/raw/dev
+2025-11-30T12:23:38 (asr.sh:1242:main) Generate 'exp/asr_stats_raw_en_bpe1000_sp/run.sh'. You can resume the process from stage 10 using this script
+2025-11-30T12:23:38 (asr.sh:1246:main) ASR collect-stats started... log: 'exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.*.log'
+/home/bossjung/anaconda3/envs/espnet/bin/python3 /home/bossjung/espnet/espnet/espnet2/bin/aggregate_stats_dirs.py --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.1 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.2 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.3 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.4 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.5 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.6 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.7 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.8 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.9 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.10 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.11 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.12 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.13 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.14 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.15 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.16 --output_dir exp/asr_stats_raw_en_bpe1000_sp
+2025-11-30T12:27:29 (asr.sh:1310:main) Stage 11: ASR Training: train_set=dump/raw/train_clean_100_sp, valid_set=dump/raw/dev
+2025-11-30T12:27:29 (asr.sh:1409:main) Generate '/home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank9_asr_train_asr_raw_en_bpe1000_sp/run.sh'. You can resume the process from stage 11 using this script
+2025-11-30T12:27:29 (asr.sh:1413:main) ASR training started... log: '/home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank9_asr_train_asr_raw_en_bpe1000_sp/train.log'
+2025-11-30T12:27:29 (asr.sh:1451:main) Use ESPnet trainer
+2025-11-30 12:27:29,398 (launch:94) INFO: /home/bossjung/anaconda3/envs/espnet/bin/python3 /home/bossjung/espnet/espnet/espnet2/bin/launch.py --cmd 'run.pl --name /home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank9_asr_train_asr_raw_en_bpe1000_sp/train.log' --log /home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank9_asr_train_asr_raw_en_bpe1000_sp/train.log --ngpu 1 --num_nodes 1 --init_file_prefix /home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank9_asr_train_asr_raw_en_bpe1000_sp/.dist_init_ --multiprocessing_distributed true -- python3 -m espnet2.bin.asr_train --use_preprocessor true --bpemodel data/en_token_list/bpe_bpe1000/bpe.model --token_type bpe --token_list data/en_token_list/bpe_bpe1000/tokens.txt --non_linguistic_symbols none --cleaner none --g2p none --valid_data_path_and_name_and_type dump/raw/dev/wav.scp,speech,kaldi_ark --valid_shape_file exp/asr_stats_raw_en_bpe1000_sp/valid/speech_shape --resume true --ignore_init_mismatch false --fold_length 80000 --output_dir /home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank9_asr_train_asr_raw_en_bpe1000_sp --config conf/train_asr.yaml --frontend_conf fs=16k --normalize=global_mvn --normalize_conf stats_file=exp/asr_stats_raw_en_bpe1000_sp/train/feats_stats.npz --train_data_path_and_name_and_type dump/raw/train_clean_100_sp/wav.scp,speech,kaldi_ark --train_shape_file exp/asr_stats_raw_en_bpe1000_sp/train/speech_shape --fold_length 150 --train_data_path_and_name_and_type dump/raw/train_clean_100_sp/text,text,text --train_shape_file exp/asr_stats_raw_en_bpe1000_sp/train/text_shape.bpe --valid_data_path_and_name_and_type dump/raw/dev/text,text,text --valid_shape_file exp/asr_stats_raw_en_bpe1000_sp/valid/text_shape.bpe
+2025-11-30 12:27:29,417 (launch:348) INFO: log file: /home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank9_asr_train_asr_raw_en_bpe1000_sp/train.log
+2025-11-30T19:54:02 (asr.sh:1842:main) Successfully finished. [elapsed=27025s]
+
+✓ Rank 9 training completed successfully
+✓ Checkpoint saved: /home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank9_asr_train_asr_raw_en_bpe1000_sp/valid.cer_ctc.ave_5best.pth
+
+==================================================================================
+
+==================================================================================
+Rank 10/20: Training model
+==================================================================================
+Module Config: ['M', 'RFF', 'C', 'C', 'C']
+Jacob Cov Score: -16.228996
+Synflow Score: 0.002354
+Number of Blocks: 12
+Total Params: 21382656
+
+Starting training...
+Experiment directory: /home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank10_asr_train_asr_raw_en_bpe1000_sp
+
+Updating module_config in conf/train_asr.yaml...
+Updated conf/train_asr.yaml with module_config:
+  Configuration: ['M', 'RFF', 'C', 'C', 'C']
+  Applied to 12 blocks
+YAML file updated successfully.
+2025-11-30T19:54:02 (asr.sh:285:main) ./asr.sh --lang en --ngpu 1 --nj 16 --gpu_inference true --inference_nj 6 --nbpe 1000 --max_wav_duration 30 --audio_format flac.ark --speed_perturb_factors 0.9 1.0 1.1 --feats_type raw --use_lm false --asr_config conf/train_asr.yaml --inference_config conf/decode_asr.yaml --train_set train_clean_100 --valid_set dev --test_sets test_clean test_other --inference_asr_model valid.cer_ctc.ave_5best.pth --lm_train_text data/train_clean_100/text --bpe_train_text data/train_clean_100/text --asr_exp /home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank10_asr_train_asr_raw_en_bpe1000_sp --stage 10 --stop_stage 11
+2025-11-30T19:54:03 (asr.sh:566:main) Skipped stages:  6 7 8 9 14 15 
+2025-11-30T19:54:03 (asr.sh:1191:main) Stage 10: ASR collect stats: train_set=dump/raw/train_clean_100_sp, valid_set=dump/raw/dev
+2025-11-30T19:54:03 (asr.sh:1242:main) Generate 'exp/asr_stats_raw_en_bpe1000_sp/run.sh'. You can resume the process from stage 10 using this script
+2025-11-30T19:54:03 (asr.sh:1246:main) ASR collect-stats started... log: 'exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.*.log'
+/home/bossjung/anaconda3/envs/espnet/bin/python3 /home/bossjung/espnet/espnet/espnet2/bin/aggregate_stats_dirs.py --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.1 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.2 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.3 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.4 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.5 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.6 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.7 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.8 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.9 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.10 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.11 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.12 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.13 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.14 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.15 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.16 --output_dir exp/asr_stats_raw_en_bpe1000_sp
+2025-11-30T19:57:54 (asr.sh:1310:main) Stage 11: ASR Training: train_set=dump/raw/train_clean_100_sp, valid_set=dump/raw/dev
+2025-11-30T19:57:54 (asr.sh:1409:main) Generate '/home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank10_asr_train_asr_raw_en_bpe1000_sp/run.sh'. You can resume the process from stage 11 using this script
+2025-11-30T19:57:54 (asr.sh:1413:main) ASR training started... log: '/home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank10_asr_train_asr_raw_en_bpe1000_sp/train.log'
+2025-11-30T19:57:54 (asr.sh:1451:main) Use ESPnet trainer
+2025-11-30 19:57:54,465 (launch:94) INFO: /home/bossjung/anaconda3/envs/espnet/bin/python3 /home/bossjung/espnet/espnet/espnet2/bin/launch.py --cmd 'run.pl --name /home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank10_asr_train_asr_raw_en_bpe1000_sp/train.log' --log /home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank10_asr_train_asr_raw_en_bpe1000_sp/train.log --ngpu 1 --num_nodes 1 --init_file_prefix /home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank10_asr_train_asr_raw_en_bpe1000_sp/.dist_init_ --multiprocessing_distributed true -- python3 -m espnet2.bin.asr_train --use_preprocessor true --bpemodel data/en_token_list/bpe_bpe1000/bpe.model --token_type bpe --token_list data/en_token_list/bpe_bpe1000/tokens.txt --non_linguistic_symbols none --cleaner none --g2p none --valid_data_path_and_name_and_type dump/raw/dev/wav.scp,speech,kaldi_ark --valid_shape_file exp/asr_stats_raw_en_bpe1000_sp/valid/speech_shape --resume true --ignore_init_mismatch false --fold_length 80000 --output_dir /home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank10_asr_train_asr_raw_en_bpe1000_sp --config conf/train_asr.yaml --frontend_conf fs=16k --normalize=global_mvn --normalize_conf stats_file=exp/asr_stats_raw_en_bpe1000_sp/train/feats_stats.npz --train_data_path_and_name_and_type dump/raw/train_clean_100_sp/wav.scp,speech,kaldi_ark --train_shape_file exp/asr_stats_raw_en_bpe1000_sp/train/speech_shape --fold_length 150 --train_data_path_and_name_and_type dump/raw/train_clean_100_sp/text,text,text --train_shape_file exp/asr_stats_raw_en_bpe1000_sp/train/text_shape.bpe --valid_data_path_and_name_and_type dump/raw/dev/text,text,text --valid_shape_file exp/asr_stats_raw_en_bpe1000_sp/valid/text_shape.bpe
+2025-11-30 19:57:54,485 (launch:348) INFO: log file: /home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank10_asr_train_asr_raw_en_bpe1000_sp/train.log
+2025-12-01T01:42:35 (asr.sh:1842:main) Successfully finished. [elapsed=20913s]
+
+✓ Rank 10 training completed successfully
+✓ Checkpoint saved: /home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank10_asr_train_asr_raw_en_bpe1000_sp/valid.cer_ctc.ave_5best.pth
+
+==================================================================================
+
+==================================================================================
+Rank 11/20: Training model
+==================================================================================
+Module Config: ['C', 'C', 'C', 'RFF', 'M']
+Jacob Cov Score: -16.260191
+Synflow Score: 0.002354
+Number of Blocks: 12
+Total Params: 21382656
+
+Starting training...
+Experiment directory: /home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank11_asr_train_asr_raw_en_bpe1000_sp
+
+Updating module_config in conf/train_asr.yaml...
+Updated conf/train_asr.yaml with module_config:
+  Configuration: ['C', 'C', 'C', 'RFF', 'M']
+  Applied to 12 blocks
+YAML file updated successfully.
+2025-12-01T01:42:35 (asr.sh:285:main) ./asr.sh --lang en --ngpu 1 --nj 16 --gpu_inference true --inference_nj 6 --nbpe 1000 --max_wav_duration 30 --audio_format flac.ark --speed_perturb_factors 0.9 1.0 1.1 --feats_type raw --use_lm false --asr_config conf/train_asr.yaml --inference_config conf/decode_asr.yaml --train_set train_clean_100 --valid_set dev --test_sets test_clean test_other --inference_asr_model valid.cer_ctc.ave_5best.pth --lm_train_text data/train_clean_100/text --bpe_train_text data/train_clean_100/text --asr_exp /home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank11_asr_train_asr_raw_en_bpe1000_sp --stage 10 --stop_stage 11
+2025-12-01T01:42:36 (asr.sh:566:main) Skipped stages:  6 7 8 9 14 15 
+2025-12-01T01:42:36 (asr.sh:1191:main) Stage 10: ASR collect stats: train_set=dump/raw/train_clean_100_sp, valid_set=dump/raw/dev
+2025-12-01T01:42:36 (asr.sh:1242:main) Generate 'exp/asr_stats_raw_en_bpe1000_sp/run.sh'. You can resume the process from stage 10 using this script
+2025-12-01T01:42:36 (asr.sh:1246:main) ASR collect-stats started... log: 'exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.*.log'
+/home/bossjung/anaconda3/envs/espnet/bin/python3 /home/bossjung/espnet/espnet/espnet2/bin/aggregate_stats_dirs.py --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.1 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.2 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.3 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.4 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.5 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.6 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.7 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.8 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.9 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.10 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.11 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.12 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.13 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.14 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.15 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.16 --output_dir exp/asr_stats_raw_en_bpe1000_sp
+2025-12-01T01:46:25 (asr.sh:1310:main) Stage 11: ASR Training: train_set=dump/raw/train_clean_100_sp, valid_set=dump/raw/dev
+2025-12-01T01:46:25 (asr.sh:1409:main) Generate '/home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank11_asr_train_asr_raw_en_bpe1000_sp/run.sh'. You can resume the process from stage 11 using this script
+2025-12-01T01:46:25 (asr.sh:1413:main) ASR training started... log: '/home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank11_asr_train_asr_raw_en_bpe1000_sp/train.log'
+2025-12-01T01:46:25 (asr.sh:1451:main) Use ESPnet trainer
+2025-12-01 01:46:25,580 (launch:94) INFO: /home/bossjung/anaconda3/envs/espnet/bin/python3 /home/bossjung/espnet/espnet/espnet2/bin/launch.py --cmd 'run.pl --name /home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank11_asr_train_asr_raw_en_bpe1000_sp/train.log' --log /home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank11_asr_train_asr_raw_en_bpe1000_sp/train.log --ngpu 1 --num_nodes 1 --init_file_prefix /home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank11_asr_train_asr_raw_en_bpe1000_sp/.dist_init_ --multiprocessing_distributed true -- python3 -m espnet2.bin.asr_train --use_preprocessor true --bpemodel data/en_token_list/bpe_bpe1000/bpe.model --token_type bpe --token_list data/en_token_list/bpe_bpe1000/tokens.txt --non_linguistic_symbols none --cleaner none --g2p none --valid_data_path_and_name_and_type dump/raw/dev/wav.scp,speech,kaldi_ark --valid_shape_file exp/asr_stats_raw_en_bpe1000_sp/valid/speech_shape --resume true --ignore_init_mismatch false --fold_length 80000 --output_dir /home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank11_asr_train_asr_raw_en_bpe1000_sp --config conf/train_asr.yaml --frontend_conf fs=16k --normalize=global_mvn --normalize_conf stats_file=exp/asr_stats_raw_en_bpe1000_sp/train/feats_stats.npz --train_data_path_and_name_and_type dump/raw/train_clean_100_sp/wav.scp,speech,kaldi_ark --train_shape_file exp/asr_stats_raw_en_bpe1000_sp/train/speech_shape --fold_length 150 --train_data_path_and_name_and_type dump/raw/train_clean_100_sp/text,text,text --train_shape_file exp/asr_stats_raw_en_bpe1000_sp/train/text_shape.bpe --valid_data_path_and_name_and_type dump/raw/dev/text,text,text --valid_shape_file exp/asr_stats_raw_en_bpe1000_sp/valid/text_shape.bpe
+2025-12-01 01:46:25,599 (launch:348) INFO: log file: /home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank11_asr_train_asr_raw_en_bpe1000_sp/train.log
+2025-12-01T06:13:04 (asr.sh:1842:main) Successfully finished. [elapsed=16229s]
+
+✓ Rank 11 training completed successfully
+✓ Checkpoint saved: /home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank11_asr_train_asr_raw_en_bpe1000_sp/valid.cer_ctc.ave_5best.pth
+
+==================================================================================
+
+==================================================================================
+Rank 12/20: Training model
+==================================================================================
+Module Config: ['SFF', 'C', 'M', 'C', 'C']
+Jacob Cov Score: -16.280941
+Synflow Score: 0.002352
+Number of Blocks: 12
+Total Params: 21382656
+
+Starting training...
+Experiment directory: /home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank12_asr_train_asr_raw_en_bpe1000_sp
+
+Updating module_config in conf/train_asr.yaml...
+Updated conf/train_asr.yaml with module_config:
+  Configuration: ['SFF', 'C', 'M', 'C', 'C']
+  Applied to 12 blocks
+YAML file updated successfully.
+2025-12-01T06:13:04 (asr.sh:285:main) ./asr.sh --lang en --ngpu 1 --nj 16 --gpu_inference true --inference_nj 6 --nbpe 1000 --max_wav_duration 30 --audio_format flac.ark --speed_perturb_factors 0.9 1.0 1.1 --feats_type raw --use_lm false --asr_config conf/train_asr.yaml --inference_config conf/decode_asr.yaml --train_set train_clean_100 --valid_set dev --test_sets test_clean test_other --inference_asr_model valid.cer_ctc.ave_5best.pth --lm_train_text data/train_clean_100/text --bpe_train_text data/train_clean_100/text --asr_exp /home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank12_asr_train_asr_raw_en_bpe1000_sp --stage 10 --stop_stage 11
+2025-12-01T06:13:05 (asr.sh:566:main) Skipped stages:  6 7 8 9 14 15 
+2025-12-01T06:13:05 (asr.sh:1191:main) Stage 10: ASR collect stats: train_set=dump/raw/train_clean_100_sp, valid_set=dump/raw/dev
+2025-12-01T06:13:05 (asr.sh:1242:main) Generate 'exp/asr_stats_raw_en_bpe1000_sp/run.sh'. You can resume the process from stage 10 using this script
+2025-12-01T06:13:05 (asr.sh:1246:main) ASR collect-stats started... log: 'exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.*.log'
+/home/bossjung/anaconda3/envs/espnet/bin/python3 /home/bossjung/espnet/espnet/espnet2/bin/aggregate_stats_dirs.py --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.1 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.2 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.3 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.4 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.5 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.6 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.7 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.8 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.9 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.10 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.11 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.12 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.13 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.14 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.15 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.16 --output_dir exp/asr_stats_raw_en_bpe1000_sp
+2025-12-01T06:16:53 (asr.sh:1310:main) Stage 11: ASR Training: train_set=dump/raw/train_clean_100_sp, valid_set=dump/raw/dev
+2025-12-01T06:16:53 (asr.sh:1409:main) Generate '/home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank12_asr_train_asr_raw_en_bpe1000_sp/run.sh'. You can resume the process from stage 11 using this script
+2025-12-01T06:16:53 (asr.sh:1413:main) ASR training started... log: '/home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank12_asr_train_asr_raw_en_bpe1000_sp/train.log'
+2025-12-01T06:16:53 (asr.sh:1451:main) Use ESPnet trainer
+2025-12-01 06:16:53,800 (launch:94) INFO: /home/bossjung/anaconda3/envs/espnet/bin/python3 /home/bossjung/espnet/espnet/espnet2/bin/launch.py --cmd 'run.pl --name /home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank12_asr_train_asr_raw_en_bpe1000_sp/train.log' --log /home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank12_asr_train_asr_raw_en_bpe1000_sp/train.log --ngpu 1 --num_nodes 1 --init_file_prefix /home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank12_asr_train_asr_raw_en_bpe1000_sp/.dist_init_ --multiprocessing_distributed true -- python3 -m espnet2.bin.asr_train --use_preprocessor true --bpemodel data/en_token_list/bpe_bpe1000/bpe.model --token_type bpe --token_list data/en_token_list/bpe_bpe1000/tokens.txt --non_linguistic_symbols none --cleaner none --g2p none --valid_data_path_and_name_and_type dump/raw/dev/wav.scp,speech,kaldi_ark --valid_shape_file exp/asr_stats_raw_en_bpe1000_sp/valid/speech_shape --resume true --ignore_init_mismatch false --fold_length 80000 --output_dir /home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank12_asr_train_asr_raw_en_bpe1000_sp --config conf/train_asr.yaml --frontend_conf fs=16k --normalize=global_mvn --normalize_conf stats_file=exp/asr_stats_raw_en_bpe1000_sp/train/feats_stats.npz --train_data_path_and_name_and_type dump/raw/train_clean_100_sp/wav.scp,speech,kaldi_ark --train_shape_file exp/asr_stats_raw_en_bpe1000_sp/train/speech_shape --fold_length 150 --train_data_path_and_name_and_type dump/raw/train_clean_100_sp/text,text,text --train_shape_file exp/asr_stats_raw_en_bpe1000_sp/train/text_shape.bpe --valid_data_path_and_name_and_type dump/raw/dev/text,text,text --valid_shape_file exp/asr_stats_raw_en_bpe1000_sp/valid/text_shape.bpe
+2025-12-01 06:16:53,819 (launch:348) INFO: log file: /home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank12_asr_train_asr_raw_en_bpe1000_sp/train.log
+2025-12-01T12:07:31 (asr.sh:1842:main) Successfully finished. [elapsed=21267s]
+
+✓ Rank 12 training completed successfully
+✓ Checkpoint saved: /home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank12_asr_train_asr_raw_en_bpe1000_sp/valid.cer_ctc.ave_5best.pth
+
+==================================================================================
+
+==================================================================================
+Rank 13/20: Training model
+==================================================================================
+Module Config: ['C', 'C', 'M', 'C', 'SFF']
+Jacob Cov Score: -16.314490
+Synflow Score: 0.002352
+Number of Blocks: 12
+Total Params: 21382656
+
+Starting training...
+Experiment directory: /home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank13_asr_train_asr_raw_en_bpe1000_sp
+
+Updating module_config in conf/train_asr.yaml...
+Updated conf/train_asr.yaml with module_config:
+  Configuration: ['C', 'C', 'M', 'C', 'SFF']
+  Applied to 12 blocks
+YAML file updated successfully.
+2025-12-01T12:07:31 (asr.sh:285:main) ./asr.sh --lang en --ngpu 1 --nj 16 --gpu_inference true --inference_nj 6 --nbpe 1000 --max_wav_duration 30 --audio_format flac.ark --speed_perturb_factors 0.9 1.0 1.1 --feats_type raw --use_lm false --asr_config conf/train_asr.yaml --inference_config conf/decode_asr.yaml --train_set train_clean_100 --valid_set dev --test_sets test_clean test_other --inference_asr_model valid.cer_ctc.ave_5best.pth --lm_train_text data/train_clean_100/text --bpe_train_text data/train_clean_100/text --asr_exp /home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank13_asr_train_asr_raw_en_bpe1000_sp --stage 10 --stop_stage 11
+2025-12-01T12:07:32 (asr.sh:566:main) Skipped stages:  6 7 8 9 14 15 
+2025-12-01T12:07:32 (asr.sh:1191:main) Stage 10: ASR collect stats: train_set=dump/raw/train_clean_100_sp, valid_set=dump/raw/dev
+2025-12-01T12:07:32 (asr.sh:1242:main) Generate 'exp/asr_stats_raw_en_bpe1000_sp/run.sh'. You can resume the process from stage 10 using this script
+2025-12-01T12:07:32 (asr.sh:1246:main) ASR collect-stats started... log: 'exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.*.log'
+/home/bossjung/anaconda3/envs/espnet/bin/python3 /home/bossjung/espnet/espnet/espnet2/bin/aggregate_stats_dirs.py --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.1 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.2 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.3 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.4 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.5 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.6 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.7 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.8 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.9 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.10 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.11 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.12 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.13 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.14 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.15 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.16 --output_dir exp/asr_stats_raw_en_bpe1000_sp
+2025-12-01T12:11:23 (asr.sh:1310:main) Stage 11: ASR Training: train_set=dump/raw/train_clean_100_sp, valid_set=dump/raw/dev
+2025-12-01T12:11:23 (asr.sh:1409:main) Generate '/home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank13_asr_train_asr_raw_en_bpe1000_sp/run.sh'. You can resume the process from stage 11 using this script
+2025-12-01T12:11:23 (asr.sh:1413:main) ASR training started... log: '/home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank13_asr_train_asr_raw_en_bpe1000_sp/train.log'
+2025-12-01T12:11:23 (asr.sh:1451:main) Use ESPnet trainer
+2025-12-01 12:11:23,509 (launch:94) INFO: /home/bossjung/anaconda3/envs/espnet/bin/python3 /home/bossjung/espnet/espnet/espnet2/bin/launch.py --cmd 'run.pl --name /home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank13_asr_train_asr_raw_en_bpe1000_sp/train.log' --log /home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank13_asr_train_asr_raw_en_bpe1000_sp/train.log --ngpu 1 --num_nodes 1 --init_file_prefix /home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank13_asr_train_asr_raw_en_bpe1000_sp/.dist_init_ --multiprocessing_distributed true -- python3 -m espnet2.bin.asr_train --use_preprocessor true --bpemodel data/en_token_list/bpe_bpe1000/bpe.model --token_type bpe --token_list data/en_token_list/bpe_bpe1000/tokens.txt --non_linguistic_symbols none --cleaner none --g2p none --valid_data_path_and_name_and_type dump/raw/dev/wav.scp,speech,kaldi_ark --valid_shape_file exp/asr_stats_raw_en_bpe1000_sp/valid/speech_shape --resume true --ignore_init_mismatch false --fold_length 80000 --output_dir /home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank13_asr_train_asr_raw_en_bpe1000_sp --config conf/train_asr.yaml --frontend_conf fs=16k --normalize=global_mvn --normalize_conf stats_file=exp/asr_stats_raw_en_bpe1000_sp/train/feats_stats.npz --train_data_path_and_name_and_type dump/raw/train_clean_100_sp/wav.scp,speech,kaldi_ark --train_shape_file exp/asr_stats_raw_en_bpe1000_sp/train/speech_shape --fold_length 150 --train_data_path_and_name_and_type dump/raw/train_clean_100_sp/text,text,text --train_shape_file exp/asr_stats_raw_en_bpe1000_sp/train/text_shape.bpe --valid_data_path_and_name_and_type dump/raw/dev/text,text,text --valid_shape_file exp/asr_stats_raw_en_bpe1000_sp/valid/text_shape.bpe
+2025-12-01 12:11:23,528 (launch:348) INFO: log file: /home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank13_asr_train_asr_raw_en_bpe1000_sp/train.log
+종료됨
+
+✗ Rank 13 training failed!
+Continuing with next model...
+
+==================================================================================
+
+==================================================================================
+Rank 14/20: Training model
+==================================================================================
+Module Config: ['I', 'I', 'I', 'C', 'M']
+Jacob Cov Score: -16.227844
+Synflow Score: 0.002350
+Number of Blocks: 29
+Total Params: 21831424
+
+Starting training...
+Experiment directory: /home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank14_asr_train_asr_raw_en_bpe1000_sp
+
+Updating module_config in conf/train_asr.yaml...
+Updated conf/train_asr.yaml with module_config:
+  Configuration: ['I', 'I', 'I', 'C', 'M']
+  Applied to 29 blocks
+YAML file updated successfully.
+2025-12-01T12:22:40 (asr.sh:285:main) ./asr.sh --lang en --ngpu 1 --nj 16 --gpu_inference true --inference_nj 6 --nbpe 1000 --max_wav_duration 30 --audio_format flac.ark --speed_perturb_factors 0.9 1.0 1.1 --feats_type raw --use_lm false --asr_config conf/train_asr.yaml --inference_config conf/decode_asr.yaml --train_set train_clean_100 --valid_set dev --test_sets test_clean test_other --inference_asr_model valid.cer_ctc.ave_5best.pth --lm_train_text data/train_clean_100/text --bpe_train_text data/train_clean_100/text --asr_exp /home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank14_asr_train_asr_raw_en_bpe1000_sp --stage 10 --stop_stage 11
+2025-12-01T12:22:41 (asr.sh:566:main) Skipped stages:  6 7 8 9 14 15 
+2025-12-01T12:22:41 (asr.sh:1191:main) Stage 10: ASR collect stats: train_set=dump/raw/train_clean_100_sp, valid_set=dump/raw/dev
+2025-12-01T12:22:41 (asr.sh:1242:main) Generate 'exp/asr_stats_raw_en_bpe1000_sp/run.sh'. You can resume the process from stage 10 using this script
+2025-12-01T12:22:41 (asr.sh:1246:main) ASR collect-stats started... log: 'exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.*.log'
+종료됨
+
+✗ Rank 14 training failed!
+Continuing with next model...
+
+==================================================================================
+
+==================================================================================
+Rank 15/20: Training model
+==================================================================================
+Module Config: ['C', 'SFF', 'M', 'C', 'C']
+Jacob Cov Score: -16.242569
+Synflow Score: 0.002350
+Number of Blocks: 12
+Total Params: 21382656
+
+Starting training...
+Experiment directory: /home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank15_asr_train_asr_raw_en_bpe1000_sp
+
+Updating module_config in conf/train_asr.yaml...
+Updated conf/train_asr.yaml with module_config:
+  Configuration: ['C', 'SFF', 'M', 'C', 'C']
+  Applied to 12 blocks
+YAML file updated successfully.
+2025-12-01T12:23:08 (asr.sh:285:main) ./asr.sh --lang en --ngpu 1 --nj 16 --gpu_inference true --inference_nj 6 --nbpe 1000 --max_wav_duration 30 --audio_format flac.ark --speed_perturb_factors 0.9 1.0 1.1 --feats_type raw --use_lm false --asr_config conf/train_asr.yaml --inference_config conf/decode_asr.yaml --train_set train_clean_100 --valid_set dev --test_sets test_clean test_other --inference_asr_model valid.cer_ctc.ave_5best.pth --lm_train_text data/train_clean_100/text --bpe_train_text data/train_clean_100/text --asr_exp /home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank15_asr_train_asr_raw_en_bpe1000_sp --stage 10 --stop_stage 11
+2025-12-01T12:23:14 (asr.sh:566:main) Skipped stages:  6 7 8 9 14 15 
+2025-12-01T12:23:14 (asr.sh:1191:main) Stage 10: ASR collect stats: train_set=dump/raw/train_clean_100_sp, valid_set=dump/raw/dev
+2025-12-01T12:23:14 (asr.sh:1242:main) Generate 'exp/asr_stats_raw_en_bpe1000_sp/run.sh'. You can resume the process from stage 10 using this script
+2025-12-01T12:23:14 (asr.sh:1246:main) ASR collect-stats started... log: 'exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.*.log'
+./train_top20_models.sh: 줄 106: 2224977 죽었음               ./run.sh --module_config "${module_config}" --num_blocks "${num_blocks}" --asr_exp "${EXP_DIR}" --stage 10 --stop_stage 11
+
+✗ Rank 15 training failed!
+Continuing with next model...
+
+==================================================================================
+
+==================================================================================
+Rank 16/20: Training model
+==================================================================================
+Module Config: ['C', 'RFF', 'C', 'M', 'C']
+Jacob Cov Score: -16.291919
+Synflow Score: 0.002350
+Number of Blocks: 12
+Total Params: 21382656
+
+Starting training...
+Experiment directory: /home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank16_asr_train_asr_raw_en_bpe1000_sp
+
+Updating module_config in conf/train_asr.yaml...
+Updated conf/train_asr.yaml with module_config:
+  Configuration: ['C', 'RFF', 'C', 'M', 'C']
+  Applied to 12 blocks
+YAML file updated successfully.
+2025-12-01T12:24:00 (asr.sh:285:main) ./asr.sh --lang en --ngpu 1 --nj 16 --gpu_inference true --inference_nj 6 --nbpe 1000 --max_wav_duration 30 --audio_format flac.ark --speed_perturb_factors 0.9 1.0 1.1 --feats_type raw --use_lm false --asr_config conf/train_asr.yaml --inference_config conf/decode_asr.yaml --train_set train_clean_100 --valid_set dev --test_sets test_clean test_other --inference_asr_model valid.cer_ctc.ave_5best.pth --lm_train_text data/train_clean_100/text --bpe_train_text data/train_clean_100/text --asr_exp /home/bossjung/espnet/espnet/egs2/librispeech_100/mamba_practice_asr1/exp/rank16_asr_train_asr_raw_en_bpe1000_sp --stage 10 --stop_stage 11
+2025-12-01T12:24:08 (asr.sh:566:main) Skipped stages:  6 7 8 9 14 15 
+2025-12-01T12:24:08 (asr.sh:1191:main) Stage 10: ASR collect stats: train_set=dump/raw/train_clean_100_sp, valid_set=dump/raw/dev
+2025-12-01T12:24:08 (asr.sh:1242:main) Generate 'exp/asr_stats_raw_en_bpe1000_sp/run.sh'. You can resume the process from stage 10 using this script
+2025-12-01T12:24:08 (asr.sh:1246:main) ASR collect-stats started... log: 'exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.*.log'

@@ -42,6 +42,8 @@ from espnet2.asr.encoder.hubert_encoder import (
     TorchAudioHuBERTPretrainEncoder,
 )
 from espnet2.asr.encoder.longformer_encoder import LongformerEncoder
+from espnet2.asr.encoder.mamba_encoder import MambaEncoder
+from espnet2.asr.encoder.conmamba_encoder import ConMambaEncoder
 from espnet2.asr.encoder.multiconvformer_encoder import MultiConvConformerEncoder
 from espnet2.asr.encoder.rnn_encoder import RNNEncoder
 from espnet2.asr.encoder.transformer_encoder import TransformerEncoder
@@ -168,6 +170,8 @@ encoder_choices = ClassChoices(
         avhubert=FairseqAVHubertEncoder,
         multiconv_conformer=MultiConvConformerEncoder,
         beats=BeatsEncoder,
+        mamba=MambaEncoder,
+        conmamba=ConMambaEncoder,
     ),
     type_check=AbsEncoder,
     default="rnn",
@@ -265,6 +269,7 @@ class ASRTask(AbsTask):
             default=None,
             help="The initialization method",
             choices=[
+                "chainer",
                 "xavier_uniform",
                 "xavier_normal",
                 "kaiming_uniform",

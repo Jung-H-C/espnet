@@ -1,0 +1,68 @@
+nohup: ignoring input
+Using GPU: 0 (CUDA_VISIBLE_DEVICES=0)
+2025-12-20T05:44:47 (asr.sh:285:main) ./asr.sh --lang en --ngpu 1 --nj 16 --gpu_inference true --inference_nj 6 --nbpe 1000 --max_wav_duration 30 --speed_perturb_factors 0.9 1.0 1.1 --audio_format flac.ark --feats_type raw --use_lm false --asr_config conf/train_asr.yaml --inference_config conf/decode_asr.yaml --inference_asr_model valid.cer_ctc.ave_5best.pth --train_set train_clean_100 --valid_set dev --test_sets test_clean test_other --lm_train_text data/train_clean_100/text --bpe_train_text data/train_clean_100/text --stage 13 --stop_stage 13
+2025-12-20T05:44:47 (asr.sh:566:main) Skipped stages:  6 7 8 9 14 15 
+2025-12-20T05:44:47 (asr.sh:1654:main) Stage 13: Scoring
+/home/gpuadmin/anaconda3/envs/junghc/bin/python3 /home/gpuadmin/espnet/espnet2/bin/tokenize_text.py -f 2- --input - --output - --cleaner none --token_type char --non_linguistic_symbols none --remove_non_linguistic_symbols true
+/home/gpuadmin/anaconda3/envs/junghc/bin/python3 /home/gpuadmin/espnet/espnet2/bin/tokenize_text.py -f 2- --input - --output - --token_type char --non_linguistic_symbols none --remove_non_linguistic_symbols true --cleaner none
+2025-12-20T05:45:00 (asr.sh:1744:main) Write cer result in exp/asr_train_asr_raw_en_bpe1000_sp/decode_asr_asr_model_valid.cer_ctc.ave_5best/test_clean/score_cer/result.txt
+|   SPKR      |   # Snt       # Wrd    |   Corr         Sub        Del         Ins         Err       S.Err    |
+|   Sum/Avg   |   2620       281530    |   97.4         1.2        1.4         1.0         3.7        70.4    |
+/home/gpuadmin/anaconda3/envs/junghc/bin/python3 /home/gpuadmin/espnet/espnet2/bin/tokenize_text.py -f 2- --input - --output - --cleaner none --token_type word --non_linguistic_symbols none --remove_non_linguistic_symbols true
+/home/gpuadmin/anaconda3/envs/junghc/bin/python3 /home/gpuadmin/espnet/espnet2/bin/tokenize_text.py -f 2- --input - --output - --token_type word --non_linguistic_symbols none --remove_non_linguistic_symbols true --cleaner none
+2025-12-20T05:45:05 (asr.sh:1744:main) Write wer result in exp/asr_train_asr_raw_en_bpe1000_sp/decode_asr_asr_model_valid.cer_ctc.ave_5best/test_clean/score_wer/result.txt
+|   SPKR      |   # Snt       # Wrd    |   Corr         Sub        Del         Ins         Err       S.Err    |
+|   Sum/Avg   |   2620        52576    |   91.7         7.6        0.7         1.0         9.3        70.4    |
+/home/gpuadmin/anaconda3/envs/junghc/bin/python3 /home/gpuadmin/espnet/espnet2/bin/tokenize_text.py -f 2- --input - --output - --cleaner none --token_type bpe --bpemodel data/en_token_list/bpe_bpe1000/bpe.model
+/home/gpuadmin/anaconda3/envs/junghc/bin/python3 /home/gpuadmin/espnet/espnet2/bin/tokenize_text.py -f 2- --input - --output - --token_type bpe --bpemodel data/en_token_list/bpe_bpe1000/bpe.model --cleaner none
+2025-12-20T05:45:12 (asr.sh:1744:main) Write ter result in exp/asr_train_asr_raw_en_bpe1000_sp/decode_asr_asr_model_valid.cer_ctc.ave_5best/test_clean/score_ter/result.txt
+|   SPKR      |   # Snt       # Wrd    |   Corr         Sub        Del         Ins         Err       S.Err    |
+|   Sum/Avg   |   2620        90293    |   92.6         5.2        2.2         0.9         8.2        70.4    |
+/home/gpuadmin/anaconda3/envs/junghc/bin/python3 /home/gpuadmin/espnet/espnet2/bin/tokenize_text.py -f 2- --input - --output - --cleaner none --token_type char --non_linguistic_symbols none --remove_non_linguistic_symbols true
+/home/gpuadmin/anaconda3/envs/junghc/bin/python3 /home/gpuadmin/espnet/espnet2/bin/tokenize_text.py -f 2- --input - --output - --token_type char --non_linguistic_symbols none --remove_non_linguistic_symbols true --cleaner none
+2025-12-20T05:45:24 (asr.sh:1744:main) Write cer result in exp/asr_train_asr_raw_en_bpe1000_sp/decode_asr_asr_model_valid.cer_ctc.ave_5best/test_other/score_cer/result.txt
+|   SPKR      |   # Snt       # Wrd    |   Corr         Sub        Del         Ins         Err       S.Err    |
+|   Sum/Avg   |   2939       272758    |   91.1         4.6        4.4         2.8        11.8        90.7    |
+/home/gpuadmin/anaconda3/envs/junghc/bin/python3 /home/gpuadmin/espnet/espnet2/bin/tokenize_text.py -f 2- --input - --output - --cleaner none --token_type word --non_linguistic_symbols none --remove_non_linguistic_symbols true
+/home/gpuadmin/anaconda3/envs/junghc/bin/python3 /home/gpuadmin/espnet/espnet2/bin/tokenize_text.py -f 2- --input - --output - --token_type word --non_linguistic_symbols none --remove_non_linguistic_symbols true --cleaner none
+2025-12-20T05:45:29 (asr.sh:1744:main) Write wer result in exp/asr_train_asr_raw_en_bpe1000_sp/decode_asr_asr_model_valid.cer_ctc.ave_5best/test_other/score_wer/result.txt
+|   SPKR      |   # Snt       # Wrd    |   Corr         Sub        Del         Ins         Err       S.Err    |
+|   Sum/Avg   |   2939        52343    |   78.1        19.5        2.5         2.3        24.3        90.7    |
+/home/gpuadmin/anaconda3/envs/junghc/bin/python3 /home/gpuadmin/espnet/espnet2/bin/tokenize_text.py -f 2- --input - --output - --cleaner none --token_type bpe --bpemodel data/en_token_list/bpe_bpe1000/bpe.model
+/home/gpuadmin/anaconda3/envs/junghc/bin/python3 /home/gpuadmin/espnet/espnet2/bin/tokenize_text.py -f 2- --input - --output - --token_type bpe --bpemodel data/en_token_list/bpe_bpe1000/bpe.model --cleaner none
+2025-12-20T05:45:35 (asr.sh:1744:main) Write ter result in exp/asr_train_asr_raw_en_bpe1000_sp/decode_asr_asr_model_valid.cer_ctc.ave_5best/test_other/score_ter/result.txt
+|   SPKR      |   # Snt       # Wrd    |   Corr         Sub        Del         Ins         Err       S.Err    |
+|   Sum/Avg   |   2939        87291    |   80.0        15.0        4.9         2.4        22.4        90.7    |
+<!-- Generated by scripts/utils/show_asr_result.sh -->
+# RESULTS
+## Environments
+- date: `Sat Dec 20 05:45:35 UTC 2025`
+- python version: `3.10.19 | packaged by conda-forge | (main, Oct 22 2025, 22:29:10) [GCC 14.3.0]`
+- espnet2 version: `espnet2 202511`
+- pytorch version: `pytorch 2.9.1+cu128`
+- Git hash: `df9514742b18d7f599be6fdc0db83cba627abf44`
+  - Commit date: `Tue Dec 16 04:20:41 2025 -0800`
+
+## exp/asr_train_asr_raw_en_bpe1000_sp
+### WER
+
+|dataset|Snt|Wrd|Corr|Sub|Del|Ins|Err|S.Err|
+|---|---|---|---|---|---|---|---|---|
+|decode_asr_asr_model_valid.cer_ctc.ave_5best/test_clean|2620|52576|91.7|7.6|0.7|1.0|9.3|70.4|
+|decode_asr_asr_model_valid.cer_ctc.ave_5best/test_other|2939|52343|78.1|19.5|2.5|2.3|24.3|90.7|
+
+### CER
+
+|dataset|Snt|Wrd|Corr|Sub|Del|Ins|Err|S.Err|
+|---|---|---|---|---|---|---|---|---|
+|decode_asr_asr_model_valid.cer_ctc.ave_5best/test_clean|2620|281530|97.4|1.2|1.4|1.0|3.7|70.4|
+|decode_asr_asr_model_valid.cer_ctc.ave_5best/test_other|2939|272758|91.1|4.6|4.4|2.8|11.8|90.7|
+
+### TER
+
+|dataset|Snt|Wrd|Corr|Sub|Del|Ins|Err|S.Err|
+|---|---|---|---|---|---|---|---|---|
+|decode_asr_asr_model_valid.cer_ctc.ave_5best/test_clean|2620|90293|92.6|5.2|2.2|0.9|8.2|70.4|
+|decode_asr_asr_model_valid.cer_ctc.ave_5best/test_other|2939|87291|80.0|15.0|4.9|2.4|22.4|90.7|
+
+2025-12-20T05:45:37 (asr.sh:1842:main) Successfully finished. [elapsed=50s]

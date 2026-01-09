@@ -1,0 +1,1033 @@
+nohup: ignoring input
+Using GPU: 0 (CUDA_VISIBLE_DEVICES=0)
+Updating module_config in conf/train_asr.yaml...
+Updated conf/train_asr.yaml with module_config:
+  Configuration: ['I', 'I', 'I', 'C', 'M']
+  Applied to 29 blocks
+YAML file updated successfully.
+2025-12-17T17:21:43 (asr.sh:285:main) ./asr.sh --lang en --ngpu 1 --nj 16 --gpu_inference true --inference_nj 6 --nbpe 1000 --max_wav_duration 30 --audio_format flac.ark --speed_perturb_factors 0.9 1.0 1.1 --feats_type raw --use_lm false --asr_config conf/train_asr.yaml --inference_config conf/decode_asr.yaml --train_set train_clean_100 --valid_set dev --test_sets test_clean test_other --inference_asr_model valid.cer_ctc.ave_5best.pth --lm_train_text data/train_clean_100/text --bpe_train_text data/train_clean_100/text --stage 10 --stop_stage 13
+2025-12-17T17:21:44 (asr.sh:566:main) Skipped stages:  6 7 8 9 14 15 
+2025-12-17T17:21:44 (asr.sh:1191:main) Stage 10: ASR collect stats: train_set=dump/raw/train_clean_100_sp, valid_set=dump/raw/dev
+2025-12-17T17:21:44 (asr.sh:1242:main) Generate 'exp/asr_stats_raw_en_bpe1000_sp/run.sh'. You can resume the process from stage 10 using this script
+2025-12-17T17:21:44 (asr.sh:1246:main) ASR collect-stats started... log: 'exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.*.log'
+/home/gpuadmin/anaconda3/envs/junghc/bin/python3 /home/gpuadmin/espnet/espnet2/bin/aggregate_stats_dirs.py --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.1 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.2 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.3 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.4 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.5 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.6 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.7 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.8 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.9 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.10 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.11 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.12 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.13 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.14 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.15 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.16 --output_dir exp/asr_stats_raw_en_bpe1000_sp
+2025-12-17T17:23:33 (asr.sh:1310:main) Stage 11: ASR Training: train_set=dump/raw/train_clean_100_sp, valid_set=dump/raw/dev
+2025-12-17T17:23:33 (asr.sh:1409:main) Generate 'exp/asr_train_asr_raw_en_bpe1000_sp/run.sh'. You can resume the process from stage 11 using this script
+2025-12-17T17:23:33 (asr.sh:1413:main) ASR training started... log: 'exp/asr_train_asr_raw_en_bpe1000_sp/train.log'
+2025-12-17T17:23:33 (asr.sh:1451:main) Use ESPnet trainer
+2025-12-17 17:23:33,383 (launch:94) INFO: /home/gpuadmin/anaconda3/envs/junghc/bin/python3 /home/gpuadmin/espnet/espnet2/bin/launch.py --cmd 'run.pl --name exp/asr_train_asr_raw_en_bpe1000_sp/train.log' --log exp/asr_train_asr_raw_en_bpe1000_sp/train.log --ngpu 1 --num_nodes 1 --init_file_prefix exp/asr_train_asr_raw_en_bpe1000_sp/.dist_init_ --multiprocessing_distributed true -- python3 -m espnet2.bin.asr_train --use_preprocessor true --bpemodel data/en_token_list/bpe_bpe1000/bpe.model --token_type bpe --token_list data/en_token_list/bpe_bpe1000/tokens.txt --non_linguistic_symbols none --cleaner none --g2p none --valid_data_path_and_name_and_type dump/raw/dev/wav.scp,speech,kaldi_ark --valid_shape_file exp/asr_stats_raw_en_bpe1000_sp/valid/speech_shape --resume true --ignore_init_mismatch false --fold_length 80000 --output_dir exp/asr_train_asr_raw_en_bpe1000_sp --config conf/train_asr.yaml --frontend_conf fs=16k --normalize=global_mvn --normalize_conf stats_file=exp/asr_stats_raw_en_bpe1000_sp/train/feats_stats.npz --train_data_path_and_name_and_type dump/raw/train_clean_100_sp/wav.scp,speech,kaldi_ark --train_shape_file exp/asr_stats_raw_en_bpe1000_sp/train/speech_shape --fold_length 150 --train_data_path_and_name_and_type dump/raw/train_clean_100_sp/text,text,text --train_shape_file exp/asr_stats_raw_en_bpe1000_sp/train/text_shape.bpe --valid_data_path_and_name_and_type dump/raw/dev/text,text,text --valid_shape_file exp/asr_stats_raw_en_bpe1000_sp/valid/text_shape.bpe
+2025-12-17 17:23:33,398 (launch:348) INFO: log file: exp/asr_train_asr_raw_en_bpe1000_sp/train.log
+run.pl: job failed, log is in exp/asr_train_asr_raw_en_bpe1000_sp/train.log
+Command '['run.pl', '--name', 'exp/asr_train_asr_raw_en_bpe1000_sp/train.log', '--gpu', '1', 'exp/asr_train_asr_raw_en_bpe1000_sp/train.log', 'python3', '-m', 'espnet2.bin.asr_train', '--use_preprocessor', 'true', '--bpemodel', 'data/en_token_list/bpe_bpe1000/bpe.model', '--token_type', 'bpe', '--token_list', 'data/en_token_list/bpe_bpe1000/tokens.txt', '--non_linguistic_symbols', 'none', '--cleaner', 'none', '--g2p', 'none', '--valid_data_path_and_name_and_type', 'dump/raw/dev/wav.scp,speech,kaldi_ark', '--valid_shape_file', 'exp/asr_stats_raw_en_bpe1000_sp/valid/speech_shape', '--resume', 'true', '--ignore_init_mismatch', 'false', '--fold_length', '80000', '--output_dir', 'exp/asr_train_asr_raw_en_bpe1000_sp', '--config', 'conf/train_asr.yaml', '--frontend_conf', 'fs=16k', '--normalize=global_mvn', '--normalize_conf', 'stats_file=exp/asr_stats_raw_en_bpe1000_sp/train/feats_stats.npz', '--train_data_path_and_name_and_type', 'dump/raw/train_clean_100_sp/wav.scp,speech,kaldi_ark', '--train_shape_file', 'exp/asr_stats_raw_en_bpe1000_sp/train/speech_shape', '--fold_length', '150', '--train_data_path_and_name_and_type', 'dump/raw/train_clean_100_sp/text,text,text', '--train_shape_file', 'exp/asr_stats_raw_en_bpe1000_sp/train/text_shape.bpe', '--valid_data_path_and_name_and_type', 'dump/raw/dev/text,text,text', '--valid_shape_file', 'exp/asr_stats_raw_en_bpe1000_sp/valid/text_shape.bpe', '--ngpu', '1', '--multiprocessing_distributed', 'True']' returned non-zero exit status 1.
+Traceback (most recent call last):
+  File "/home/gpuadmin/anaconda3/envs/junghc/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/home/gpuadmin/anaconda3/envs/junghc/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/home/gpuadmin/espnet/espnet2/bin/launch.py", line 384, in <module>
+    main()
+  File "/home/gpuadmin/espnet/espnet2/bin/launch.py", line 375, in main
+    raise RuntimeError(
+RuntimeError: 
+################### The last 1000 lines of exp/asr_train_asr_raw_en_bpe1000_sp/train.log ###################
+              (x_proj_b): Linear(in_features=512, out_features=48, bias=False)
+              (dt_proj_b): Linear(in_features=16, out_features=512, bias=True)
+              (out_proj): Linear(in_features=512, out_features=256, bias=False)
+            )
+          )
+        )
+        (pre_norms): ModuleList(
+          (0-2): 3 x Identity()
+          (3-4): 2 x LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        )
+      )
+      (16): MambaCellBlock(
+        (final_norm): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (modules_list): ModuleList(
+          (0-2): 3 x IdentityModule()
+          (3): ConvolutionModuleWrapper(
+            (conv): ConvolutionModule(
+              (pointwise_conv1): Conv1d(256, 512, kernel_size=(1,), stride=(1,))
+              (depthwise_conv): Conv1d(256, 256, kernel_size=(31,), stride=(1,), padding=(15,), groups=256)
+              (norm): BatchNorm1d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+              (pointwise_conv2): Conv1d(256, 256, kernel_size=(1,), stride=(1,))
+              (activation): Swish()
+            )
+          )
+          (4): BiMambaModule(
+            (mamba): Mamba(
+              (in_proj): Linear(in_features=256, out_features=1024, bias=False)
+              (conv1d): Conv1d(512, 512, kernel_size=(4,), stride=(1,), padding=(3,), groups=512)
+              (act): SiLU()
+              (x_proj): Linear(in_features=512, out_features=48, bias=False)
+              (dt_proj): Linear(in_features=16, out_features=512, bias=True)
+              (conv1d_b): Conv1d(512, 512, kernel_size=(4,), stride=(1,), padding=(3,), groups=512)
+              (x_proj_b): Linear(in_features=512, out_features=48, bias=False)
+              (dt_proj_b): Linear(in_features=16, out_features=512, bias=True)
+              (out_proj): Linear(in_features=512, out_features=256, bias=False)
+            )
+          )
+        )
+        (pre_norms): ModuleList(
+          (0-2): 3 x Identity()
+          (3-4): 2 x LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        )
+      )
+      (17): MambaCellBlock(
+        (final_norm): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (modules_list): ModuleList(
+          (0-2): 3 x IdentityModule()
+          (3): ConvolutionModuleWrapper(
+            (conv): ConvolutionModule(
+              (pointwise_conv1): Conv1d(256, 512, kernel_size=(1,), stride=(1,))
+              (depthwise_conv): Conv1d(256, 256, kernel_size=(31,), stride=(1,), padding=(15,), groups=256)
+              (norm): BatchNorm1d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+              (pointwise_conv2): Conv1d(256, 256, kernel_size=(1,), stride=(1,))
+              (activation): Swish()
+            )
+          )
+          (4): BiMambaModule(
+            (mamba): Mamba(
+              (in_proj): Linear(in_features=256, out_features=1024, bias=False)
+              (conv1d): Conv1d(512, 512, kernel_size=(4,), stride=(1,), padding=(3,), groups=512)
+              (act): SiLU()
+              (x_proj): Linear(in_features=512, out_features=48, bias=False)
+              (dt_proj): Linear(in_features=16, out_features=512, bias=True)
+              (conv1d_b): Conv1d(512, 512, kernel_size=(4,), stride=(1,), padding=(3,), groups=512)
+              (x_proj_b): Linear(in_features=512, out_features=48, bias=False)
+              (dt_proj_b): Linear(in_features=16, out_features=512, bias=True)
+              (out_proj): Linear(in_features=512, out_features=256, bias=False)
+            )
+          )
+        )
+        (pre_norms): ModuleList(
+          (0-2): 3 x Identity()
+          (3-4): 2 x LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        )
+      )
+      (18): MambaCellBlock(
+        (final_norm): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (modules_list): ModuleList(
+          (0-2): 3 x IdentityModule()
+          (3): ConvolutionModuleWrapper(
+            (conv): ConvolutionModule(
+              (pointwise_conv1): Conv1d(256, 512, kernel_size=(1,), stride=(1,))
+              (depthwise_conv): Conv1d(256, 256, kernel_size=(31,), stride=(1,), padding=(15,), groups=256)
+              (norm): BatchNorm1d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+              (pointwise_conv2): Conv1d(256, 256, kernel_size=(1,), stride=(1,))
+              (activation): Swish()
+            )
+          )
+          (4): BiMambaModule(
+            (mamba): Mamba(
+              (in_proj): Linear(in_features=256, out_features=1024, bias=False)
+              (conv1d): Conv1d(512, 512, kernel_size=(4,), stride=(1,), padding=(3,), groups=512)
+              (act): SiLU()
+              (x_proj): Linear(in_features=512, out_features=48, bias=False)
+              (dt_proj): Linear(in_features=16, out_features=512, bias=True)
+              (conv1d_b): Conv1d(512, 512, kernel_size=(4,), stride=(1,), padding=(3,), groups=512)
+              (x_proj_b): Linear(in_features=512, out_features=48, bias=False)
+              (dt_proj_b): Linear(in_features=16, out_features=512, bias=True)
+              (out_proj): Linear(in_features=512, out_features=256, bias=False)
+            )
+          )
+        )
+        (pre_norms): ModuleList(
+          (0-2): 3 x Identity()
+          (3-4): 2 x LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        )
+      )
+      (19): MambaCellBlock(
+        (final_norm): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (modules_list): ModuleList(
+          (0-2): 3 x IdentityModule()
+          (3): ConvolutionModuleWrapper(
+            (conv): ConvolutionModule(
+              (pointwise_conv1): Conv1d(256, 512, kernel_size=(1,), stride=(1,))
+              (depthwise_conv): Conv1d(256, 256, kernel_size=(31,), stride=(1,), padding=(15,), groups=256)
+              (norm): BatchNorm1d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+              (pointwise_conv2): Conv1d(256, 256, kernel_size=(1,), stride=(1,))
+              (activation): Swish()
+            )
+          )
+          (4): BiMambaModule(
+            (mamba): Mamba(
+              (in_proj): Linear(in_features=256, out_features=1024, bias=False)
+              (conv1d): Conv1d(512, 512, kernel_size=(4,), stride=(1,), padding=(3,), groups=512)
+              (act): SiLU()
+              (x_proj): Linear(in_features=512, out_features=48, bias=False)
+              (dt_proj): Linear(in_features=16, out_features=512, bias=True)
+              (conv1d_b): Conv1d(512, 512, kernel_size=(4,), stride=(1,), padding=(3,), groups=512)
+              (x_proj_b): Linear(in_features=512, out_features=48, bias=False)
+              (dt_proj_b): Linear(in_features=16, out_features=512, bias=True)
+              (out_proj): Linear(in_features=512, out_features=256, bias=False)
+            )
+          )
+        )
+        (pre_norms): ModuleList(
+          (0-2): 3 x Identity()
+          (3-4): 2 x LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        )
+      )
+      (20): MambaCellBlock(
+        (final_norm): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (modules_list): ModuleList(
+          (0-2): 3 x IdentityModule()
+          (3): ConvolutionModuleWrapper(
+            (conv): ConvolutionModule(
+              (pointwise_conv1): Conv1d(256, 512, kernel_size=(1,), stride=(1,))
+              (depthwise_conv): Conv1d(256, 256, kernel_size=(31,), stride=(1,), padding=(15,), groups=256)
+              (norm): BatchNorm1d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+              (pointwise_conv2): Conv1d(256, 256, kernel_size=(1,), stride=(1,))
+              (activation): Swish()
+            )
+          )
+          (4): BiMambaModule(
+            (mamba): Mamba(
+              (in_proj): Linear(in_features=256, out_features=1024, bias=False)
+              (conv1d): Conv1d(512, 512, kernel_size=(4,), stride=(1,), padding=(3,), groups=512)
+              (act): SiLU()
+              (x_proj): Linear(in_features=512, out_features=48, bias=False)
+              (dt_proj): Linear(in_features=16, out_features=512, bias=True)
+              (conv1d_b): Conv1d(512, 512, kernel_size=(4,), stride=(1,), padding=(3,), groups=512)
+              (x_proj_b): Linear(in_features=512, out_features=48, bias=False)
+              (dt_proj_b): Linear(in_features=16, out_features=512, bias=True)
+              (out_proj): Linear(in_features=512, out_features=256, bias=False)
+            )
+          )
+        )
+        (pre_norms): ModuleList(
+          (0-2): 3 x Identity()
+          (3-4): 2 x LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        )
+      )
+      (21): MambaCellBlock(
+        (final_norm): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (modules_list): ModuleList(
+          (0-2): 3 x IdentityModule()
+          (3): ConvolutionModuleWrapper(
+            (conv): ConvolutionModule(
+              (pointwise_conv1): Conv1d(256, 512, kernel_size=(1,), stride=(1,))
+              (depthwise_conv): Conv1d(256, 256, kernel_size=(31,), stride=(1,), padding=(15,), groups=256)
+              (norm): BatchNorm1d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+              (pointwise_conv2): Conv1d(256, 256, kernel_size=(1,), stride=(1,))
+              (activation): Swish()
+            )
+          )
+          (4): BiMambaModule(
+            (mamba): Mamba(
+              (in_proj): Linear(in_features=256, out_features=1024, bias=False)
+              (conv1d): Conv1d(512, 512, kernel_size=(4,), stride=(1,), padding=(3,), groups=512)
+              (act): SiLU()
+              (x_proj): Linear(in_features=512, out_features=48, bias=False)
+              (dt_proj): Linear(in_features=16, out_features=512, bias=True)
+              (conv1d_b): Conv1d(512, 512, kernel_size=(4,), stride=(1,), padding=(3,), groups=512)
+              (x_proj_b): Linear(in_features=512, out_features=48, bias=False)
+              (dt_proj_b): Linear(in_features=16, out_features=512, bias=True)
+              (out_proj): Linear(in_features=512, out_features=256, bias=False)
+            )
+          )
+        )
+        (pre_norms): ModuleList(
+          (0-2): 3 x Identity()
+          (3-4): 2 x LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        )
+      )
+      (22): MambaCellBlock(
+        (final_norm): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (modules_list): ModuleList(
+          (0-2): 3 x IdentityModule()
+          (3): ConvolutionModuleWrapper(
+            (conv): ConvolutionModule(
+              (pointwise_conv1): Conv1d(256, 512, kernel_size=(1,), stride=(1,))
+              (depthwise_conv): Conv1d(256, 256, kernel_size=(31,), stride=(1,), padding=(15,), groups=256)
+              (norm): BatchNorm1d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+              (pointwise_conv2): Conv1d(256, 256, kernel_size=(1,), stride=(1,))
+              (activation): Swish()
+            )
+          )
+          (4): BiMambaModule(
+            (mamba): Mamba(
+              (in_proj): Linear(in_features=256, out_features=1024, bias=False)
+              (conv1d): Conv1d(512, 512, kernel_size=(4,), stride=(1,), padding=(3,), groups=512)
+              (act): SiLU()
+              (x_proj): Linear(in_features=512, out_features=48, bias=False)
+              (dt_proj): Linear(in_features=16, out_features=512, bias=True)
+              (conv1d_b): Conv1d(512, 512, kernel_size=(4,), stride=(1,), padding=(3,), groups=512)
+              (x_proj_b): Linear(in_features=512, out_features=48, bias=False)
+              (dt_proj_b): Linear(in_features=16, out_features=512, bias=True)
+              (out_proj): Linear(in_features=512, out_features=256, bias=False)
+            )
+          )
+        )
+        (pre_norms): ModuleList(
+          (0-2): 3 x Identity()
+          (3-4): 2 x LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        )
+      )
+      (23): MambaCellBlock(
+        (final_norm): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (modules_list): ModuleList(
+          (0-2): 3 x IdentityModule()
+          (3): ConvolutionModuleWrapper(
+            (conv): ConvolutionModule(
+              (pointwise_conv1): Conv1d(256, 512, kernel_size=(1,), stride=(1,))
+              (depthwise_conv): Conv1d(256, 256, kernel_size=(31,), stride=(1,), padding=(15,), groups=256)
+              (norm): BatchNorm1d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+              (pointwise_conv2): Conv1d(256, 256, kernel_size=(1,), stride=(1,))
+              (activation): Swish()
+            )
+          )
+          (4): BiMambaModule(
+            (mamba): Mamba(
+              (in_proj): Linear(in_features=256, out_features=1024, bias=False)
+              (conv1d): Conv1d(512, 512, kernel_size=(4,), stride=(1,), padding=(3,), groups=512)
+              (act): SiLU()
+              (x_proj): Linear(in_features=512, out_features=48, bias=False)
+              (dt_proj): Linear(in_features=16, out_features=512, bias=True)
+              (conv1d_b): Conv1d(512, 512, kernel_size=(4,), stride=(1,), padding=(3,), groups=512)
+              (x_proj_b): Linear(in_features=512, out_features=48, bias=False)
+              (dt_proj_b): Linear(in_features=16, out_features=512, bias=True)
+              (out_proj): Linear(in_features=512, out_features=256, bias=False)
+            )
+          )
+        )
+        (pre_norms): ModuleList(
+          (0-2): 3 x Identity()
+          (3-4): 2 x LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        )
+      )
+      (24): MambaCellBlock(
+        (final_norm): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (modules_list): ModuleList(
+          (0-2): 3 x IdentityModule()
+          (3): ConvolutionModuleWrapper(
+            (conv): ConvolutionModule(
+              (pointwise_conv1): Conv1d(256, 512, kernel_size=(1,), stride=(1,))
+              (depthwise_conv): Conv1d(256, 256, kernel_size=(31,), stride=(1,), padding=(15,), groups=256)
+              (norm): BatchNorm1d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+              (pointwise_conv2): Conv1d(256, 256, kernel_size=(1,), stride=(1,))
+              (activation): Swish()
+            )
+          )
+          (4): BiMambaModule(
+            (mamba): Mamba(
+              (in_proj): Linear(in_features=256, out_features=1024, bias=False)
+              (conv1d): Conv1d(512, 512, kernel_size=(4,), stride=(1,), padding=(3,), groups=512)
+              (act): SiLU()
+              (x_proj): Linear(in_features=512, out_features=48, bias=False)
+              (dt_proj): Linear(in_features=16, out_features=512, bias=True)
+              (conv1d_b): Conv1d(512, 512, kernel_size=(4,), stride=(1,), padding=(3,), groups=512)
+              (x_proj_b): Linear(in_features=512, out_features=48, bias=False)
+              (dt_proj_b): Linear(in_features=16, out_features=512, bias=True)
+              (out_proj): Linear(in_features=512, out_features=256, bias=False)
+            )
+          )
+        )
+        (pre_norms): ModuleList(
+          (0-2): 3 x Identity()
+          (3-4): 2 x LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        )
+      )
+      (25): MambaCellBlock(
+        (final_norm): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (modules_list): ModuleList(
+          (0-2): 3 x IdentityModule()
+          (3): ConvolutionModuleWrapper(
+            (conv): ConvolutionModule(
+              (pointwise_conv1): Conv1d(256, 512, kernel_size=(1,), stride=(1,))
+              (depthwise_conv): Conv1d(256, 256, kernel_size=(31,), stride=(1,), padding=(15,), groups=256)
+              (norm): BatchNorm1d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+              (pointwise_conv2): Conv1d(256, 256, kernel_size=(1,), stride=(1,))
+              (activation): Swish()
+            )
+          )
+          (4): BiMambaModule(
+            (mamba): Mamba(
+              (in_proj): Linear(in_features=256, out_features=1024, bias=False)
+              (conv1d): Conv1d(512, 512, kernel_size=(4,), stride=(1,), padding=(3,), groups=512)
+              (act): SiLU()
+              (x_proj): Linear(in_features=512, out_features=48, bias=False)
+              (dt_proj): Linear(in_features=16, out_features=512, bias=True)
+              (conv1d_b): Conv1d(512, 512, kernel_size=(4,), stride=(1,), padding=(3,), groups=512)
+              (x_proj_b): Linear(in_features=512, out_features=48, bias=False)
+              (dt_proj_b): Linear(in_features=16, out_features=512, bias=True)
+              (out_proj): Linear(in_features=512, out_features=256, bias=False)
+            )
+          )
+        )
+        (pre_norms): ModuleList(
+          (0-2): 3 x Identity()
+          (3-4): 2 x LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        )
+      )
+      (26): MambaCellBlock(
+        (final_norm): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (modules_list): ModuleList(
+          (0-2): 3 x IdentityModule()
+          (3): ConvolutionModuleWrapper(
+            (conv): ConvolutionModule(
+              (pointwise_conv1): Conv1d(256, 512, kernel_size=(1,), stride=(1,))
+              (depthwise_conv): Conv1d(256, 256, kernel_size=(31,), stride=(1,), padding=(15,), groups=256)
+              (norm): BatchNorm1d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+              (pointwise_conv2): Conv1d(256, 256, kernel_size=(1,), stride=(1,))
+              (activation): Swish()
+            )
+          )
+          (4): BiMambaModule(
+            (mamba): Mamba(
+              (in_proj): Linear(in_features=256, out_features=1024, bias=False)
+              (conv1d): Conv1d(512, 512, kernel_size=(4,), stride=(1,), padding=(3,), groups=512)
+              (act): SiLU()
+              (x_proj): Linear(in_features=512, out_features=48, bias=False)
+              (dt_proj): Linear(in_features=16, out_features=512, bias=True)
+              (conv1d_b): Conv1d(512, 512, kernel_size=(4,), stride=(1,), padding=(3,), groups=512)
+              (x_proj_b): Linear(in_features=512, out_features=48, bias=False)
+              (dt_proj_b): Linear(in_features=16, out_features=512, bias=True)
+              (out_proj): Linear(in_features=512, out_features=256, bias=False)
+            )
+          )
+        )
+        (pre_norms): ModuleList(
+          (0-2): 3 x Identity()
+          (3-4): 2 x LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        )
+      )
+      (27): MambaCellBlock(
+        (final_norm): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (modules_list): ModuleList(
+          (0-2): 3 x IdentityModule()
+          (3): ConvolutionModuleWrapper(
+            (conv): ConvolutionModule(
+              (pointwise_conv1): Conv1d(256, 512, kernel_size=(1,), stride=(1,))
+              (depthwise_conv): Conv1d(256, 256, kernel_size=(31,), stride=(1,), padding=(15,), groups=256)
+              (norm): BatchNorm1d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+              (pointwise_conv2): Conv1d(256, 256, kernel_size=(1,), stride=(1,))
+              (activation): Swish()
+            )
+          )
+          (4): BiMambaModule(
+            (mamba): Mamba(
+              (in_proj): Linear(in_features=256, out_features=1024, bias=False)
+              (conv1d): Conv1d(512, 512, kernel_size=(4,), stride=(1,), padding=(3,), groups=512)
+              (act): SiLU()
+              (x_proj): Linear(in_features=512, out_features=48, bias=False)
+              (dt_proj): Linear(in_features=16, out_features=512, bias=True)
+              (conv1d_b): Conv1d(512, 512, kernel_size=(4,), stride=(1,), padding=(3,), groups=512)
+              (x_proj_b): Linear(in_features=512, out_features=48, bias=False)
+              (dt_proj_b): Linear(in_features=16, out_features=512, bias=True)
+              (out_proj): Linear(in_features=512, out_features=256, bias=False)
+            )
+          )
+        )
+        (pre_norms): ModuleList(
+          (0-2): 3 x Identity()
+          (3-4): 2 x LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        )
+      )
+      (28): MambaCellBlock(
+        (final_norm): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (modules_list): ModuleList(
+          (0-2): 3 x IdentityModule()
+          (3): ConvolutionModuleWrapper(
+            (conv): ConvolutionModule(
+              (pointwise_conv1): Conv1d(256, 512, kernel_size=(1,), stride=(1,))
+              (depthwise_conv): Conv1d(256, 256, kernel_size=(31,), stride=(1,), padding=(15,), groups=256)
+              (norm): BatchNorm1d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+              (pointwise_conv2): Conv1d(256, 256, kernel_size=(1,), stride=(1,))
+              (activation): Swish()
+            )
+          )
+          (4): BiMambaModule(
+            (mamba): Mamba(
+              (in_proj): Linear(in_features=256, out_features=1024, bias=False)
+              (conv1d): Conv1d(512, 512, kernel_size=(4,), stride=(1,), padding=(3,), groups=512)
+              (act): SiLU()
+              (x_proj): Linear(in_features=512, out_features=48, bias=False)
+              (dt_proj): Linear(in_features=16, out_features=512, bias=True)
+              (conv1d_b): Conv1d(512, 512, kernel_size=(4,), stride=(1,), padding=(3,), groups=512)
+              (x_proj_b): Linear(in_features=512, out_features=48, bias=False)
+              (dt_proj_b): Linear(in_features=16, out_features=512, bias=True)
+              (out_proj): Linear(in_features=512, out_features=256, bias=False)
+            )
+          )
+        )
+        (pre_norms): ModuleList(
+          (0-2): 3 x Identity()
+          (3-4): 2 x LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        )
+      )
+    )
+    (after_norm): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+  )
+  (criterion_att): LabelSmoothingLoss(
+    (criterion): KLDivLoss()
+  )
+  (ctc): CTC(
+    (ctc_lo): Linear(in_features=256, out_features=1000, bias=True)
+    (ctc_loss): CTCLoss()
+  )
+)
+
+Model summary:
+    Class Name: ESPnetASRModel
+    Total Number of model parameters: 22.10 M
+    Number of trainable parameters: 22.10 M (100.0%)
+    Size: 88.41 MB
+    Type: torch.float32
+[gpusystem] 2025-12-17 17:23:40,644 (abs_task:1459) INFO: Optimizer:
+AdamW (
+Parameter Group 0
+    amsgrad: False
+    betas: [0.9, 0.999]
+    capturable: False
+    decoupled_weight_decay: True
+    differentiable: False
+    eps: 1e-08
+    foreach: None
+    fused: None
+    initial_lr: 0.002
+    lr: 2.5e-07
+    maximize: False
+    weight_decay: 1e-06
+)
+[gpusystem] 2025-12-17 17:23:40,644 (abs_task:1460) INFO: Scheduler: WarmupLR(warmup_steps=8000)
+[gpusystem] 2025-12-17 17:23:40,644 (abs_task:1469) INFO: Saving the configuration in exp/asr_train_asr_raw_en_bpe1000_sp/config.yaml
+[gpusystem] 2025-12-17 17:23:41,297 (abs_task:1885) INFO: [train] Batch sampler: NumElementsBatchSampler(N-batch=1419, batch_bins=16000000, sort_in_batch=descending, sort_batch=descending)
+[gpusystem] 2025-12-17 17:23:41,298 (abs_task:1886) INFO: [train] mini-batch sizes summary: N-batch=1419, mean=60.3, min=26, max=337
+[gpusystem] 2025-12-17 17:23:41,337 (read_text:31) INFO: keys_to_load is not None, only loading 85617 keys from dump/raw/train_clean_100_sp/text
+[gpusystem] 2025-12-17 17:23:41,391 (asr:512) INFO: Optional Data Names: ('text_spk2', 'text_spk3', 'text_spk4', 'prompt')
+[gpusystem] 2025-12-17 17:23:41,392 (abs_task:1910) INFO: [train] dataset:
+ESPnetDataset(
+  speech: {"path": "dump/raw/train_clean_100_sp/wav.scp", "type": "kaldi_ark"}
+  text: {"path": "dump/raw/train_clean_100_sp/text", "type": "text"}
+  preprocess: <espnet2.train.preprocessor.CommonPreprocessor object at 0x7fbe47509840>)
+[gpusystem] 2025-12-17 17:23:41,414 (abs_task:1885) INFO: [valid] Batch sampler: NumElementsBatchSampler(N-batch=51, batch_bins=16000000, sort_in_batch=descending, sort_batch=descending)
+[gpusystem] 2025-12-17 17:23:41,414 (abs_task:1886) INFO: [valid] mini-batch sizes summary: N-batch=51, mean=108.8, min=23, max=315
+[gpusystem] 2025-12-17 17:23:41,416 (read_text:31) INFO: keys_to_load is not None, only loading 5551 keys from dump/raw/dev/text
+[gpusystem] 2025-12-17 17:23:41,419 (asr:512) INFO: Optional Data Names: ('text_spk2', 'text_spk3', 'text_spk4', 'prompt')
+[gpusystem] 2025-12-17 17:23:41,419 (abs_task:1910) INFO: [valid] dataset:
+ESPnetDataset(
+  speech: {"path": "dump/raw/dev/wav.scp", "type": "kaldi_ark"}
+  text: {"path": "dump/raw/dev/text", "type": "text"}
+  preprocess: <espnet2.train.preprocessor.CommonPreprocessor object at 0x7fbe3e69d8d0>)
+[gpusystem] 2025-12-17 17:23:41,424 (abs_task:1885) INFO: [plot_att] Batch sampler: UnsortedBatchSampler(N-batch=5551, batch_size=1, key_file=exp/asr_stats_raw_en_bpe1000_sp/valid/speech_shape, 
+[gpusystem] 2025-12-17 17:23:41,424 (abs_task:1886) INFO: [plot_att] mini-batch sizes summary: N-batch=3, mean=1.0, min=1, max=1
+[gpusystem] 2025-12-17 17:23:41,426 (read_text:31) INFO: keys_to_load is not None, only loading 3 keys from dump/raw/dev/text
+[gpusystem] 2025-12-17 17:23:41,429 (asr:512) INFO: Optional Data Names: ('text_spk2', 'text_spk3', 'text_spk4', 'prompt')
+[gpusystem] 2025-12-17 17:23:41,429 (abs_task:1910) INFO: [plot_att] dataset:
+ESPnetDataset(
+  speech: {"path": "dump/raw/dev/wav.scp", "type": "kaldi_ark"}
+  text: {"path": "dump/raw/dev/text", "type": "text"}
+  preprocess: <espnet2.train.preprocessor.CommonPreprocessor object at 0x7fbe3e69dfc0>)
+/home/gpuadmin/espnet/espnet2/train/trainer.py:219: FutureWarning: `torch.cuda.amp.GradScaler(args...)` is deprecated. Please use `torch.amp.GradScaler('cuda', args...)` instead.
+  scaler = GradScaler()
+[gpusystem] 2025-12-17 17:23:41,431 (trainer:336) INFO: 1/100epoch started
+Failed to import Flash Attention, using ESPnet default: No module named 'flash_attn'
+/home/gpuadmin/espnet/espnet2/train/trainer.py:638: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast(
+/home/gpuadmin/espnet/espnet2/asr/espnet_model.py:403: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast(self.autocast_frontend, dtype=autocast_type):
+╭───────────────────── Traceback (most recent call last) ──────────────────────╮
+│ /home/gpuadmin/anaconda3/envs/junghc/lib/python3.10/runpy.py:196 in          │
+│ _run_module_as_main                                                          │
+│                                                                              │
+│   193 │   main_globals = sys.modules["__main__"].__dict__                    │
+│   194 │   if alter_argv:                                                     │
+│   195 │   │   sys.argv[0] = mod_spec.origin                                  │
+│ ❱ 196 │   return _run_code(code, main_globals, None,                         │
+│   197 │   │   │   │   │    "__main__", mod_spec)                             │
+│   198                                                                        │
+│   199 def run_module(mod_name, init_globals=None,                            │
+│                                                                              │
+│ /home/gpuadmin/anaconda3/envs/junghc/lib/python3.10/runpy.py:86 in _run_code │
+│                                                                              │
+│    83 │   │   │   │   │      __loader__ = loader,                            │
+│    84 │   │   │   │   │      __package__ = pkg_name,                         │
+│    85 │   │   │   │   │      __spec__ = mod_spec)                            │
+│ ❱  86 │   exec(code, run_globals)                                            │
+│    87 │   return run_globals                                                 │
+│    88                                                                        │
+│    89 def _run_module_code(code, init_globals=None,                          │
+│                                                                              │
+│ /home/gpuadmin/espnet/espnet2/bin/asr_train.py:23 in <module>                │
+│                                                                              │
+│   20                                                                         │
+│   21                                                                         │
+│   22 if __name__ == "__main__":                                              │
+│ ❱ 23 │   main()                                                              │
+│   24                                                                         │
+│                                                                              │
+│ /home/gpuadmin/espnet/espnet2/bin/asr_train.py:19 in main                    │
+│                                                                              │
+│   16 │   │   │   │   > conf/train_asr.yaml                                   │
+│   17 │   │   % python asr_train.py --config conf/train_asr.yaml              │
+│   18 │   """                                                                 │
+│ ❱ 19 │   ASRTask.main(cmd=cmd)                                               │
+│   20                                                                         │
+│   21                                                                         │
+│   22 if __name__ == "__main__":                                              │
+│                                                                              │
+│ /home/gpuadmin/espnet/espnet2/tasks/abs_task.py:1281 in main                 │
+│                                                                              │
+│   1278 │   │   # "distributed" is decided using the other command args       │
+│   1279 │   │   resolve_distributed_mode(args)                                │
+│   1280 │   │   if not args.distributed or not args.multiprocessing_distribut │
+│ ❱ 1281 │   │   │   cls.main_worker(args)                                     │
+│   1282 │   │                                                                 │
+│   1283 │   │   else:                                                         │
+│   1284 │   │   │   assert args.ngpu > 1, args.ngpu                           │
+│                                                                              │
+│ /home/gpuadmin/espnet/espnet2/tasks/abs_task.py:1638 in main_worker          │
+│                                                                              │
+│   1635 │   │   │   │   │   distributed_option.init_deepspeed()               │
+│   1636 │   │   │                                                             │
+│   1637 │   │   │   trainer_options = cls.trainer.build_options(args)         │
+│ ❱ 1638 │   │   │   cls.trainer.run(                                          │
+│   1639 │   │   │   │   model=model,                                          │
+│   1640 │   │   │   │   optimizers=optimizers,                                │
+│   1641 │   │   │   │   schedulers=schedulers,                                │
+│                                                                              │
+│ /home/gpuadmin/espnet/espnet2/train/trainer.py:343 in run                    │
+│                                                                              │
+│   340 │   │   │   # 1. Train and validation for one-epoch                    │
+│   341 │   │   │   torch.cuda.empty_cache()                                   │
+│   342 │   │   │   with reporter.observe("train") as sub_reporter:            │
+│ ❱ 343 │   │   │   │   all_steps_are_invalid = cls.train_one_epoch(           │
+│   344 │   │   │   │   │   model=dp_model,                                    │
+│   345 │   │   │   │   │   optimizers=optimizers,                             │
+│   346 │   │   │   │   │   schedulers=schedulers,                             │
+│                                                                              │
+│ /home/gpuadmin/espnet/espnet2/train/trainer.py:643 in train_one_epoch        │
+│                                                                              │
+│   640 │   │   │   │   **autocast_args,                                       │
+│   641 │   │   │   ):                                                         │
+│   642 │   │   │   │   with reporter.measure_time("forward_time"):            │
+│ ❱ 643 │   │   │   │   │   retval = model(**batch)                            │
+│   644 │   │   │   │   │                                                      │
+│   645 │   │   │   │   │   # Note(kamo):                                      │
+│   646 │   │   │   │   │   # Supporting two patterns for the returned value f │
+│                                                                              │
+│ /home/gpuadmin/anaconda3/envs/junghc/lib/python3.10/site-packages/torch/nn/m │
+│ odules/module.py:1775 in _wrapped_call_impl                                  │
+│                                                                              │
+│   1772 │   │   if self._compiled_call_impl is not None:                      │
+│   1773 │   │   │   return self._compiled_call_impl(*args, **kwargs)  # type: │
+│   1774 │   │   else:                                                         │
+│ ❱ 1775 │   │   │   return self._call_impl(*args, **kwargs)                   │
+│   1776 │                                                                     │
+│   1777 │   # torchrec tests the code consistency with the following code     │
+│   1778 │   # fmt: off                                                        │
+│                                                                              │
+│ /home/gpuadmin/anaconda3/envs/junghc/lib/python3.10/site-packages/torch/nn/m │
+│ odules/module.py:1786 in _call_impl                                          │
+│                                                                              │
+│   1783 │   │   if not (self._backward_hooks or self._backward_pre_hooks or s │
+│   1784 │   │   │   │   or _global_backward_pre_hooks or _global_backward_hoo │
+│   1785 │   │   │   │   or _global_forward_hooks or _global_forward_pre_hooks │
+│ ❱ 1786 │   │   │   return forward_call(*args, **kwargs)                      │
+│   1787 │   │                                                                 │
+│   1788 │   │   result = None                                                 │
+│   1789 │   │   called_always_called_hooks = set()                            │
+│                                                                              │
+│ /home/gpuadmin/espnet/espnet2/asr/espnet_model.py:257 in forward             │
+│                                                                              │
+│   254 │   │   text = text[:, : text_lengths.max()]                           │
+│   255 │   │                                                                  │
+│   256 │   │   # 1. Encoder                                                   │
+│ ❱ 257 │   │   encoder_out, encoder_out_lens = self.encode(speech, speech_len │
+│   258 │   │   intermediate_outs = None                                       │
+│   259 │   │   if isinstance(encoder_out, tuple):                             │
+│   260 │   │   │   intermediate_outs = encoder_out[1]                         │
+│                                                                              │
+│ /home/gpuadmin/espnet/espnet2/asr/espnet_model.py:433 in encode              │
+│                                                                              │
+│   430 │   │   │   │   │   feats, feats_lengths, ctc=self.ctc                 │
+│   431 │   │   │   │   )                                                      │
+│   432 │   │   │   else:                                                      │
+│ ❱ 433 │   │   │   │   encoder_out, encoder_out_lens, _ = self.encoder(feats, │
+│   434 │   │                                                                  │
+│   435 │   │   intermediate_outs = None                                       │
+│   436 │   │   if isinstance(encoder_out, tuple):                             │
+│                                                                              │
+│ /home/gpuadmin/anaconda3/envs/junghc/lib/python3.10/site-packages/torch/nn/m │
+│ odules/module.py:1775 in _wrapped_call_impl                                  │
+│                                                                              │
+│   1772 │   │   if self._compiled_call_impl is not None:                      │
+│   1773 │   │   │   return self._compiled_call_impl(*args, **kwargs)  # type: │
+│   1774 │   │   else:                                                         │
+│ ❱ 1775 │   │   │   return self._call_impl(*args, **kwargs)                   │
+│   1776 │                                                                     │
+│   1777 │   # torchrec tests the code consistency with the following code     │
+│   1778 │   # fmt: off                                                        │
+│                                                                              │
+│ /home/gpuadmin/anaconda3/envs/junghc/lib/python3.10/site-packages/torch/nn/m │
+│ odules/module.py:1786 in _call_impl                                          │
+│                                                                              │
+│   1783 │   │   if not (self._backward_hooks or self._backward_pre_hooks or s │
+│   1784 │   │   │   │   or _global_backward_pre_hooks or _global_backward_hoo │
+│   1785 │   │   │   │   or _global_forward_hooks or _global_forward_pre_hooks │
+│ ❱ 1786 │   │   │   return forward_call(*args, **kwargs)                      │
+│   1787 │   │                                                                 │
+│   1788 │   │   result = None                                                 │
+│   1789 │   │   called_always_called_hooks = set()                            │
+│                                                                              │
+│ /home/gpuadmin/espnet/espnet2/asr/encoder/mamba_encoder.py:338 in forward    │
+│                                                                              │
+│   335 │   │   if len(self.interctc_layer_idx) == 0:                          │
+│   336 │   │   │   for layer_idx, encoder_layer in enumerate(self.encoders):  │
+│   337 │   │   │   │   # MambaCellBlock forward: (xs_pad, masks) -> (xs_pad,  │
+│ ❱ 338 │   │   │   │   xs_pad, masks = encoder_layer(xs_pad, masks)           │
+│   339 │   │   │   │                                                          │
+│   340 │   │   │   │   if return_all_hs:                                      │
+│   341 │   │   │   │   │   if isinstance(xs_pad, tuple):                      │
+│                                                                              │
+│ /home/gpuadmin/anaconda3/envs/junghc/lib/python3.10/site-packages/torch/nn/m │
+│ odules/module.py:1775 in _wrapped_call_impl                                  │
+│                                                                              │
+│   1772 │   │   if self._compiled_call_impl is not None:                      │
+│   1773 │   │   │   return self._compiled_call_impl(*args, **kwargs)  # type: │
+│   1774 │   │   else:                                                         │
+│ ❱ 1775 │   │   │   return self._call_impl(*args, **kwargs)                   │
+│   1776 │                                                                     │
+│   1777 │   # torchrec tests the code consistency with the following code     │
+│   1778 │   # fmt: off                                                        │
+│                                                                              │
+│ /home/gpuadmin/anaconda3/envs/junghc/lib/python3.10/site-packages/torch/nn/m │
+│ odules/module.py:1786 in _call_impl                                          │
+│                                                                              │
+│   1783 │   │   if not (self._backward_hooks or self._backward_pre_hooks or s │
+│   1784 │   │   │   │   or _global_backward_pre_hooks or _global_backward_hoo │
+│   1785 │   │   │   │   or _global_forward_hooks or _global_forward_pre_hooks │
+│ ❱ 1786 │   │   │   return forward_call(*args, **kwargs)                      │
+│   1787 │   │                                                                 │
+│   1788 │   │   result = None                                                 │
+│   1789 │   │   called_always_called_hooks = set()                            │
+│                                                                              │
+│ /home/gpuadmin/espnet/espnet2/asr/state_spaces/mamba_blocks.py:448 in        │
+│ forward                                                                      │
+│                                                                              │
+│   445 │   │   │   if self.normalize_before:                                  │
+│   446 │   │   │   │   x = self._apply_pre_norm(x, pre_norm)                  │
+│   447 │   │   │   # Apply module                                             │
+│ ❱ 448 │   │   │   x, masks = module(x, masks)                                │
+│   449 │   │   │   # Residual connection: add residual before module to outpu │
+│   450 │   │   │   if use_residual:                                           │
+│   451 │   │   │   │   x = residual + stoch_layer_coeff * x                   │
+│                                                                              │
+│ /home/gpuadmin/anaconda3/envs/junghc/lib/python3.10/site-packages/torch/nn/m │
+│ odules/module.py:1775 in _wrapped_call_impl                                  │
+│                                                                              │
+│   1772 │   │   if self._compiled_call_impl is not None:                      │
+│   1773 │   │   │   return self._compiled_call_impl(*args, **kwargs)  # type: │
+│   1774 │   │   else:                                                         │
+│ ❱ 1775 │   │   │   return self._call_impl(*args, **kwargs)                   │
+│   1776 │                                                                     │
+│   1777 │   # torchrec tests the code consistency with the following code     │
+│   1778 │   # fmt: off                                                        │
+│                                                                              │
+│ /home/gpuadmin/anaconda3/envs/junghc/lib/python3.10/site-packages/torch/nn/m │
+│ odules/module.py:1786 in _call_impl                                          │
+│                                                                              │
+│   1783 │   │   if not (self._backward_hooks or self._backward_pre_hooks or s │
+│   1784 │   │   │   │   or _global_backward_pre_hooks or _global_backward_hoo │
+│   1785 │   │   │   │   or _global_forward_hooks or _global_forward_pre_hooks │
+│ ❱ 1786 │   │   │   return forward_call(*args, **kwargs)                      │
+│   1787 │   │                                                                 │
+│   1788 │   │   result = None                                                 │
+│   1789 │   │   called_always_called_hooks = set()                            │
+│                                                                              │
+│ /home/gpuadmin/espnet/espnet2/asr/state_spaces/mamba_blocks.py:214 in        │
+│ forward                                                                      │
+│                                                                              │
+│   211 │   │   """                                                            │
+│   212 │   │   # BiMamba doesn't use masks in its forward pass                │
+│   213 │   │   # Apply masks after if needed                                  │
+│ ❱ 214 │   │   out = self.mamba(x)                                            │
+│   215 │   │   if masks is not None:                                          │
+│   216 │   │   │   # masks shape: (batch, 1, seq_len), need to transpose for  │
+│   217 │   │   │   out = out.masked_fill(~masks.squeeze(1).unsqueeze(-1), 0.0 │
+│                                                                              │
+│ /home/gpuadmin/anaconda3/envs/junghc/lib/python3.10/site-packages/torch/nn/m │
+│ odules/module.py:1775 in _wrapped_call_impl                                  │
+│                                                                              │
+│   1772 │   │   if self._compiled_call_impl is not None:                      │
+│   1773 │   │   │   return self._compiled_call_impl(*args, **kwargs)  # type: │
+│   1774 │   │   else:                                                         │
+│ ❱ 1775 │   │   │   return self._call_impl(*args, **kwargs)                   │
+│   1776 │                                                                     │
+│   1777 │   # torchrec tests the code consistency with the following code     │
+│   1778 │   # fmt: off                                                        │
+│                                                                              │
+│ /home/gpuadmin/anaconda3/envs/junghc/lib/python3.10/site-packages/torch/nn/m │
+│ odules/module.py:1786 in _call_impl                                          │
+│                                                                              │
+│   1783 │   │   if not (self._backward_hooks or self._backward_pre_hooks or s │
+│   1784 │   │   │   │   or _global_backward_pre_hooks or _global_backward_hoo │
+│   1785 │   │   │   │   or _global_forward_hooks or _global_forward_pre_hooks │
+│ ❱ 1786 │   │   │   return forward_call(*args, **kwargs)                      │
+│   1787 │   │                                                                 │
+│   1788 │   │   result = None                                                 │
+│   1789 │   │   called_always_called_hooks = set()                            │
+│                                                                              │
+│ /home/gpuadmin/espnet/espnet2/asr/state_spaces/bimamba.py:228 in forward     │
+│                                                                              │
+│   225 │   │   │   │   )                                                      │
+│   226 │   │   │   elif self.bimamba_type == "v2":                            │
+│   227 │   │   │   │   A_b = -torch.exp(self.A_b_log.float())                 │
+│ ❱ 228 │   │   │   │   out = mamba_inner_fn_no_out_proj(                      │
+│   229 │   │   │   │   │   xz,                                                │
+│   230 │   │   │   │   │   self.conv1d.weight,                                │
+│   231 │   │   │   │   │   self.conv1d.bias,                                  │
+│                                                                              │
+│ /home/gpuadmin/espnet/espnet2/asr/state_spaces/selective_scan_interface.py:6 │
+│ 37 in mamba_inner_fn_no_out_proj                                             │
+│                                                                              │
+│   634 │   A, B=None, C=None, D=None, delta_bias=None, B_proj_bias=None,      │
+│   635 │   C_proj_bias=None, delta_softplus=True                              │
+│   636 ):                                                                     │
+│ ❱ 637 │   return MambaInnerFnNoOutProj.apply(xz, conv1d_weight, conv1d_bias, │
+│   638 │   │   │   │   │   │   │     A, B, C, D, delta_bias, B_proj_bias, C_p │
+│   639                                                                        │
+│   640                                                                        │
+│                                                                              │
+│ /home/gpuadmin/anaconda3/envs/junghc/lib/python3.10/site-packages/torch/auto │
+│ grad/function.py:581 in apply                                                │
+│                                                                              │
+│   578 │   │   if not torch._C._are_functorch_transforms_active():            │
+│   579 │   │   │   # See NOTE: [functorch vjp and autograd interaction]       │
+│   580 │   │   │   args = _functorch.utils.unwrap_dead_wrappers(args)         │
+│ ❱ 581 │   │   │   return super().apply(*args, **kwargs)  # type: ignore[misc │
+│   582 │   │                                                                  │
+│   583 │   │   if not is_setup_ctx_defined:                                   │
+│   584 │   │   │   raise RuntimeError(                                        │
+│                                                                              │
+│ /home/gpuadmin/anaconda3/envs/junghc/lib/python3.10/site-packages/torch/amp/ │
+│ autocast_mode.py:527 in decorate_fwd                                         │
+│                                                                              │
+│   524 │   │   args[0]._dtype = torch.get_autocast_dtype(device_type)         │
+│   525 │   │   if cast_inputs is None:                                        │
+│   526 │   │   │   args[0]._fwd_used_autocast = torch.is_autocast_enabled(dev │
+│ ❱ 527 │   │   │   return fwd(*args, **kwargs)                                │
+│   528 │   │   else:                                                          │
+│   529 │   │   │   autocast_context = torch.is_autocast_enabled(device_type)  │
+│   530 │   │   │   args[0]._fwd_used_autocast = False                         │
+│                                                                              │
+│ /home/gpuadmin/espnet/espnet2/asr/state_spaces/selective_scan_interface.py:1 │
+│ 82 in forward                                                                │
+│                                                                              │
+│   179 │   │   conv1d_weight = rearrange(conv1d_weight, "d 1 w -> d w")       │
+│   180 │   │   x, z = xz.chunk(2, dim=1)                                      │
+│   181 │   │   conv1d_bias = conv1d_bias.contiguous() if conv1d_bias is not N │
+│ ❱ 182 │   │   conv1d_out = causal_conv1d_cuda.causal_conv1d_fwd(x, conv1d_we │
+│   183 │   │   # We're being very careful here about the layout, to avoid ext │
+│   184 │   │   # We want delta to have d as the slowest moving dimension      │
+│   185 │   │   # and L as the fastest moving dimension, since those are what  │
+╰──────────────────────────────────────────────────────────────────────────────╯
+TypeError: causal_conv1d_fwd(): incompatible function arguments. The following 
+argument types are supported:
+    1. (arg0: torch.Tensor, arg1: torch.Tensor, arg2: torch.Tensor | None, arg3:
+torch.Tensor | None, arg4: torch.Tensor | None, arg5: torch.Tensor, arg6: 
+torch.Tensor | None, arg7: bool) -> None
+
+Invoked with: tensor([[[ 8.8672e-01,  1.0625e+00, -8.5547e-01,  ...,  
+8.2422e-01,
+           9.5312e-01,  1.0859e+00],
+         [ 2.8906e-01,  3.1445e-01,  1.5991e-02,  ..., -1.7285e-01,
+           3.1055e-01, -3.2715e-02],
+         [-2.2461e-01, -1.9824e-01, -9.5215e-02,  ..., -1.0596e-01,
+          -5.6885e-02,  2.3193e-02],
+         ...,
+         [-8.5449e-02, -3.4961e-01,  1.3184e-01,  ..., -3.2617e-01,
+          -1.5137e-01, -1.6406e-01],
+         [ 1.3672e+00,  1.9219e+00,  8.2812e-01,  ...,  1.4844e+00,
+           1.3359e+00,  1.3906e+00],
+         [ 2.5586e-01,  3.8086e-01,  3.2031e-01,  ...,  5.1172e-01,
+          -1.9043e-01,  1.1914e-01]],
+
+        [[ 2.5391e-01,  4.9805e-02,  2.0410e-01,  ...,  3.0859e-01,
+           4.0039e-01,  4.3750e-01],
+         [ 2.6562e-01, -1.9287e-02, -4.6875e-01,  ..., -6.7578e-01,
+          -4.1016e-01, -5.6885e-02],
+         [-1.8262e-01,  1.0254e-02, -1.3184e-01,  ..., -9.3262e-02,
+          -3.2031e-01, -1.0498e-01],
+         ...,
+         [ 4.7070e-01,  6.1719e-01,  5.7422e-01,  ...,  4.0625e-01,
+           7.5391e-01,  6.5625e-01],
+         [ 1.6953e+00,  1.5859e+00,  1.6562e+00,  ...,  1.7891e+00,
+           1.7734e+00,  1.7734e+00],
+         [-3.2227e-01, -6.6016e-01, -3.2227e-01,  ..., -6.4453e-01,
+          -1.5625e-01, -3.7305e-01]],
+
+        [[ 4.2188e-01,  3.6328e-01,  3.9258e-01,  ...,  4.3164e-01,
+          -4.0771e-02,  3.5547e-01],
+         [ 4.3750e-01,  4.2773e-01, -6.2988e-02,  ...,  1.9287e-02,
+           1.6699e-01,  1.8848e-01],
+         [-3.3203e-01, -2.7930e-01, -2.3730e-01,  ..., -2.5195e-01,
+          -3.7305e-01, -2.4512e-01],
+         ...,
+         [ 5.1025e-02,  1.1377e-01,  1.3086e-01,  ..., -4.7607e-02,
+           1.9336e-01,  3.1836e-01],
+         [ 1.2188e+00,  1.4375e+00,  1.2891e+00,  ...,  9.3750e-01,
+           1.3203e+00,  1.0312e+00],
+         [ 1.6016e-01,  1.0107e-01, -6.1035e-02,  ...,  4.0625e-01,
+           3.9453e-01,  4.7852e-02]],
+
+        ...,
+
+        [[-4.8828e-02, -6.5918e-02,  4.3945e-02,  ...,  4.3945e-02,
+          -3.6133e-02,  2.0630e-02],
+         [ 1.4551e-01,  2.1289e-01,  1.6504e-01,  ..., -1.0205e-01,
+           1.4551e-01, -1.6797e-01],
+         [-4.4922e-01, -4.6094e-01, -4.2188e-01,  ..., -2.9688e-01,
+          -4.4531e-01, -3.8281e-01],
+         ...,
+         [-1.4551e-01,  2.4902e-01,  2.1680e-01,  ...,  3.6523e-01,
+           4.7461e-01, -8.8867e-02],
+         [ 6.5234e-01,  4.8633e-01,  7.6172e-01,  ...,  9.3750e-01,
+           1.0703e+00,  1.1641e+00],
+         [-3.4180e-01, -4.5312e-01, -1.6895e-01,  ..., -3.5156e-01,
+          -6.4062e-01, -3.0859e-01]],
+
+        [[ 7.1875e-01,  7.7734e-01,  6.5625e-01,  ...,  8.3594e-01,
+           9.9609e-01,  8.8281e-01],
+         [ 5.3516e-01,  8.7500e-01,  5.5078e-01,  ...,  7.7344e-01,
+           6.8750e-01,  3.7109e-01],
+         [ 2.4707e-01, -2.0447e-03, -8.7891e-02,  ...,  1.4258e-01,
+           2.5586e-01, -7.7057e-04],
+         ...,
+         [ 2.8516e-01,  4.3164e-01,  1.3965e-01,  ...,  2.5195e-01,
+           2.5586e-01,  1.8262e-01],
+         [ 1.3516e+00,  1.6172e+00,  1.5547e+00,  ...,  1.5781e+00,
+           1.5000e+00,  1.6719e+00],
+         [-1.7285e-01, -4.2578e-01, -1.9727e-01,  ..., -1.2695e-01,
+          -1.2695e-02, -1.3281e-01]],
+
+        [[-9.4922e-01, -7.1094e-01, -5.7031e-01,  ..., -5.4688e-01,
+          -7.5781e-01, -6.4453e-01],
+         [-3.2471e-02,  1.0156e-01,  3.4668e-02,  ..., -8.1543e-02,
+           2.3193e-02, -3.4961e-01],
+         [ 1.9531e-01,  6.8359e-01,  3.7891e-01,  ...,  3.6523e-01,
+           2.0605e-01, -1.0645e-01],
+         ...,
+         [ 2.2461e-01,  4.3164e-01,  5.1953e-01,  ...,  1.4648e-01,
+           5.1562e-01,  5.1172e-01],
+         [ 2.0996e-01,  4.4141e-01,  6.0938e-01,  ...,  5.0781e-01,
+           4.7852e-01,  4.5117e-01],
+         [ 9.1016e-01,  8.7500e-01,  5.7031e-01,  ...,  2.8711e-01,
+           6.9922e-01,  2.9102e-01]]], device='cuda:0', dtype=torch.bfloat16,
+       requires_grad=True), tensor([[ 0.0789,  0.3465,  0.0228, -0.1223],
+        [ 0.0255,  0.2388, -0.1767,  0.0824],
+        [-0.4512,  0.2501, -0.4447,  0.0531],
+        ...,
+        [ 0.4070, -0.3578,  0.1033,  0.3338],
+        [ 0.1980, -0.0034,  0.3529,  0.4442],
+        [ 0.0906,  0.1183,  0.1926,  0.0529]], device='cuda:0',
+       requires_grad=True), Parameter containing:
+tensor([ 4.4153e-01,  4.7363e-01, -4.4932e-01,  1.9291e-01, -4.0004e-01,
+        -7.3577e-02,  2.0603e-01, -3.0828e-01,  3.9299e-01,  3.5777e-01,
+        -2.0599e-01,  4.9898e-02, -1.4791e-01,  1.9612e-01,  1.1552e-01,
+         4.0504e-01, -4.1123e-01,  1.8675e-01, -5.9400e-02,  4.0681e-01,
+         1.3734e-01,  1.5096e-01,  4.6668e-01, -3.8503e-01,  1.9686e-01,
+        -1.4169e-02,  1.1351e-01, -3.0713e-01, -3.5744e-01, -1.9794e-01,
+        -4.7915e-02, -9.7262e-02, -7.6961e-02,  1.8304e-01, -5.4682e-02,
+        -2.2218e-01, -4.1439e-01, -6.4630e-02,  4.0000e-01, -1.7048e-01,
+        -2.1409e-01, -1.5131e-01,  1.6389e-01, -3.4533e-01,  2.4100e-01,
+        -1.3138e-01,  3.3367e-01,  1.1399e-01, -3.1685e-01, -1.4336e-01,
+        -8.6983e-02, -3.4851e-01, -2.8201e-01,  1.1576e-01, -4.7763e-01,
+         2.3473e-01, -3.7123e-01,  3.5282e-01,  4.3819e-01, -3.4481e-01,
+        -2.3071e-01,  3.4692e-01, -2.8401e-01, -4.8230e-01,  1.9956e-01,
+         7.3958e-02, -2.7558e-01,  3.2923e-01, -4.8400e-01,  2.5087e-01,
+        -5.0817e-02,  2.1535e-01, -5.8888e-02,  2.1898e-01, -1.6045e-02,
+        -3.3587e-01, -5.0854e-02,  4.9537e-02, -1.7951e-03, -1.0102e-01,
+         4.2970e-01,  3.2964e-01, -3.7715e-01,  3.2179e-01, -2.4287e-01,
+         3.1689e-01,  2.5716e-01,  4.6843e-01, -2.2954e-01,  1.1508e-01,
+         3.7252e-01,  2.3241e-01, -2.4330e-01, -4.2715e-01,  2.0754e-01,
+         4.8658e-01, -4.3403e-01, -1.3572e-01, -9.2332e-02,  9.2005e-02,
+         3.4646e-01, -1.4903e-01, -2.3921e-01,  3.9216e-01,  2.9603e-01,
+         3.6841e-01, -2.2453e-01,  8.8072e-02,  9.0255e-02,  3.6670e-01,
+        -1.1808e-01,  2.7277e-01,  3.0859e-02,  2.3161e-01, -3.8437e-01,
+         2.2613e-01, -4.7766e-01,  2.1935e-01,  9.8864e-03,  4.6457e-01,
+        -3.9363e-01, -2.3191e-02, -1.1618e-01, -1.6329e-01,  3.8264e-01,
+         3.1848e-01,  1.0117e-01,  3.4156e-02, -1.6643e-01,  3.2435e-01,
+        -3.1969e-01, -1.5626e-01, -1.2700e-01, -4.0066e-01, -3.8899e-01,
+         1.3698e-01, -4.1943e-01,  5.4724e-02, -1.5003e-01,  4.7569e-01,
+         2.8908e-01, -4.8468e-01, -3.8744e-01,  3.7149e-01, -3.5054e-02,
+        -1.3570e-02,  1.9924e-02,  1.7437e-01, -3.8456e-01,  4.3958e-01,
+        -1.5478e-02, -1.9619e-01,  4.1649e-01, -1.4464e-01, -3.3434e-02,
+        -4.2803e-01, -1.7632e-01, -7.2844e-02,  2.3491e-01,  6.4345e-02,
+         2.6932e-01,  1.8087e-01,  3.4646e-01, -4.2438e-01, -1.5628e-01,
+         4.5201e-01,  2.9530e-01, -1.3053e-01,  2.4820e-01,  4.7187e-01,
+        -3.8401e-01, -2.5775e-01,  3.2432e-01, -1.5739e-01, -8.9241e-03,
+        -1.1866e-01,  1.6689e-01,  1.2179e-01, -6.7027e-02,  2.9667e-01,
+        -4.5267e-01,  1.5868e-01, -2.4407e-01,  3.0357e-01,  3.9262e-01,
+         3.9503e-01, -4.5110e-01,  2.2923e-01,  1.4125e-01, -2.4275e-01,
+        -2.8023e-01, -4.1776e-01,  2.8300e-01, -4.2583e-01, -4.3834e-01,
+        -3.9262e-01,  2.0305e-01,  2.9696e-01, -3.4420e-01, -3.0494e-01,
+        -3.4406e-01, -4.5850e-02,  4.6838e-01,  1.7702e-01,  2.4678e-01,
+         1.3268e-01,  3.5754e-01,  2.5999e-01,  2.3436e-01, -3.4884e-01,
+        -4.3530e-01,  1.2331e-01, -1.4899e-01,  8.2800e-02,  4.6090e-01,
+         6.8714e-03,  4.7877e-01,  2.9302e-01, -1.9830e-01, -3.6166e-01,
+         4.3472e-01, -3.1987e-01,  3.6791e-01,  1.4067e-01, -1.5397e-01,
+        -2.2168e-01,  5.6644e-02, -1.2241e-01, -3.4445e-01,  1.4733e-01,
+         4.7947e-01,  7.0986e-02,  3.2486e-01,  1.9181e-01, -4.0748e-02,
+        -3.3385e-01,  6.2478e-02,  3.7878e-01, -1.2291e-01, -3.9310e-01,
+         4.7861e-03, -4.5689e-01, -3.7541e-01, -1.5505e-01, -1.9943e-01,
+         6.3283e-02,  7.0571e-02, -2.5287e-01,  2.3959e-01, -1.0932e-01,
+        -2.9591e-01, -1.4761e-01,  2.7046e-01,  4.4205e-01, -1.2545e-01,
+        -1.1765e-01, -1.7655e-01, -2.6549e-01, -3.3184e-01,  1.0989e-01,
+        -1.6119e-01,  4.3573e-01,  2.1264e-01,  2.7509e-01,  4.8883e-01,
+        -1.9094e-01, -2.0471e-01, -4.5195e-01,  4.9243e-01,  4.7827e-01,
+         1.4490e-01,  1.1111e-01, -4.4338e-01, -2.0319e-01,  1.8248e-01,
+        -3.7897e-01, -2.3028e-01,  2.0775e-01,  1.2517e-01,  4.5173e-01,
+        -2.0801e-01,  4.4979e-01, -2.4220e-01, -2.7154e-01, -9.0526e-02,
+        -2.0398e-01, -3.8226e-02,  3.1720e-01,  2.5120e-01, -4.9053e-01,
+        -1.4699e-01,  1.2299e-01,  7.9381e-02, -2.0197e-02, -4.4422e-01,
+        -1.1971e-01,  3.7814e-01, -5.0945e-02,  2.8962e-01, -4.5939e-02,
+         2.7653e-01, -3.2153e-01,  4.6927e-01, -2.0601e-01,  4.8749e-01,
+         1.9358e-03, -4.3781e-01,  3.5357e-02, -4.8223e-01, -4.5246e-01,
+         2.9492e-01, -3.9258e-01,  1.4564e-02, -2.7360e-01,  2.7567e-01,
+        -2.9534e-01, -1.9792e-01,  4.2018e-01, -2.2204e-01, -2.1960e-01,
+        -3.6853e-01,  2.2663e-01,  3.1202e-01,  1.4877e-02, -3.0829e-01,
+         1.8603e-01, -8.9951e-02, -3.8736e-02, -1.0893e-01,  4.5660e-01,
+        -4.7366e-01,  2.1575e-01, -4.6805e-02, -9.3234e-02,  4.8304e-02,
+        -2.9833e-01,  1.1405e-01, -2.4953e-01,  3.2977e-03, -3.2174e-01,
+         4.9067e-02, -1.7224e-01,  1.9231e-02,  4.9908e-01,  4.7117e-01,
+         4.7334e-01,  1.4224e-01, -1.2235e-02, -3.5251e-01, -3.9740e-01,
+         4.3648e-01, -1.0006e-01, -3.7070e-01, -3.2587e-01, -3.6300e-01,
+        -2.1674e-01,  3.9854e-02, -6.2673e-02, -3.1169e-01, -2.2671e-01,
+        -3.0229e-01,  3.1731e-01,  2.8466e-01,  3.6732e-01,  9.1129e-02,
+         3.9458e-01,  1.5412e-02,  3.4937e-01, -1.2495e-01,  2.9974e-01,
+         4.8859e-01,  7.4520e-02,  2.8909e-01, -2.9051e-01, -2.1741e-01,
+        -1.4889e-01, -4.3646e-02, -4.6890e-01,  3.1112e-01, -3.1876e-01,
+         2.2797e-01,  4.8297e-01, -3.6521e-01,  7.0889e-02, -3.6238e-02,
+         2.5888e-01,  2.2646e-01,  3.9368e-01, -4.9942e-01, -9.2866e-03,
+        -2.8596e-01,  2.1005e-02, -2.9748e-01, -1.4034e-01,  4.1505e-01,
+        -4.8397e-01, -2.3378e-02,  1.3641e-01,  8.8933e-02,  3.1697e-01,
+        -6.4059e-02, -1.8856e-02,  2.1540e-01, -1.9979e-01, -3.1178e-01,
+         2.6565e-01, -2.8417e-01,  1.7697e-01,  2.3736e-01, -3.3626e-01,
+         1.7140e-01, -2.2596e-02, -3.7801e-01,  3.0638e-01,  2.0589e-01,
+        -3.0442e-01, -3.4631e-01, -2.3557e-01, -4.1896e-01,  3.8120e-01,
+        -4.2235e-01, -4.3519e-01, -2.5355e-02,  1.4690e-01,  1.1247e-01,
+        -1.6327e-02,  3.1431e-01, -1.3068e-01, -2.7477e-01, -3.3946e-02,
+        -3.7392e-01,  1.9180e-01, -2.2512e-01,  1.1543e-01,  7.7833e-02,
+        -2.2436e-01, -1.3284e-01, -3.1097e-01, -8.9204e-02,  1.8792e-01,
+         3.7452e-01, -4.9458e-01, -4.6859e-01, -1.8134e-01, -9.2325e-02,
+        -4.5686e-01, -1.8744e-01,  1.6367e-01, -3.7129e-01,  4.9030e-01,
+         1.7326e-01, -1.2815e-01, -2.1391e-01,  1.7775e-01, -3.5056e-01,
+         4.6052e-01,  3.8476e-01,  4.6267e-01,  1.2754e-01,  3.4639e-01,
+        -2.1359e-01, -1.6713e-01, -4.3831e-01,  3.2231e-01, -1.1024e-01,
+         4.3401e-01,  1.6762e-01, -4.9426e-01,  4.1325e-01,  2.9192e-01,
+        -1.5630e-01, -2.6989e-01, -1.3944e-01, -2.0589e-01,  4.0845e-01,
+         2.9351e-01,  1.1098e-01,  2.8926e-01, -1.7635e-01, -2.9119e-01,
+         4.1715e-01, -1.5383e-01, -3.1347e-01, -5.1557e-02, -1.3943e-01,
+        -3.7199e-02,  9.4446e-02,  3.0873e-01,  4.6528e-01, -3.6275e-01,
+         4.9732e-01,  3.6519e-01, -2.9953e-01, -5.4613e-02, -4.1571e-01,
+        -8.5972e-02, -3.0695e-01,  3.9410e-01, -4.5028e-01, -4.2838e-04,
+        -3.7299e-01, -2.5376e-01, -2.2316e-01,  2.6891e-01,  2.2731e-01,
+        -1.3268e-01, -6.6397e-03,  1.3364e-01,  4.9522e-01,  1.4382e-01,
+         3.7783e-01,  7.1448e-02], device='cuda:0', requires_grad=True), None, 
+True
+# Accounting: time=11 threads=1
+# Ended (code 1) at Wed Dec 17 17:23:44 UTC 2025, elapsed time 11 seconds
+

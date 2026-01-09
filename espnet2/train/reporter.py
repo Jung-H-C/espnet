@@ -439,12 +439,21 @@ class Reporter:
                     if len(_message) != 0:
                         _message += ", "
                     if isinstance(v, float):
-                        if abs(v) > 1.0e3:
-                            _message += f"{key2}={v:.3e}"
-                        elif abs(v) > 1.0e-3:
-                            _message += f"{key2}={v:.3f}"
+                        # Learning rate 관련 키는 소수점 4자리까지 출력
+                        if "lr" in key2.lower() or "learning_rate" in key2.lower():
+                            if abs(v) > 1.0e3:
+                                _message += f"{key2}={v:.4e}"
+                            elif abs(v) > 1.0e-3:
+                                _message += f"{key2}={v:.4f}"
+                            else:
+                                _message += f"{key2}={v:.4e}"
                         else:
-                            _message += f"{key2}={v:.3e}"
+                            if abs(v) > 1.0e3:
+                                _message += f"{key2}={v:.3e}"
+                            elif abs(v) > 1.0e-3:
+                                _message += f"{key2}={v:.3f}"
+                            else:
+                                _message += f"{key2}={v:.3e}"
                     elif isinstance(v, datetime.timedelta):
                         _v = humanfriendly.format_timespan(v)
                         _message += f"{key2}={_v}"

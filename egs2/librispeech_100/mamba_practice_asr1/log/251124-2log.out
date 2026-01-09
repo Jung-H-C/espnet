@@ -1,0 +1,399 @@
+nohup: 입력 무시
+Updating module_config in conf/train_asr.yaml...
+Updated conf/train_asr.yaml with module_config:
+  Configuration: ['I', 'M', 'M', 'I', 'I', 'I']
+  Applied to 12 blocks
+YAML file updated successfully.
+2025-11-24T22:32:32 (asr.sh:285:main) ./asr.sh --lang en --ngpu 1 --nj 16 --gpu_inference true --inference_nj 6 --nbpe 1000 --max_wav_duration 30 --audio_format flac.ark --speed_perturb_factors 0.9 1.0 1.1 --feats_type raw --use_lm false --asr_config conf/train_asr.yaml --inference_config conf/decode_asr.yaml --train_set train_clean_100 --valid_set dev --test_sets test_clean test_other --inference_asr_model valid.cer_ctc.ave_5best.pth --lm_train_text data/train_clean_100/text --bpe_train_text data/train_clean_100/text --bpemode unigram --expdir exp/bpe_unigram --stage 5 --stop_stage 13
+2025-11-24T22:32:33 (asr.sh:566:main) Skipped stages:  6 7 8 9 14 15 
+2025-11-24T22:32:33 (asr.sh:879:main) Stage 5: Generate token_list from data/train_clean_100/text using BPE
+sentencepiece_trainer.cc(178) LOG(INFO) Running command: --input=data/en_token_list/bpe_unigram1000/train.txt --vocab_size=1000 --model_type=unigram --model_prefix=data/en_token_list/bpe_unigram1000/bpe --character_coverage=1.0 --input_sentence_size=100000000
+sentencepiece_trainer.cc(78) LOG(INFO) Starts training with : 
+trainer_spec {
+  input: data/en_token_list/bpe_unigram1000/train.txt
+  input_format: 
+  model_prefix: data/en_token_list/bpe_unigram1000/bpe
+  model_type: UNIGRAM
+  vocab_size: 1000
+  self_test_sample_size: 0
+  character_coverage: 1
+  input_sentence_size: 100000000
+  shuffle_input_sentence: 1
+  seed_sentencepiece_size: 1000000
+  shrinking_factor: 0.75
+  max_sentence_length: 4192
+  num_threads: 16
+  num_sub_iterations: 2
+  max_sentencepiece_length: 16
+  split_by_unicode_script: 1
+  split_by_number: 1
+  split_by_whitespace: 1
+  split_digits: 0
+  pretokenization_delimiter: 
+  treat_whitespace_as_suffix: 0
+  allow_whitespace_only_pieces: 0
+  required_chars: 
+  byte_fallback: 0
+  vocabulary_output_piece_score: 1
+  train_extremely_large_corpus: 0
+  seed_sentencepieces_file: 
+  hard_vocab_limit: 1
+  use_all_vocab: 0
+  unk_id: 0
+  bos_id: 1
+  eos_id: 2
+  pad_id: -1
+  unk_piece: <unk>
+  bos_piece: <s>
+  eos_piece: </s>
+  pad_piece: <pad>
+  unk_surface:  ⁇ 
+  enable_differential_privacy: 0
+  differential_privacy_noise_level: 0
+  differential_privacy_clipping_threshold: 0
+}
+normalizer_spec {
+  name: nmt_nfkc
+  add_dummy_prefix: 1
+  remove_extra_whitespaces: 1
+  escape_whitespaces: 1
+  normalization_rule_tsv: 
+}
+denormalizer_spec {}
+trainer_interface.cc(353) LOG(INFO) SentenceIterator is not specified. Using MultiFileSentenceIterator.
+trainer_interface.cc(185) LOG(INFO) Loading corpus: data/en_token_list/bpe_unigram1000/train.txt
+trainer_interface.cc(409) LOG(INFO) Loaded all 28539 sentences
+trainer_interface.cc(425) LOG(INFO) Adding meta_piece: <unk>
+trainer_interface.cc(425) LOG(INFO) Adding meta_piece: <s>
+trainer_interface.cc(425) LOG(INFO) Adding meta_piece: </s>
+trainer_interface.cc(430) LOG(INFO) Normalizing sentences...
+trainer_interface.cc(539) LOG(INFO) all chars count=5298357
+trainer_interface.cc(560) LOG(INFO) Alphabet size=28
+trainer_interface.cc(561) LOG(INFO) Final character coverage=1
+trainer_interface.cc(592) LOG(INFO) Done! preprocessed 28539 sentences.
+unigram_model_trainer.cc(265) LOG(INFO) Making suffix array...
+unigram_model_trainer.cc(269) LOG(INFO) Extracting frequent sub strings... node_num=2708328
+unigram_model_trainer.cc(312) LOG(INFO) Initialized 81579 seed sentencepieces
+trainer_interface.cc(598) LOG(INFO) Tokenizing input sentences with whitespace: 28539
+trainer_interface.cc(609) LOG(INFO) Done! 33798
+unigram_model_trainer.cc(602) LOG(INFO) Using 33798 sentences for EM training
+unigram_model_trainer.cc(618) LOG(INFO) EM sub_iter=0 size=28479 obj=9.30792 num_tokens=58684 num_tokens/piece=2.06061
+unigram_model_trainer.cc(618) LOG(INFO) EM sub_iter=1 size=21986 obj=7.5261 num_tokens=59016 num_tokens/piece=2.68425
+unigram_model_trainer.cc(618) LOG(INFO) EM sub_iter=0 size=16486 obj=7.47486 num_tokens=63690 num_tokens/piece=3.86328
+unigram_model_trainer.cc(618) LOG(INFO) EM sub_iter=1 size=16476 obj=7.45698 num_tokens=63683 num_tokens/piece=3.8652
+unigram_model_trainer.cc(618) LOG(INFO) EM sub_iter=0 size=12357 obj=7.55644 num_tokens=71995 num_tokens/piece=5.82625
+unigram_model_trainer.cc(618) LOG(INFO) EM sub_iter=1 size=12357 obj=7.53121 num_tokens=71996 num_tokens/piece=5.82633
+unigram_model_trainer.cc(618) LOG(INFO) EM sub_iter=0 size=9267 obj=7.68798 num_tokens=81493 num_tokens/piece=8.79389
+unigram_model_trainer.cc(618) LOG(INFO) EM sub_iter=1 size=9267 obj=7.65394 num_tokens=81504 num_tokens/piece=8.79508
+unigram_model_trainer.cc(618) LOG(INFO) EM sub_iter=0 size=6950 obj=7.859 num_tokens=90381 num_tokens/piece=13.0045
+unigram_model_trainer.cc(618) LOG(INFO) EM sub_iter=1 size=6950 obj=7.81806 num_tokens=90380 num_tokens/piece=13.0043
+unigram_model_trainer.cc(618) LOG(INFO) EM sub_iter=0 size=5212 obj=8.07325 num_tokens=99628 num_tokens/piece=19.1151
+unigram_model_trainer.cc(618) LOG(INFO) EM sub_iter=1 size=5212 obj=8.02418 num_tokens=99645 num_tokens/piece=19.1184
+unigram_model_trainer.cc(618) LOG(INFO) EM sub_iter=0 size=3909 obj=8.31513 num_tokens=107894 num_tokens/piece=27.6014
+unigram_model_trainer.cc(618) LOG(INFO) EM sub_iter=1 size=3909 obj=8.26077 num_tokens=107911 num_tokens/piece=27.6058
+unigram_model_trainer.cc(618) LOG(INFO) EM sub_iter=0 size=2931 obj=8.59246 num_tokens=115823 num_tokens/piece=39.5165
+unigram_model_trainer.cc(618) LOG(INFO) EM sub_iter=1 size=2931 obj=8.53221 num_tokens=115830 num_tokens/piece=39.5189
+unigram_model_trainer.cc(618) LOG(INFO) EM sub_iter=0 size=2198 obj=8.89174 num_tokens=123238 num_tokens/piece=56.0682
+unigram_model_trainer.cc(618) LOG(INFO) EM sub_iter=1 size=2198 obj=8.82851 num_tokens=123234 num_tokens/piece=56.0664
+unigram_model_trainer.cc(618) LOG(INFO) EM sub_iter=0 size=1648 obj=9.19828 num_tokens=129213 num_tokens/piece=78.4059
+unigram_model_trainer.cc(618) LOG(INFO) EM sub_iter=1 size=1648 obj=9.13463 num_tokens=129212 num_tokens/piece=78.4053
+unigram_model_trainer.cc(618) LOG(INFO) EM sub_iter=0 size=1236 obj=9.5313 num_tokens=134713 num_tokens/piece=108.991
+unigram_model_trainer.cc(618) LOG(INFO) EM sub_iter=1 size=1236 obj=9.46489 num_tokens=134729 num_tokens/piece=109.004
+unigram_model_trainer.cc(618) LOG(INFO) EM sub_iter=0 size=1100 obj=9.62863 num_tokens=137287 num_tokens/piece=124.806
+unigram_model_trainer.cc(618) LOG(INFO) EM sub_iter=1 size=1100 obj=9.59745 num_tokens=137297 num_tokens/piece=124.815
+trainer_interface.cc(687) LOG(INFO) Saving model: data/en_token_list/bpe_unigram1000/bpe.model
+trainer_interface.cc(699) LOG(INFO) Saving vocabs: data/en_token_list/bpe_unigram1000/bpe.vocab
+2025-11-24T22:32:35 (asr.sh:1191:main) Stage 10: ASR collect stats: train_set=dump/raw/train_clean_100_sp, valid_set=dump/raw/dev
+2025-11-24T22:32:36 (asr.sh:1242:main) Generate 'exp/bpe_unigram/asr_stats_raw_en_bpe1000_sp/run.sh'. You can resume the process from stage 10 using this script
+2025-11-24T22:32:36 (asr.sh:1246:main) ASR collect-stats started... log: 'exp/bpe_unigram/asr_stats_raw_en_bpe1000_sp/logdir/stats.*.log'
+/home/bossjung/anaconda3/envs/espnet/bin/python3 /home/bossjung/espnet/espnet/espnet2/bin/aggregate_stats_dirs.py --input_dir exp/bpe_unigram/asr_stats_raw_en_bpe1000_sp/logdir/stats.1 --input_dir exp/bpe_unigram/asr_stats_raw_en_bpe1000_sp/logdir/stats.2 --input_dir exp/bpe_unigram/asr_stats_raw_en_bpe1000_sp/logdir/stats.3 --input_dir exp/bpe_unigram/asr_stats_raw_en_bpe1000_sp/logdir/stats.4 --input_dir exp/bpe_unigram/asr_stats_raw_en_bpe1000_sp/logdir/stats.5 --input_dir exp/bpe_unigram/asr_stats_raw_en_bpe1000_sp/logdir/stats.6 --input_dir exp/bpe_unigram/asr_stats_raw_en_bpe1000_sp/logdir/stats.7 --input_dir exp/bpe_unigram/asr_stats_raw_en_bpe1000_sp/logdir/stats.8 --input_dir exp/bpe_unigram/asr_stats_raw_en_bpe1000_sp/logdir/stats.9 --input_dir exp/bpe_unigram/asr_stats_raw_en_bpe1000_sp/logdir/stats.10 --input_dir exp/bpe_unigram/asr_stats_raw_en_bpe1000_sp/logdir/stats.11 --input_dir exp/bpe_unigram/asr_stats_raw_en_bpe1000_sp/logdir/stats.12 --input_dir exp/bpe_unigram/asr_stats_raw_en_bpe1000_sp/logdir/stats.13 --input_dir exp/bpe_unigram/asr_stats_raw_en_bpe1000_sp/logdir/stats.14 --input_dir exp/bpe_unigram/asr_stats_raw_en_bpe1000_sp/logdir/stats.15 --input_dir exp/bpe_unigram/asr_stats_raw_en_bpe1000_sp/logdir/stats.16 --output_dir exp/bpe_unigram/asr_stats_raw_en_bpe1000_sp
+2025-11-24T22:36:25 (asr.sh:1310:main) Stage 11: ASR Training: train_set=dump/raw/train_clean_100_sp, valid_set=dump/raw/dev
+2025-11-24T22:36:25 (asr.sh:1409:main) Generate 'exp/bpe_unigram/asr_train_asr_raw_en_bpe1000_sp/run.sh'. You can resume the process from stage 11 using this script
+2025-11-24T22:36:25 (asr.sh:1413:main) ASR training started... log: 'exp/bpe_unigram/asr_train_asr_raw_en_bpe1000_sp/train.log'
+2025-11-24T22:36:25 (asr.sh:1451:main) Use ESPnet trainer
+2025-11-24 22:36:25,564 (launch:94) INFO: /home/bossjung/anaconda3/envs/espnet/bin/python3 /home/bossjung/espnet/espnet/espnet2/bin/launch.py --cmd 'run.pl --name exp/bpe_unigram/asr_train_asr_raw_en_bpe1000_sp/train.log' --log exp/bpe_unigram/asr_train_asr_raw_en_bpe1000_sp/train.log --ngpu 1 --num_nodes 1 --init_file_prefix exp/bpe_unigram/asr_train_asr_raw_en_bpe1000_sp/.dist_init_ --multiprocessing_distributed true -- python3 -m espnet2.bin.asr_train --use_preprocessor true --bpemodel data/en_token_list/bpe_unigram1000/bpe.model --token_type bpe --token_list data/en_token_list/bpe_unigram1000/tokens.txt --non_linguistic_symbols none --cleaner none --g2p none --valid_data_path_and_name_and_type dump/raw/dev/wav.scp,speech,kaldi_ark --valid_shape_file exp/bpe_unigram/asr_stats_raw_en_bpe1000_sp/valid/speech_shape --resume true --ignore_init_mismatch false --fold_length 80000 --output_dir exp/bpe_unigram/asr_train_asr_raw_en_bpe1000_sp --config conf/train_asr.yaml --frontend_conf fs=16k --normalize=global_mvn --normalize_conf stats_file=exp/bpe_unigram/asr_stats_raw_en_bpe1000_sp/train/feats_stats.npz --train_data_path_and_name_and_type dump/raw/train_clean_100_sp/wav.scp,speech,kaldi_ark --train_shape_file exp/bpe_unigram/asr_stats_raw_en_bpe1000_sp/train/speech_shape --fold_length 150 --train_data_path_and_name_and_type dump/raw/train_clean_100_sp/text,text,text --train_shape_file exp/bpe_unigram/asr_stats_raw_en_bpe1000_sp/train/text_shape.bpe --valid_data_path_and_name_and_type dump/raw/dev/text,text,text --valid_shape_file exp/bpe_unigram/asr_stats_raw_en_bpe1000_sp/valid/text_shape.bpe
+2025-11-24 22:36:25,581 (launch:348) INFO: log file: exp/bpe_unigram/asr_train_asr_raw_en_bpe1000_sp/train.log
+2025-11-25T03:37:35 (asr.sh:1513:main) Stage 12: Decoding: training_dir=exp/bpe_unigram/asr_train_asr_raw_en_bpe1000_sp
+2025-11-25T03:37:35 (asr.sh:1541:main) Generate 'exp/bpe_unigram/asr_train_asr_raw_en_bpe1000_sp/decode_asr_asr_model_valid.cer_ctc.ave_5best/run.sh'. You can resume the process from stage 12 using this script
+2025-11-25T03:37:35 (asr.sh:1606:main) Decoding started... log: 'exp/bpe_unigram/asr_train_asr_raw_en_bpe1000_sp/decode_asr_asr_model_valid.cer_ctc.ave_5best/test_clean/logdir/asr_inference.*.log'
+2025-11-25T04:39:31 (asr.sh:1622:main) Calculating RTF & latency... log: 'exp/bpe_unigram/asr_train_asr_raw_en_bpe1000_sp/decode_asr_asr_model_valid.cer_ctc.ave_5best/test_clean/logdir/calculate_rtf.log'
+2025-11-25T04:39:31 (asr.sh:1606:main) Decoding started... log: 'exp/bpe_unigram/asr_train_asr_raw_en_bpe1000_sp/decode_asr_asr_model_valid.cer_ctc.ave_5best/test_other/logdir/asr_inference.*.log'
+2025-11-25T05:33:39 (asr.sh:1622:main) Calculating RTF & latency... log: 'exp/bpe_unigram/asr_train_asr_raw_en_bpe1000_sp/decode_asr_asr_model_valid.cer_ctc.ave_5best/test_other/logdir/calculate_rtf.log'
+2025-11-25T05:33:40 (asr.sh:1654:main) Stage 13: Scoring
+/home/bossjung/anaconda3/envs/espnet/bin/python3 /home/bossjung/espnet/espnet/espnet2/bin/tokenize_text.py -f 2- --input - --output - --cleaner none --token_type char --non_linguistic_symbols none --remove_non_linguistic_symbols true
+/home/bossjung/anaconda3/envs/espnet/bin/python3 /home/bossjung/espnet/espnet/espnet2/bin/tokenize_text.py -f 2- --input - --output - --token_type char --non_linguistic_symbols none --remove_non_linguistic_symbols true --cleaner none
+2025-11-25T05:33:57 (asr.sh:1744:main) Write cer result in exp/bpe_unigram/asr_train_asr_raw_en_bpe1000_sp/decode_asr_asr_model_valid.cer_ctc.ave_5best/test_clean/score_cer/result.txt
+|    SPKR      |    # Snt        # Wrd     |    Corr          Sub          Del          Ins           Err        S.Err    |
+|    Sum/Avg   |    2620        281530     |    96.0          1.9          2.2          1.5           5.6         80.9    |
+/home/bossjung/anaconda3/envs/espnet/bin/python3 /home/bossjung/espnet/espnet/espnet2/bin/tokenize_text.py -f 2- --input - --output - --cleaner none --token_type word --non_linguistic_symbols none --remove_non_linguistic_symbols true
+/home/bossjung/anaconda3/envs/espnet/bin/python3 /home/bossjung/espnet/espnet/espnet2/bin/tokenize_text.py -f 2- --input - --output - --token_type word --non_linguistic_symbols none --remove_non_linguistic_symbols true --cleaner none
+2025-11-25T05:34:07 (asr.sh:1744:main) Write wer result in exp/bpe_unigram/asr_train_asr_raw_en_bpe1000_sp/decode_asr_asr_model_valid.cer_ctc.ave_5best/test_clean/score_wer/result.txt
+|    SPKR      |    # Snt        # Wrd     |    Corr          Sub          Del          Ins           Err        S.Err    |
+|    Sum/Avg   |    2620         52576     |    87.4         11.3          1.3          1.4          14.0         80.9    |
+/home/bossjung/anaconda3/envs/espnet/bin/python3 /home/bossjung/espnet/espnet/espnet2/bin/tokenize_text.py -f 2- --input - --output - --cleaner none --token_type bpe --bpemodel data/en_token_list/bpe_unigram1000/bpe.model
+/home/bossjung/anaconda3/envs/espnet/bin/python3 /home/bossjung/espnet/espnet/espnet2/bin/tokenize_text.py -f 2- --input - --output - --token_type bpe --bpemodel data/en_token_list/bpe_unigram1000/bpe.model --cleaner none
+2025-11-25T05:34:18 (asr.sh:1744:main) Write ter result in exp/bpe_unigram/asr_train_asr_raw_en_bpe1000_sp/decode_asr_asr_model_valid.cer_ctc.ave_5best/test_clean/score_ter/result.txt
+|    SPKR      |    # Snt        # Wrd     |    Corr          Sub          Del          Ins           Err        S.Err    |
+|    Sum/Avg   |    2620         91004     |    89.4          7.2          3.5          1.5          12.1         80.9    |
+/home/bossjung/anaconda3/envs/espnet/bin/python3 /home/bossjung/espnet/espnet/espnet2/bin/tokenize_text.py -f 2- --input - --output - --cleaner none --token_type char --non_linguistic_symbols none --remove_non_linguistic_symbols true
+/home/bossjung/anaconda3/envs/espnet/bin/python3 /home/bossjung/espnet/espnet/espnet2/bin/tokenize_text.py -f 2- --input - --output - --token_type char --non_linguistic_symbols none --remove_non_linguistic_symbols true --cleaner none
+2025-11-25T05:34:34 (asr.sh:1744:main) Write cer result in exp/bpe_unigram/asr_train_asr_raw_en_bpe1000_sp/decode_asr_asr_model_valid.cer_ctc.ave_5best/test_other/score_cer/result.txt
+|    SPKR      |    # Snt        # Wrd     |    Corr          Sub          Del          Ins           Err        S.Err    |
+|    Sum/Avg   |    2939        272758     |    86.4          7.1          6.5          4.1          17.7         95.5    |
+/home/bossjung/anaconda3/envs/espnet/bin/python3 /home/bossjung/espnet/espnet/espnet2/bin/tokenize_text.py -f 2- --input - --output - --cleaner none --token_type word --non_linguistic_symbols none --remove_non_linguistic_symbols true
+/home/bossjung/anaconda3/envs/espnet/bin/python3 /home/bossjung/espnet/espnet/espnet2/bin/tokenize_text.py -f 2- --input - --output - --token_type word --non_linguistic_symbols none --remove_non_linguistic_symbols true --cleaner none
+2025-11-25T05:34:44 (asr.sh:1744:main) Write wer result in exp/bpe_unigram/asr_train_asr_raw_en_bpe1000_sp/decode_asr_asr_model_valid.cer_ctc.ave_5best/test_other/score_wer/result.txt
+|    SPKR      |    # Snt        # Wrd     |    Corr          Sub          Del          Ins           Err        S.Err    |
+|    Sum/Avg   |    2939         52343     |    68.6         27.4          4.0          3.8          35.1         95.5    |
+/home/bossjung/anaconda3/envs/espnet/bin/python3 /home/bossjung/espnet/espnet/espnet2/bin/tokenize_text.py -f 2- --input - --output - --cleaner none --token_type bpe --bpemodel data/en_token_list/bpe_unigram1000/bpe.model
+/home/bossjung/anaconda3/envs/espnet/bin/python3 /home/bossjung/espnet/espnet/espnet2/bin/tokenize_text.py -f 2- --input - --output - --token_type bpe --bpemodel data/en_token_list/bpe_unigram1000/bpe.model --cleaner none
+2025-11-25T05:34:55 (asr.sh:1744:main) Write ter result in exp/bpe_unigram/asr_train_asr_raw_en_bpe1000_sp/decode_asr_asr_model_valid.cer_ctc.ave_5best/test_other/score_ter/result.txt
+|    SPKR      |    # Snt        # Wrd     |    Corr          Sub          Del          Ins           Err        S.Err    |
+|    Sum/Avg   |    2939         87728     |    71.5         20.7          7.8          4.4          32.8         95.5    |
+<!-- Generated by scripts/utils/show_asr_result.sh -->
+# RESULTS
+## Environments
+- date: `Tue Nov 25 05:34:56 KST 2025`
+- python version: `3.9.19 (tags/v3.9.19-26-g2d3a350f043-dirty:2d3a350f043, May 25 2024, 00:41:40)  [GCC 13.2.0]`
+- espnet version: `espnet 202509`
+- pytorch version: `pytorch 2.7.1+cu126`
+- Git hash: `849b210c2d326867afdf73d0460de7ee2d5dcf6f`
+  - Commit date: `Wed Oct 8 07:31:40 2025 -0400`
+
+## exp/bpe_unigram/asr_train_asr_raw_en_bpe1000_sp
+### WER
+
+|dataset|Snt|Wrd|Corr|Sub|Del|Ins|Err|S.Err|
+|---|---|---|---|---|---|---|---|---|
+|decode_asr_asr_model_valid.cer_ctc.ave_5best/test_clean|2620|52576|87.4|11.3|1.3|1.4|14.0|80.9|
+|decode_asr_asr_model_valid.cer_ctc.ave_5best/test_other|2939|52343|68.6|27.4|4.0|3.8|35.1|95.5|
+
+### CER
+
+|dataset|Snt|Wrd|Corr|Sub|Del|Ins|Err|S.Err|
+|---|---|---|---|---|---|---|---|---|
+|decode_asr_asr_model_valid.cer_ctc.ave_5best/test_clean|2620|281530|96.0|1.9|2.2|1.5|5.6|80.9|
+|decode_asr_asr_model_valid.cer_ctc.ave_5best/test_other|2939|272758|86.4|7.1|6.5|4.1|17.7|95.5|
+
+### TER
+
+|dataset|Snt|Wrd|Corr|Sub|Del|Ins|Err|S.Err|
+|---|---|---|---|---|---|---|---|---|
+|decode_asr_asr_model_valid.cer_ctc.ave_5best/test_clean|2620|91004|89.4|7.2|3.5|1.5|12.1|80.9|
+|decode_asr_asr_model_valid.cer_ctc.ave_5best/test_other|2939|87728|71.5|20.7|7.8|4.4|32.8|95.5|
+
+2025-11-25T05:34:57 (asr.sh:1842:main) Successfully finished. [elapsed=25345s]
+Updating module_config in conf/train_asr.yaml...
+Updated conf/train_asr.yaml with module_config:
+  Configuration: ['I', 'M', 'M', 'I', 'I', 'I']
+  Applied to 12 blocks
+YAML file updated successfully.
+2025-11-25T05:34:57 (asr.sh:285:main) ./asr.sh --lang en --ngpu 1 --nj 16 --gpu_inference true --inference_nj 6 --nbpe 1000 --max_wav_duration 30 --audio_format flac.ark --speed_perturb_factors 0.9 1.0 1.1 --feats_type raw --use_lm false --asr_config conf/train_asr.yaml --inference_config conf/decode_asr.yaml --train_set train_clean_100 --valid_set dev --test_sets test_clean test_other --inference_asr_model valid.cer_ctc.ave_5best.pth --lm_train_text data/train_clean_100/text --bpe_train_text data/train_clean_100/text --bpemode bpe --expdir exp/bpe_true_bpe --stage 5 --stop_stage 13
+2025-11-25T05:34:58 (asr.sh:566:main) Skipped stages:  6 7 8 9 14 15 
+2025-11-25T05:34:58 (asr.sh:879:main) Stage 5: Generate token_list from data/train_clean_100/text using BPE
+sentencepiece_trainer.cc(178) LOG(INFO) Running command: --input=data/en_token_list/bpe_bpe1000/train.txt --vocab_size=1000 --model_type=bpe --model_prefix=data/en_token_list/bpe_bpe1000/bpe --character_coverage=1.0 --input_sentence_size=100000000
+sentencepiece_trainer.cc(78) LOG(INFO) Starts training with : 
+trainer_spec {
+  input: data/en_token_list/bpe_bpe1000/train.txt
+  input_format: 
+  model_prefix: data/en_token_list/bpe_bpe1000/bpe
+  model_type: BPE
+  vocab_size: 1000
+  self_test_sample_size: 0
+  character_coverage: 1
+  input_sentence_size: 100000000
+  shuffle_input_sentence: 1
+  seed_sentencepiece_size: 1000000
+  shrinking_factor: 0.75
+  max_sentence_length: 4192
+  num_threads: 16
+  num_sub_iterations: 2
+  max_sentencepiece_length: 16
+  split_by_unicode_script: 1
+  split_by_number: 1
+  split_by_whitespace: 1
+  split_digits: 0
+  pretokenization_delimiter: 
+  treat_whitespace_as_suffix: 0
+  allow_whitespace_only_pieces: 0
+  required_chars: 
+  byte_fallback: 0
+  vocabulary_output_piece_score: 1
+  train_extremely_large_corpus: 0
+  seed_sentencepieces_file: 
+  hard_vocab_limit: 1
+  use_all_vocab: 0
+  unk_id: 0
+  bos_id: 1
+  eos_id: 2
+  pad_id: -1
+  unk_piece: <unk>
+  bos_piece: <s>
+  eos_piece: </s>
+  pad_piece: <pad>
+  unk_surface:  ⁇ 
+  enable_differential_privacy: 0
+  differential_privacy_noise_level: 0
+  differential_privacy_clipping_threshold: 0
+}
+normalizer_spec {
+  name: nmt_nfkc
+  add_dummy_prefix: 1
+  remove_extra_whitespaces: 1
+  escape_whitespaces: 1
+  normalization_rule_tsv: 
+}
+denormalizer_spec {}
+trainer_interface.cc(353) LOG(INFO) SentenceIterator is not specified. Using MultiFileSentenceIterator.
+trainer_interface.cc(185) LOG(INFO) Loading corpus: data/en_token_list/bpe_bpe1000/train.txt
+trainer_interface.cc(409) LOG(INFO) Loaded all 28539 sentences
+trainer_interface.cc(425) LOG(INFO) Adding meta_piece: <unk>
+trainer_interface.cc(425) LOG(INFO) Adding meta_piece: <s>
+trainer_interface.cc(425) LOG(INFO) Adding meta_piece: </s>
+trainer_interface.cc(430) LOG(INFO) Normalizing sentences...
+trainer_interface.cc(539) LOG(INFO) all chars count=5298357
+trainer_interface.cc(560) LOG(INFO) Alphabet size=28
+trainer_interface.cc(561) LOG(INFO) Final character coverage=1
+trainer_interface.cc(592) LOG(INFO) Done! preprocessed 28539 sentences.
+trainer_interface.cc(598) LOG(INFO) Tokenizing input sentences with whitespace: 28539
+trainer_interface.cc(609) LOG(INFO) Done! 33798
+bpe_model_trainer.cc(159) LOG(INFO) Updating active symbols. max_freq=157082 min_freq=1
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=37196 size=20 all=1112 active=1084 piece=AT
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=24074 size=40 all=2069 active=2041 piece=LL
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=12187 size=60 all=2896 active=2868 piece=SE
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=9604 size=80 all=3953 active=3925 piece=ITH
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=6555 size=100 all=4781 active=4753 piece=▁BUT
+bpe_model_trainer.cc(159) LOG(INFO) Updating active symbols. max_freq=6515 min_freq=416
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=5140 size=120 all=5643 active=1859 piece=ALL
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=4320 size=140 all=6299 active=2515 piece=▁WERE
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=3637 size=160 all=7105 active=3321 piece=EST
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=3088 size=180 all=8110 active=4326 piece=ART
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=2776 size=200 all=8936 active=5152 piece=EM
+bpe_model_trainer.cc(159) LOG(INFO) Updating active symbols. max_freq=2736 min_freq=389
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=2466 size=220 all=9944 active=1931 piece=▁AR
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=2231 size=240 all=10471 active=2458 piece=▁TW
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=2014 size=260 all=11159 active=3146 piece=VED
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=1807 size=280 all=11842 active=3829 piece=▁IM
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=1697 size=300 all=12449 active=4436 piece=▁ABOUT
+bpe_model_trainer.cc(159) LOG(INFO) Updating active symbols. max_freq=1695 min_freq=326
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=1580 size=320 all=13047 active=1599 piece=▁AGAIN
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=1468 size=340 all=13490 active=2042 piece=ERED
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=1342 size=360 all=13921 active=2473 piece=INGS
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=1254 size=380 all=14510 active=3062 piece=FUL
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=1182 size=400 all=15038 active=3590 piece=▁SC
+bpe_model_trainer.cc(159) LOG(INFO) Updating active symbols. max_freq=1180 min_freq=288
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=1084 size=420 all=15559 active=1479 piece=▁COME
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=1039 size=440 all=16068 active=1988 piece=OSS
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=955 size=460 all=16509 active=2429 piece=▁WENT
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=896 size=480 all=16983 active=2903 piece=▁EYES
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=844 size=500 all=17139 active=3059 piece=▁BEING
+bpe_model_trainer.cc(159) LOG(INFO) Updating active symbols. max_freq=842 min_freq=254
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=771 size=520 all=17636 active=1498 piece=IBLE
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=730 size=540 all=18132 active=1994 piece=▁ROOM
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=704 size=560 all=18416 active=2278 piece=GET
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=682 size=580 all=18720 active=2582 piece=▁COUR
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=653 size=600 all=19002 active=2864 piece=JECT
+bpe_model_trainer.cc(159) LOG(INFO) Updating active symbols. max_freq=653 min_freq=229
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=633 size=620 all=19301 active=1268 piece=▁MIND
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=606 size=640 all=19564 active=1531 piece=IA
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=579 size=660 all=20058 active=2025 piece=▁WA
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=564 size=680 all=20345 active=2312 piece=▁MA
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=547 size=700 all=20658 active=2625 piece=▁FORM
+bpe_model_trainer.cc(159) LOG(INFO) Updating active symbols. max_freq=545 min_freq=204
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=522 size=720 all=20925 active=1289 piece=TING
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=509 size=740 all=21257 active=1621 piece=▁GOT
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=493 size=760 all=21645 active=2009 piece=▁BETW
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=482 size=780 all=21831 active=2195 piece=▁DRA
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=466 size=800 all=22160 active=2524 piece=▁CHE
+bpe_model_trainer.cc(159) LOG(INFO) Updating active symbols. max_freq=466 min_freq=175
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=456 size=820 all=22431 active=1357 piece=▁NAME
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=441 size=840 all=22792 active=1718 piece=▁QUITE
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=429 size=860 all=22968 active=1894 piece=▁SENT
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=416 size=880 all=23209 active=2135 piece=NOT
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=407 size=900 all=23582 active=2508 piece=▁POWER
+bpe_model_trainer.cc(159) LOG(INFO) Updating active symbols. max_freq=407 min_freq=153
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=392 size=920 all=23745 active=1340 piece=URED
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=381 size=940 all=24064 active=1659 piece=RESSED
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=366 size=960 all=24282 active=1877 piece=▁SERV
+trainer_interface.cc(687) LOG(INFO) Saving model: data/en_token_list/bpe_bpe1000/bpe.model
+trainer_interface.cc(699) LOG(INFO) Saving vocabs: data/en_token_list/bpe_bpe1000/bpe.vocab
+2025-11-25T05:34:58 (asr.sh:1191:main) Stage 10: ASR collect stats: train_set=dump/raw/train_clean_100_sp, valid_set=dump/raw/dev
+2025-11-25T05:34:58 (asr.sh:1242:main) Generate 'exp/bpe_true_bpe/asr_stats_raw_en_bpe1000_sp/run.sh'. You can resume the process from stage 10 using this script
+2025-11-25T05:34:58 (asr.sh:1246:main) ASR collect-stats started... log: 'exp/bpe_true_bpe/asr_stats_raw_en_bpe1000_sp/logdir/stats.*.log'
+/home/bossjung/anaconda3/envs/espnet/bin/python3 /home/bossjung/espnet/espnet/espnet2/bin/aggregate_stats_dirs.py --input_dir exp/bpe_true_bpe/asr_stats_raw_en_bpe1000_sp/logdir/stats.1 --input_dir exp/bpe_true_bpe/asr_stats_raw_en_bpe1000_sp/logdir/stats.2 --input_dir exp/bpe_true_bpe/asr_stats_raw_en_bpe1000_sp/logdir/stats.3 --input_dir exp/bpe_true_bpe/asr_stats_raw_en_bpe1000_sp/logdir/stats.4 --input_dir exp/bpe_true_bpe/asr_stats_raw_en_bpe1000_sp/logdir/stats.5 --input_dir exp/bpe_true_bpe/asr_stats_raw_en_bpe1000_sp/logdir/stats.6 --input_dir exp/bpe_true_bpe/asr_stats_raw_en_bpe1000_sp/logdir/stats.7 --input_dir exp/bpe_true_bpe/asr_stats_raw_en_bpe1000_sp/logdir/stats.8 --input_dir exp/bpe_true_bpe/asr_stats_raw_en_bpe1000_sp/logdir/stats.9 --input_dir exp/bpe_true_bpe/asr_stats_raw_en_bpe1000_sp/logdir/stats.10 --input_dir exp/bpe_true_bpe/asr_stats_raw_en_bpe1000_sp/logdir/stats.11 --input_dir exp/bpe_true_bpe/asr_stats_raw_en_bpe1000_sp/logdir/stats.12 --input_dir exp/bpe_true_bpe/asr_stats_raw_en_bpe1000_sp/logdir/stats.13 --input_dir exp/bpe_true_bpe/asr_stats_raw_en_bpe1000_sp/logdir/stats.14 --input_dir exp/bpe_true_bpe/asr_stats_raw_en_bpe1000_sp/logdir/stats.15 --input_dir exp/bpe_true_bpe/asr_stats_raw_en_bpe1000_sp/logdir/stats.16 --output_dir exp/bpe_true_bpe/asr_stats_raw_en_bpe1000_sp
+2025-11-25T05:38:47 (asr.sh:1310:main) Stage 11: ASR Training: train_set=dump/raw/train_clean_100_sp, valid_set=dump/raw/dev
+2025-11-25T05:38:47 (asr.sh:1409:main) Generate 'exp/bpe_true_bpe/asr_train_asr_raw_en_bpe1000_sp/run.sh'. You can resume the process from stage 11 using this script
+2025-11-25T05:38:47 (asr.sh:1413:main) ASR training started... log: 'exp/bpe_true_bpe/asr_train_asr_raw_en_bpe1000_sp/train.log'
+2025-11-25T05:38:47 (asr.sh:1451:main) Use ESPnet trainer
+2025-11-25 05:38:47,189 (launch:94) INFO: /home/bossjung/anaconda3/envs/espnet/bin/python3 /home/bossjung/espnet/espnet/espnet2/bin/launch.py --cmd 'run.pl --name exp/bpe_true_bpe/asr_train_asr_raw_en_bpe1000_sp/train.log' --log exp/bpe_true_bpe/asr_train_asr_raw_en_bpe1000_sp/train.log --ngpu 1 --num_nodes 1 --init_file_prefix exp/bpe_true_bpe/asr_train_asr_raw_en_bpe1000_sp/.dist_init_ --multiprocessing_distributed true -- python3 -m espnet2.bin.asr_train --use_preprocessor true --bpemodel data/en_token_list/bpe_bpe1000/bpe.model --token_type bpe --token_list data/en_token_list/bpe_bpe1000/tokens.txt --non_linguistic_symbols none --cleaner none --g2p none --valid_data_path_and_name_and_type dump/raw/dev/wav.scp,speech,kaldi_ark --valid_shape_file exp/bpe_true_bpe/asr_stats_raw_en_bpe1000_sp/valid/speech_shape --resume true --ignore_init_mismatch false --fold_length 80000 --output_dir exp/bpe_true_bpe/asr_train_asr_raw_en_bpe1000_sp --config conf/train_asr.yaml --frontend_conf fs=16k --normalize=global_mvn --normalize_conf stats_file=exp/bpe_true_bpe/asr_stats_raw_en_bpe1000_sp/train/feats_stats.npz --train_data_path_and_name_and_type dump/raw/train_clean_100_sp/wav.scp,speech,kaldi_ark --train_shape_file exp/bpe_true_bpe/asr_stats_raw_en_bpe1000_sp/train/speech_shape --fold_length 150 --train_data_path_and_name_and_type dump/raw/train_clean_100_sp/text,text,text --train_shape_file exp/bpe_true_bpe/asr_stats_raw_en_bpe1000_sp/train/text_shape.bpe --valid_data_path_and_name_and_type dump/raw/dev/text,text,text --valid_shape_file exp/bpe_true_bpe/asr_stats_raw_en_bpe1000_sp/valid/text_shape.bpe
+2025-11-25 05:38:47,205 (launch:348) INFO: log file: exp/bpe_true_bpe/asr_train_asr_raw_en_bpe1000_sp/train.log
+2025-11-25T11:45:56 (asr.sh:1513:main) Stage 12: Decoding: training_dir=exp/bpe_true_bpe/asr_train_asr_raw_en_bpe1000_sp
+2025-11-25T11:45:56 (asr.sh:1541:main) Generate 'exp/bpe_true_bpe/asr_train_asr_raw_en_bpe1000_sp/decode_asr_asr_model_valid.cer_ctc.ave_5best/run.sh'. You can resume the process from stage 12 using this script
+2025-11-25T11:45:56 (asr.sh:1606:main) Decoding started... log: 'exp/bpe_true_bpe/asr_train_asr_raw_en_bpe1000_sp/decode_asr_asr_model_valid.cer_ctc.ave_5best/test_clean/logdir/asr_inference.*.log'
+2025-11-25T12:46:35 (asr.sh:1622:main) Calculating RTF & latency... log: 'exp/bpe_true_bpe/asr_train_asr_raw_en_bpe1000_sp/decode_asr_asr_model_valid.cer_ctc.ave_5best/test_clean/logdir/calculate_rtf.log'
+2025-11-25T12:46:36 (asr.sh:1606:main) Decoding started... log: 'exp/bpe_true_bpe/asr_train_asr_raw_en_bpe1000_sp/decode_asr_asr_model_valid.cer_ctc.ave_5best/test_other/logdir/asr_inference.*.log'
+2025-11-25T13:40:14 (asr.sh:1622:main) Calculating RTF & latency... log: 'exp/bpe_true_bpe/asr_train_asr_raw_en_bpe1000_sp/decode_asr_asr_model_valid.cer_ctc.ave_5best/test_other/logdir/calculate_rtf.log'
+2025-11-25T13:40:15 (asr.sh:1654:main) Stage 13: Scoring
+/home/bossjung/anaconda3/envs/espnet/bin/python3 /home/bossjung/espnet/espnet/espnet2/bin/tokenize_text.py -f 2- --input - --output - --cleaner none --token_type char --non_linguistic_symbols none --remove_non_linguistic_symbols true
+/home/bossjung/anaconda3/envs/espnet/bin/python3 /home/bossjung/espnet/espnet/espnet2/bin/tokenize_text.py -f 2- --input - --output - --token_type char --non_linguistic_symbols none --remove_non_linguistic_symbols true --cleaner none
+2025-11-25T13:40:32 (asr.sh:1744:main) Write cer result in exp/bpe_true_bpe/asr_train_asr_raw_en_bpe1000_sp/decode_asr_asr_model_valid.cer_ctc.ave_5best/test_clean/score_cer/result.txt
+|    SPKR      |    # Snt         # Wrd    |    Corr          Sub           Del          Ins          Err         S.Err    |
+|    Sum/Avg   |    2620         281530    |    96.6          1.6           1.8          1.3          4.7          76.8    |
+/home/bossjung/anaconda3/envs/espnet/bin/python3 /home/bossjung/espnet/espnet/espnet2/bin/tokenize_text.py -f 2- --input - --output - --cleaner none --token_type word --non_linguistic_symbols none --remove_non_linguistic_symbols true
+/home/bossjung/anaconda3/envs/espnet/bin/python3 /home/bossjung/espnet/espnet/espnet2/bin/tokenize_text.py -f 2- --input - --output - --token_type word --non_linguistic_symbols none --remove_non_linguistic_symbols true --cleaner none
+2025-11-25T13:40:42 (asr.sh:1744:main) Write wer result in exp/bpe_true_bpe/asr_train_asr_raw_en_bpe1000_sp/decode_asr_asr_model_valid.cer_ctc.ave_5best/test_clean/score_wer/result.txt
+|    SPKR      |    # Snt         # Wrd    |    Corr          Sub           Del          Ins          Err         S.Err    |
+|    Sum/Avg   |    2620          52576    |    89.4          9.6           1.0          1.2         11.9          76.8    |
+/home/bossjung/anaconda3/envs/espnet/bin/python3 /home/bossjung/espnet/espnet/espnet2/bin/tokenize_text.py -f 2- --input - --output - --cleaner none --token_type bpe --bpemodel data/en_token_list/bpe_bpe1000/bpe.model
+/home/bossjung/anaconda3/envs/espnet/bin/python3 /home/bossjung/espnet/espnet/espnet2/bin/tokenize_text.py -f 2- --input - --output - --token_type bpe --bpemodel data/en_token_list/bpe_bpe1000/bpe.model --cleaner none
+2025-11-25T13:40:53 (asr.sh:1744:main) Write ter result in exp/bpe_true_bpe/asr_train_asr_raw_en_bpe1000_sp/decode_asr_asr_model_valid.cer_ctc.ave_5best/test_clean/score_ter/result.txt
+|    SPKR      |    # Snt         # Wrd    |    Corr          Sub           Del          Ins          Err         S.Err    |
+|    Sum/Avg   |    2620          90293    |    90.9          6.6           2.5          1.1         10.1          76.8    |
+/home/bossjung/anaconda3/envs/espnet/bin/python3 /home/bossjung/espnet/espnet/espnet2/bin/tokenize_text.py -f 2- --input - --output - --cleaner none --token_type char --non_linguistic_symbols none --remove_non_linguistic_symbols true
+/home/bossjung/anaconda3/envs/espnet/bin/python3 /home/bossjung/espnet/espnet/espnet2/bin/tokenize_text.py -f 2- --input - --output - --token_type char --non_linguistic_symbols none --remove_non_linguistic_symbols true --cleaner none
+2025-11-25T13:41:10 (asr.sh:1744:main) Write cer result in exp/bpe_true_bpe/asr_train_asr_raw_en_bpe1000_sp/decode_asr_asr_model_valid.cer_ctc.ave_5best/test_other/score_cer/result.txt
+|    SPKR      |    # Snt         # Wrd    |    Corr          Sub           Del          Ins          Err         S.Err    |
+|    Sum/Avg   |    2939         272758    |    88.1          6.2           5.7          3.5         15.4          93.4    |
+/home/bossjung/anaconda3/envs/espnet/bin/python3 /home/bossjung/espnet/espnet/espnet2/bin/tokenize_text.py -f 2- --input - --output - --cleaner none --token_type word --non_linguistic_symbols none --remove_non_linguistic_symbols true
+/home/bossjung/anaconda3/envs/espnet/bin/python3 /home/bossjung/espnet/espnet/espnet2/bin/tokenize_text.py -f 2- --input - --output - --token_type word --non_linguistic_symbols none --remove_non_linguistic_symbols true --cleaner none
+2025-11-25T13:41:20 (asr.sh:1744:main) Write wer result in exp/bpe_true_bpe/asr_train_asr_raw_en_bpe1000_sp/decode_asr_asr_model_valid.cer_ctc.ave_5best/test_other/score_wer/result.txt
+|    SPKR      |    # Snt         # Wrd    |    Corr          Sub           Del          Ins          Err         S.Err    |
+|    Sum/Avg   |    2939          52343    |    72.3         24.4           3.3          2.9         30.6          93.4    |
+/home/bossjung/anaconda3/envs/espnet/bin/python3 /home/bossjung/espnet/espnet/espnet2/bin/tokenize_text.py -f 2- --input - --output - --cleaner none --token_type bpe --bpemodel data/en_token_list/bpe_bpe1000/bpe.model
+/home/bossjung/anaconda3/envs/espnet/bin/python3 /home/bossjung/espnet/espnet/espnet2/bin/tokenize_text.py -f 2- --input - --output - --token_type bpe --bpemodel data/en_token_list/bpe_bpe1000/bpe.model --cleaner none
+2025-11-25T13:41:31 (asr.sh:1744:main) Write ter result in exp/bpe_true_bpe/asr_train_asr_raw_en_bpe1000_sp/decode_asr_asr_model_valid.cer_ctc.ave_5best/test_other/score_ter/result.txt
+|    SPKR      |    # Snt         # Wrd    |    Corr          Sub           Del          Ins          Err         S.Err    |
+|    Sum/Avg   |    2939          87291    |    74.8         19.2           6.0          3.0         28.2          93.4    |
+<!-- Generated by scripts/utils/show_asr_result.sh -->
+# RESULTS
+## Environments
+- date: `Tue Nov 25 13:41:31 KST 2025`
+- python version: `3.9.19 (tags/v3.9.19-26-g2d3a350f043-dirty:2d3a350f043, May 25 2024, 00:41:40)  [GCC 13.2.0]`
+- espnet version: `espnet 202509`
+- pytorch version: `pytorch 2.7.1+cu126`
+- Git hash: `849b210c2d326867afdf73d0460de7ee2d5dcf6f`
+  - Commit date: `Wed Oct 8 07:31:40 2025 -0400`
+
+## exp/bpe_true_bpe/asr_train_asr_raw_en_bpe1000_sp
+### WER
+
+|dataset|Snt|Wrd|Corr|Sub|Del|Ins|Err|S.Err|
+|---|---|---|---|---|---|---|---|---|
+|decode_asr_asr_model_valid.cer_ctc.ave_5best/test_clean|2620|52576|89.4|9.6|1.0|1.2|11.9|76.8|
+|decode_asr_asr_model_valid.cer_ctc.ave_5best/test_other|2939|52343|72.3|24.4|3.3|2.9|30.6|93.4|
+
+### CER
+
+|dataset|Snt|Wrd|Corr|Sub|Del|Ins|Err|S.Err|
+|---|---|---|---|---|---|---|---|---|
+|decode_asr_asr_model_valid.cer_ctc.ave_5best/test_clean|2620|281530|96.6|1.6|1.8|1.3|4.7|76.8|
+|decode_asr_asr_model_valid.cer_ctc.ave_5best/test_other|2939|272758|88.1|6.2|5.7|3.5|15.4|93.4|
+
+### TER
+
+|dataset|Snt|Wrd|Corr|Sub|Del|Ins|Err|S.Err|
+|---|---|---|---|---|---|---|---|---|
+|decode_asr_asr_model_valid.cer_ctc.ave_5best/test_clean|2620|90293|90.9|6.6|2.5|1.1|10.1|76.8|
+|decode_asr_asr_model_valid.cer_ctc.ave_5best/test_other|2939|87291|74.8|19.2|6.0|3.0|28.2|93.4|
+
+2025-11-25T13:41:33 (asr.sh:1842:main) Successfully finished. [elapsed=29196s]

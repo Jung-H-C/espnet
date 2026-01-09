@@ -10,7 +10,7 @@ from functools import reduce
 from operator import mul
 
 from espnet.bin.asr_train import get_parser
-from espnet.nets.pytorch_backend.nets_utils import get_subsample
+from espnet2.legacy.nets.pytorch_backend.nets_utils import get_subsample
 from espnet.utils.dynamic_import import dynamic_import
 
 if __name__ == "__main__":

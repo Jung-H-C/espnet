@@ -1,0 +1,88 @@
+nohup: 입력 무시
+Updating module_config in conf/train_asr.yaml...
+Updated conf/train_asr.yaml with module_config:
+  Configuration: ['I', 'I', 'I', 'M', 'M']
+  Applied to 21 blocks
+YAML file updated successfully.
+2025-12-03T13:31:21 (asr.sh:285:main) ./asr.sh --lang en --ngpu 1 --nj 16 --gpu_inference true --inference_nj 6 --nbpe 1000 --max_wav_duration 30 --audio_format flac.ark --speed_perturb_factors 0.9 1.0 1.1 --feats_type raw --use_lm false --asr_config conf/train_asr.yaml --inference_config conf/decode_asr.yaml --train_set train_clean_100 --valid_set dev --test_sets test_clean test_other --inference_asr_model valid.cer_ctc.ave_5best.pth --lm_train_text data/train_clean_100/text --bpe_train_text data/train_clean_100/text --stage 10 --stop_stage 13
+2025-12-03T13:31:22 (asr.sh:566:main) Skipped stages:  6 7 8 9 14 15 
+2025-12-03T13:31:22 (asr.sh:1191:main) Stage 10: ASR collect stats: train_set=dump/raw/train_clean_100_sp, valid_set=dump/raw/dev
+2025-12-03T13:31:22 (asr.sh:1242:main) Generate 'exp/asr_stats_raw_en_bpe1000_sp/run.sh'. You can resume the process from stage 10 using this script
+2025-12-03T13:31:22 (asr.sh:1246:main) ASR collect-stats started... log: 'exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.*.log'
+/home/bossjung/anaconda3/envs/espnet/bin/python3 /home/bossjung/espnet/espnet/espnet2/bin/aggregate_stats_dirs.py --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.1 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.2 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.3 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.4 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.5 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.6 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.7 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.8 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.9 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.10 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.11 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.12 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.13 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.14 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.15 --input_dir exp/asr_stats_raw_en_bpe1000_sp/logdir/stats.16 --output_dir exp/asr_stats_raw_en_bpe1000_sp
+2025-12-03T13:35:15 (asr.sh:1310:main) Stage 11: ASR Training: train_set=dump/raw/train_clean_100_sp, valid_set=dump/raw/dev
+2025-12-03T13:35:15 (asr.sh:1409:main) Generate 'exp/asr_train_asr_raw_en_bpe1000_sp/run.sh'. You can resume the process from stage 11 using this script
+2025-12-03T13:35:15 (asr.sh:1413:main) ASR training started... log: 'exp/asr_train_asr_raw_en_bpe1000_sp/train.log'
+2025-12-03T13:35:15 (asr.sh:1451:main) Use ESPnet trainer
+2025-12-03 13:35:15,861 (launch:94) INFO: /home/bossjung/anaconda3/envs/espnet/bin/python3 /home/bossjung/espnet/espnet/espnet2/bin/launch.py --cmd 'run.pl --name exp/asr_train_asr_raw_en_bpe1000_sp/train.log' --log exp/asr_train_asr_raw_en_bpe1000_sp/train.log --ngpu 1 --num_nodes 1 --init_file_prefix exp/asr_train_asr_raw_en_bpe1000_sp/.dist_init_ --multiprocessing_distributed true -- python3 -m espnet2.bin.asr_train --use_preprocessor true --bpemodel data/en_token_list/bpe_bpe1000/bpe.model --token_type bpe --token_list data/en_token_list/bpe_bpe1000/tokens.txt --non_linguistic_symbols none --cleaner none --g2p none --valid_data_path_and_name_and_type dump/raw/dev/wav.scp,speech,kaldi_ark --valid_shape_file exp/asr_stats_raw_en_bpe1000_sp/valid/speech_shape --resume true --ignore_init_mismatch false --fold_length 80000 --output_dir exp/asr_train_asr_raw_en_bpe1000_sp --config conf/train_asr.yaml --frontend_conf fs=16k --normalize=global_mvn --normalize_conf stats_file=exp/asr_stats_raw_en_bpe1000_sp/train/feats_stats.npz --train_data_path_and_name_and_type dump/raw/train_clean_100_sp/wav.scp,speech,kaldi_ark --train_shape_file exp/asr_stats_raw_en_bpe1000_sp/train/speech_shape --fold_length 150 --train_data_path_and_name_and_type dump/raw/train_clean_100_sp/text,text,text --train_shape_file exp/asr_stats_raw_en_bpe1000_sp/train/text_shape.bpe --valid_data_path_and_name_and_type dump/raw/dev/text,text,text --valid_shape_file exp/asr_stats_raw_en_bpe1000_sp/valid/text_shape.bpe
+2025-12-03 13:35:15,879 (launch:348) INFO: log file: exp/asr_train_asr_raw_en_bpe1000_sp/train.log
+2025-12-04T05:26:15 (asr.sh:1513:main) Stage 12: Decoding: training_dir=exp/asr_train_asr_raw_en_bpe1000_sp
+2025-12-04T05:26:15 (asr.sh:1541:main) Generate 'exp/asr_train_asr_raw_en_bpe1000_sp/decode_asr_asr_model_valid.cer_ctc.ave_5best/run.sh'. You can resume the process from stage 12 using this script
+2025-12-04T05:26:15 (asr.sh:1606:main) Decoding started... log: 'exp/asr_train_asr_raw_en_bpe1000_sp/decode_asr_asr_model_valid.cer_ctc.ave_5best/test_clean/logdir/asr_inference.*.log'
+2025-12-04T06:27:20 (asr.sh:1622:main) Calculating RTF & latency... log: 'exp/asr_train_asr_raw_en_bpe1000_sp/decode_asr_asr_model_valid.cer_ctc.ave_5best/test_clean/logdir/calculate_rtf.log'
+2025-12-04T06:27:20 (asr.sh:1606:main) Decoding started... log: 'exp/asr_train_asr_raw_en_bpe1000_sp/decode_asr_asr_model_valid.cer_ctc.ave_5best/test_other/logdir/asr_inference.*.log'
+2025-12-04T07:20:59 (asr.sh:1622:main) Calculating RTF & latency... log: 'exp/asr_train_asr_raw_en_bpe1000_sp/decode_asr_asr_model_valid.cer_ctc.ave_5best/test_other/logdir/calculate_rtf.log'
+2025-12-04T07:20:59 (asr.sh:1654:main) Stage 13: Scoring
+/home/bossjung/anaconda3/envs/espnet/bin/python3 /home/bossjung/espnet/espnet/espnet2/bin/tokenize_text.py -f 2- --input - --output - --cleaner none --token_type char --non_linguistic_symbols none --remove_non_linguistic_symbols true
+/home/bossjung/anaconda3/envs/espnet/bin/python3 /home/bossjung/espnet/espnet/espnet2/bin/tokenize_text.py -f 2- --input - --output - --token_type char --non_linguistic_symbols none --remove_non_linguistic_symbols true --cleaner none
+2025-12-04T07:21:16 (asr.sh:1744:main) Write cer result in exp/asr_train_asr_raw_en_bpe1000_sp/decode_asr_asr_model_valid.cer_ctc.ave_5best/test_clean/score_cer/result.txt
+|   SPKR      |   # Snt       # Wrd    |   Corr         Sub        Del         Ins         Err       S.Err    |
+|   Sum/Avg   |   2620       281530    |   97.2         1.3        1.5         1.0         3.8        69.1    |
+/home/bossjung/anaconda3/envs/espnet/bin/python3 /home/bossjung/espnet/espnet/espnet2/bin/tokenize_text.py -f 2- --input - --output - --cleaner none --token_type word --non_linguistic_symbols none --remove_non_linguistic_symbols true
+/home/bossjung/anaconda3/envs/espnet/bin/python3 /home/bossjung/espnet/espnet/espnet2/bin/tokenize_text.py -f 2- --input - --output - --token_type word --non_linguistic_symbols none --remove_non_linguistic_symbols true --cleaner none
+2025-12-04T07:21:26 (asr.sh:1744:main) Write wer result in exp/asr_train_asr_raw_en_bpe1000_sp/decode_asr_asr_model_valid.cer_ctc.ave_5best/test_clean/score_wer/result.txt
+|   SPKR      |   # Snt       # Wrd    |   Corr         Sub        Del         Ins         Err       S.Err    |
+|   Sum/Avg   |   2620        52576    |   91.4         7.8        0.8         1.0         9.6        69.1    |
+/home/bossjung/anaconda3/envs/espnet/bin/python3 /home/bossjung/espnet/espnet/espnet2/bin/tokenize_text.py -f 2- --input - --output - --cleaner none --token_type bpe --bpemodel data/en_token_list/bpe_bpe1000/bpe.model
+/home/bossjung/anaconda3/envs/espnet/bin/python3 /home/bossjung/espnet/espnet/espnet2/bin/tokenize_text.py -f 2- --input - --output - --token_type bpe --bpemodel data/en_token_list/bpe_bpe1000/bpe.model --cleaner none
+2025-12-04T07:21:37 (asr.sh:1744:main) Write ter result in exp/asr_train_asr_raw_en_bpe1000_sp/decode_asr_asr_model_valid.cer_ctc.ave_5best/test_clean/score_ter/result.txt
+|   SPKR      |   # Snt       # Wrd    |   Corr         Sub        Del         Ins         Err       S.Err    |
+|   Sum/Avg   |   2620        90293    |   92.3         5.4        2.3         0.7         8.4        69.1    |
+/home/bossjung/anaconda3/envs/espnet/bin/python3 /home/bossjung/espnet/espnet/espnet2/bin/tokenize_text.py -f 2- --input - --output - --cleaner none --token_type char --non_linguistic_symbols none --remove_non_linguistic_symbols true
+/home/bossjung/anaconda3/envs/espnet/bin/python3 /home/bossjung/espnet/espnet/espnet2/bin/tokenize_text.py -f 2- --input - --output - --token_type char --non_linguistic_symbols none --remove_non_linguistic_symbols true --cleaner none
+2025-12-04T07:21:54 (asr.sh:1744:main) Write cer result in exp/asr_train_asr_raw_en_bpe1000_sp/decode_asr_asr_model_valid.cer_ctc.ave_5best/test_other/score_cer/result.txt
+|   SPKR      |   # Snt       # Wrd    |   Corr         Sub        Del         Ins         Err       S.Err    |
+|   Sum/Avg   |   2939       272758    |   89.6         5.3        5.0         2.9        13.3        90.3    |
+/home/bossjung/anaconda3/envs/espnet/bin/python3 /home/bossjung/espnet/espnet/espnet2/bin/tokenize_text.py -f 2- --input - --output - --cleaner none --token_type word --non_linguistic_symbols none --remove_non_linguistic_symbols true
+/home/bossjung/anaconda3/envs/espnet/bin/python3 /home/bossjung/espnet/espnet/espnet2/bin/tokenize_text.py -f 2- --input - --output - --token_type word --non_linguistic_symbols none --remove_non_linguistic_symbols true --cleaner none
+2025-12-04T07:22:04 (asr.sh:1744:main) Write wer result in exp/asr_train_asr_raw_en_bpe1000_sp/decode_asr_asr_model_valid.cer_ctc.ave_5best/test_other/score_wer/result.txt
+|   SPKR      |   # Snt       # Wrd    |   Corr         Sub        Del         Ins         Err       S.Err    |
+|   Sum/Avg   |   2939        52343    |   75.9        21.2        2.8         2.7        26.8        90.3    |
+/home/bossjung/anaconda3/envs/espnet/bin/python3 /home/bossjung/espnet/espnet/espnet2/bin/tokenize_text.py -f 2- --input - --output - --cleaner none --token_type bpe --bpemodel data/en_token_list/bpe_bpe1000/bpe.model
+/home/bossjung/anaconda3/envs/espnet/bin/python3 /home/bossjung/espnet/espnet/espnet2/bin/tokenize_text.py -f 2- --input - --output - --token_type bpe --bpemodel data/en_token_list/bpe_bpe1000/bpe.model --cleaner none
+2025-12-04T07:22:15 (asr.sh:1744:main) Write ter result in exp/asr_train_asr_raw_en_bpe1000_sp/decode_asr_asr_model_valid.cer_ctc.ave_5best/test_other/score_ter/result.txt
+|   SPKR      |   # Snt       # Wrd    |   Corr         Sub        Del         Ins         Err       S.Err    |
+|   Sum/Avg   |   2939        87291    |   77.6        16.7        5.7         2.2        24.6        90.3    |
+<!-- Generated by scripts/utils/show_asr_result.sh -->
+# RESULTS
+## Environments
+- date: `Thu Dec  4 07:22:16 KST 2025`
+- python version: `3.9.19 (tags/v3.9.19-26-g2d3a350f043-dirty:2d3a350f043, May 25 2024, 00:41:40)  [GCC 13.2.0]`
+- espnet version: `espnet 202509`
+- pytorch version: `pytorch 2.7.1+cu126`
+- Git hash: `849b210c2d326867afdf73d0460de7ee2d5dcf6f`
+  - Commit date: `Wed Oct 8 07:31:40 2025 -0400`
+
+## exp/asr_train_asr_raw_en_bpe1000_sp
+### WER
+
+|dataset|Snt|Wrd|Corr|Sub|Del|Ins|Err|S.Err|
+|---|---|---|---|---|---|---|---|---|
+|decode_asr_asr_model_valid.cer_ctc.ave_5best/test_clean|2620|52576|91.4|7.8|0.8|1.0|9.6|69.1|
+|decode_asr_asr_model_valid.cer_ctc.ave_5best/test_other|2939|52343|75.9|21.2|2.8|2.7|26.8|90.3|
+
+### CER
+
+|dataset|Snt|Wrd|Corr|Sub|Del|Ins|Err|S.Err|
+|---|---|---|---|---|---|---|---|---|
+|decode_asr_asr_model_valid.cer_ctc.ave_5best/test_clean|2620|281530|97.2|1.3|1.5|1.0|3.8|69.1|
+|decode_asr_asr_model_valid.cer_ctc.ave_5best/test_other|2939|272758|89.6|5.3|5.0|2.9|13.3|90.3|
+
+### TER
+
+|dataset|Snt|Wrd|Corr|Sub|Del|Ins|Err|S.Err|
+|---|---|---|---|---|---|---|---|---|
+|decode_asr_asr_model_valid.cer_ctc.ave_5best/test_clean|2620|90293|92.3|5.4|2.3|0.7|8.4|69.1|
+|decode_asr_asr_model_valid.cer_ctc.ave_5best/test_other|2939|87291|77.6|16.7|5.7|2.2|24.6|90.3|
+
+2025-12-04T07:22:17 (asr.sh:1842:main) Successfully finished. [elapsed=64256s]

@@ -1,0 +1,8 @@
+nohup: ignoring input
+Using GPU: 0 (CUDA_VISIBLE_DEVICES=0)
+2025-12-20T05:41:25 (asr.sh:285:main) ./asr.sh --lang en --ngpu 1 --nj 16 --gpu_inference true --inference_nj 6 --nbpe 1000 --max_wav_duration 30 --speed_perturb_factors 0.9 1.0 1.1 --audio_format flac.ark --feats_type raw --use_lm false --asr_config conf/train_asr.yaml --inference_config conf/decode_asr.yaml --inference_asr_model valid.cer_ctc.ave_5best.pth --train_set train_clean_100 --valid_set dev --test_sets test_clean test_other --lm_train_text data/train_clean_100/text --bpe_train_text data/train_clean_100/text --stage 13 --stop_stage 13
+2025-12-20T05:41:25 (asr.sh:566:main) Skipped stages:  6 7 8 9 14 15 
+2025-12-20T05:41:25 (asr.sh:1654:main) Stage 13: Scoring
+/home/gpuadmin/anaconda3/envs/junghc/bin/python3 /home/gpuadmin/espnet/espnet2/bin/tokenize_text.py -f 2- --input - --output - --cleaner none --token_type char --non_linguistic_symbols none --remove_non_linguistic_symbols true
+/home/gpuadmin/anaconda3/envs/junghc/bin/python3 /home/gpuadmin/espnet/espnet2/bin/tokenize_text.py -f 2- --input - --output - --token_type char --non_linguistic_symbols none --remove_non_linguistic_symbols true --cleaner none
+./asr.sh: line 1739: sclite: command not found

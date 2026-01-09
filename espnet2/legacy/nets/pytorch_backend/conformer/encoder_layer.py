@@ -60,9 +60,13 @@ class EncoderLayer(nn.Module):
         self.conv_module = conv_module
         self.norm_ff = LayerNorm(size)  # for the FNN module
         self.norm_mha = LayerNorm(size)  # for the MHA module
+        # NOTE: In the original Conformer implementation, when using macaron-style
+        # FFN, the FFN outputs are scaled by 0.5 (both macaron and main FFN).
+        # Here we intentionally set ff_scale to 1.0 even when feed_forward_macaron
+        # is used, so that both FFNs are applied with full scale.
         if feed_forward_macaron is not None:
             self.norm_ff_macaron = LayerNorm(size)
-            self.ff_scale = 0.5
+            self.ff_scale = 1.0 # 0.5랑 1.0으로 수정!
         else:
             self.ff_scale = 1.0
         if self.conv_module is not None:
